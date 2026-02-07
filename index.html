@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Paintedd</title>
+    <meta
+      name="description"
+      content="Explore the vibrant and chaotic world of Paintedd. A digital gallery and community space for art lovers and creative souls."
+    />
+    <link rel="stylesheet" href="/pallet/style/home.css" />
+    <script
+      src="https://kit.fontawesome.com/29c25c094f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/pallet/script/home.js" defer></script>
+  </head>
+  <body>
+    <!-- Hero Header with Tap-Hint Animation -->
+    <header id="hero-header">
+      <div class="hero-container">
+        <div class="logo-wrapper">
+          <div class="logo-circle tap-target">
+            <img
+              src="/pallet/img/logo-circular.png"
+              alt="Paintedd Logo"
+              class="logo-main"
+            />
+            <div class="silver-glow"></div>
+            <div class="tap-hint">
+              <i class="fas fa-hand-pointer"></i>
+            </div>
+          </div>
+        </div>
+        <div class="hero-content">
+          <h1 class="creative-text">Freely Creative</h1>
+          <div class="social-container">
+            <a
+              href="https://wa.me/27641417574"
+              aria-label="Whatsapp"
+              class="social-icon"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+            <a
+              href="https://tiktok.com/@painted_d"
+              aria-label="TikTok"
+              class="social-icon"
+              ><i class="fab fa-tiktok"></i
+            ></a>
+            <a
+              href="https://youtube.com/@painted_d"
+              aria-label="YouTube"
+              class="social-icon"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="https://instagram.com/painted_d_art/"
+              aria-label="Instagram"
+              class="social-icon"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+          <!-- Gallery Button -->
+          <a href="/gallery" id="slideshow-trigger" class="slideshow-button">
+            <i class="fa-solid fa-palette"></i>
+            <span>Gallery</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Radial Navigation -->
+    <nav id="radial-nav">
+      <div id="radial-menu" class="radial-menu">
+        <div class="center-hub">
+          <div class="nav-logo">
+            <img src="/pallet/img/logo-circular.png" alt="Navigation Hub" />
+            <div
+              class="close-nav-btn"
+              aria-label="Close Menu"
+              title="Close Menu"
+            >
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single-tier Navigation -->
+        <div class="nav-tier core-tier active">
+          <a
+            href="/gallery"
+            class="nav-item"
+            aria-label="Gallery"
+            title="Gallery"
+          >
+            <i class="fa-solid fa-palette"></i>
+            <span class="nav-label">Gallery</span>
+          </a>
+          <a href="/event" class="nav-item" aria-label="Events" title="Events">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span class="nav-label">Events</span>
+          </a>
+          <a
+            href="/contact"
+            class="nav-item"
+            aria-label="Contact"
+            title="Contact"
+          >
+            <i class="fas fa-envelope"></i>
+            <span class="nav-label">Contact</span>
+          </a>
+          <a href="/about" class="nav-item" aria-label="About" title="About">
+            <i class="fa-solid fa-person-circle-question"></i>
+            <span class="nav-label">About</span>
+          </a>
+        </div>
+      </div>
+      <div id="nav-overlay" class="nav-overlay"></div>
+    </nav>
+    <main id="main-content"></main>
+  </body>
+</html>

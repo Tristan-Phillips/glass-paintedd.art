@@ -1,0 +1,20 @@
+{
+  "business": {
+    "name": "Paintedd",
+    "whatsapp_default": "27641417574",
+    "currency": "R"
+  },
+  "defaults": {
+    "blueprints": {
+      "print_sizes": {
+        "A5": { "base": 60, "label": "A5 Print" },
+        "A4": { "base": 120, "label": "A4 Print" },
+        "A3": { "base": 250, "label": "A3 Print" }
+      },
+      "loot": {
+        "sticker": { "price": 40, "label": "Vinyl Sticker" },
+        "button": { "price": 30, "label": "Pin Badge" }
+      }
+    }
+  }
+}

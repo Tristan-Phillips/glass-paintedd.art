@@ -1,0 +1,5 @@
+.vscode
+share/*
+share/
+/share
+/share/*

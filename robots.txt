@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /CNAME
+Disallow: /Readme.md
+Disallow: /pallet/
+Allow: /
+
+Sitemap: https://paintedd.art/sitemap.xml

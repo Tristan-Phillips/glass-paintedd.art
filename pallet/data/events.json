@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "ccct2026",
+    "name": "Comic Con Cape Town",
+    "location": "CTICC 2, Cape Town",
+    "dates": "30 April till 3 May",
+    "status": "upcoming", 
+    "folder": "cctown26", 
+    "color": "#ff0099",
+    "img": "https://share.trap.lol/b8mFaP7cdt4b/cctown26.jpg",
+    "links": {
+      "website": "https://comicconafrica.co.za/ccct-home-page/",
+      "instagram": "https://www.instagram.com/comicconafrica/",
+      "tiktok": "https://www.tiktok.com/@comicconafrica?lang=en"
+    }
+  },
+  {
+    "slug": "rage2025",
+    "name": "rAge Expo",
+    "location": "Fourways Mall",
+    "dates": "December 5 till 7",
+    "status": "archived",
+    "folder": "rage25",
+    "color": "#ff4500",
+    "img": "https://share.trap.lol/Wb6HzdO32GLP/rage25.jpg",
+    "links": {
+      "website": "https://www.rageexpo.co.za/gallery/",
+      "instagram": "https://www.instagram.com/rage_expo/",
+      "tiktok": "https://www.tiktok.com/@rageexpo_official"
+    }
+  },
+  {
+    "slug": "ccafrica25",
+    "name": "Comic Con Africa",
+    "location": "Johannesburg",
+    "dates": "August 28 till 31",
+    "status": "archived",
+    "folder": "ccafrica25",
+    "color": "#ffd700",
+    "img": "https://share.trap.lol/TJdUnloPeLgU/ccafrica25.jpg",
+    "links": {
+      "website": "https://comicconafrica.co.za/",
+      "instagram": "https://www.instagram.com/comicconafrica/",
+      "tiktok": "https://www.tiktok.com/@comicconafrica?lang=en"
+    }
+  }
+]

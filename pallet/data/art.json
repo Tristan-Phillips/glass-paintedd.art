@@ -1,0 +1,3649 @@
+{
+  "meta": {
+    "version": "2.0",
+    "last_updated": "2026-02-07",
+    "maintainer": "Paintedd"
+  },
+  "artworks": [
+    {
+      "id": "ART-9B9726",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#40475C", "#69738C", "#798896", "#A1A5B2", "#E8E9EB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/tT1K43UqD2uD/thumbnail_ART-9B9726.webp",
+        "medium": "https://share.paintedd.art/get/lwcF9EyV89PS/medium_ART-9B9726.webp",
+        "original": "https://share.paintedd.art/get/GlvFMtQ4A9nY/original_ART-9B9726.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-9B2B7A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#17181C", "#36414C", "#575E65", "#6F8290", "#BDC3C6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/yPpiUy4s58VR/thumbnail_ART-9B2B7A.webp",
+        "medium": "https://share.paintedd.art/get/xYDqAciz1pM5/medium_ART-9B2B7A.webp",
+        "original": "https://share.paintedd.art/get/MiDwaIvd826E/original_ART-9B2B7A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-172D00",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#463238", "#B33C35", "#EDB838", "#6680A3", "#DCD1C7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/LTlKcN4RBmPi/thumbnail_ART-172D00.webp",
+        "medium": "https://share.paintedd.art/get/VzBsnbNMHmN0/medium_ART-172D00.webp",
+        "original": "https://share.paintedd.art/get/UYpGlpO00dYy/original_ART-172D00.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-834D14",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1B1921", "#514F5B", "#73768B", "#A5A2AC", "#F5F4F5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/hveMzPT3tOvn/thumbnail_ART-834D14.webp",
+        "medium": "https://share.paintedd.art/get/oTbW1Lj4iBAl/medium_ART-834D14.webp",
+        "original": "https://share.paintedd.art/get/eECIbWz6zGJs/original_ART-834D14.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D40653",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1E1B2B", "#3B364D", "#5A5760", "#AAAE5F", "#AAAA89"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/WUDu3dSW8DVX/thumbnail_ART-D40653.webp",
+        "medium": "https://share.paintedd.art/get/RebBUMWrFnxB/medium_ART-D40653.webp",
+        "original": "https://share.paintedd.art/get/h1EAr7rXR3VK/original_ART-D40653.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3DE3BD",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#384855", "#597589", "#6E90A0", "#9EA9AB", "#C0CCD2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/ofioncBbW6fs/thumbnail_ART-3DE3BD.webp",
+        "medium": "https://share.paintedd.art/get/0riV7aCuGnAF/medium_ART-3DE3BD.webp",
+        "original": "https://share.paintedd.art/get/dqtIfaek2kW3/original_ART-3DE3BD.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-852C73",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#481E14", "#B4472D", "#FA9A0C", "#969755", "#D8A746"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/0tc9dFJiM8Xb/thumbnail_ART-852C73.webp",
+        "medium": "https://share.paintedd.art/get/dQ8A4GunyW3W/medium_ART-852C73.webp",
+        "original": "https://share.paintedd.art/get/5cppQh9aAq88/original_ART-852C73.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-4244C5",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2B292E", "#5F5F60", "#7E767C", "#A0A09C", "#C4C7C0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/pOk2oBbSeGP2/thumbnail_ART-4244C5.webp",
+        "medium": "https://share.paintedd.art/get/JpVCVsLGlz7e/medium_ART-4244C5.webp",
+        "original": "https://share.paintedd.art/get/nJ44SJYQRtMJ/original_ART-4244C5.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-4E7E6D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#464B48", "#B55841", "#BAA550", "#51868E", "#BFBDAA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/2Lh4T8qA1seT/thumbnail_ART-4E7E6D.webp",
+        "medium": "https://share.paintedd.art/get/73p7z5KthgKh/medium_ART-4E7E6D.webp",
+        "original": "https://share.paintedd.art/get/GgOsUeq60c0w/original_ART-4E7E6D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A90033",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#444A5F", "#69738C", "#7A859E", "#989AAE", "#B2B6C6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/sdXyEX9cpkd2/thumbnail_ART-A90033.webp",
+        "medium": "https://share.paintedd.art/get/CmLCpnar6p2B/medium_ART-A90033.webp",
+        "original": "https://share.paintedd.art/get/p3sy6nzl5xPx/original_ART-A90033.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-8E1FEB",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#252324", "#47525C", "#567296", "#6C8EB4", "#95ABBD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/45QTORpgx4Hd/thumbnail_ART-8E1FEB.webp",
+        "medium": "https://share.paintedd.art/get/uxYSmnyqbFop/medium_ART-8E1FEB.webp",
+        "original": "https://share.paintedd.art/get/cs4M5fcwjWdu/original_ART-8E1FEB.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-E5E306",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#343532", "#C1432E", "#BCA351", "#6684A2", "#BCBCB9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/SxF1QoaSRqwX/thumbnail_ART-E5E306.webp",
+        "medium": "https://share.paintedd.art/get/siFjfo86zWhU/medium_ART-E5E306.webp",
+        "original": "https://share.paintedd.art/get/Mf3r9ROvdqO6/original_ART-E5E306.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-6B2F29",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4D50AF", "#6B5CB1", "#AC96E3", "#D7AAEF", "#F1D7F5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/y4A8CTfIUDOm/thumbnail_ART-6B2F29.webp",
+        "medium": "https://share.paintedd.art/get/KCvyfVtDOpb4/medium_ART-6B2F29.webp",
+        "original": "https://share.paintedd.art/get/PVIjhoaaaFvI/original_ART-6B2F29.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A6CA44",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2C374C", "#5D738A", "#748B9F", "#B8C5D1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/abtucMGCgV8O/thumbnail_ART-A6CA44.webp",
+        "medium": "https://share.paintedd.art/get/3PKHLIGV1aqx/medium_ART-A6CA44.webp",
+        "original": "https://share.paintedd.art/get/UjBthDKYjVLv/original_ART-A6CA44.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-9CCF02",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#151112", "#5E402E", "#9E6940", "#DEA761", "#F8DC95"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/pfwscHnrhWWL/thumbnail_ART-9CCF02.webp",
+        "medium": "https://share.paintedd.art/get/zlxQm7ff2q3l/medium_ART-9CCF02.webp",
+        "original": "https://share.paintedd.art/get/wNSAlDACj8Bo/original_ART-9CCF02.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-112D49",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#603D2F", "#9A6D4E", "#C09168", "#C3AFAD", "#CEB0A5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/yAGo704KrJCe/thumbnail_ART-112D49.webp",
+        "medium": "https://share.paintedd.art/get/mlm15l7ojpLh/medium_ART-112D49.webp",
+        "original": "https://share.paintedd.art/get/Me2hkAHqolAT/original_ART-112D49.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-DF60F3",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#433F32", "#857956", "#A6A164", "#B2AF97", "#C5C2A4"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/pq9zsqgjbG7f/thumbnail_ART-DF60F3.webp",
+        "medium": "https://share.paintedd.art/get/tK2wdWTj89Ax/medium_ART-DF60F3.webp",
+        "original": "https://share.paintedd.art/get/ThuOfaMjL1WS/original_ART-DF60F3.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-BA97E9",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2F3240", "#595B6A", "#767C8C", "#9C9FA8", "#C7C6C9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/BxRGykkyz88H/thumbnail_ART-BA97E9.webp",
+        "medium": "https://share.paintedd.art/get/azNdJeVU48cy/medium_ART-BA97E9.webp",
+        "original": "https://share.paintedd.art/get/3FamsS11hYiI/original_ART-BA97E9.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-306F6A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#252727", "#394A4C", "#575F5E", "#929575", "#B6A6A4"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/7FvwrOtAsYwC/thumbnail_ART-306F6A.webp",
+        "medium": "https://share.paintedd.art/get/CpyeOv1bRXWH/medium_ART-306F6A.webp",
+        "original": "https://share.paintedd.art/get/nwNnQ6cHc0S9/original_ART-306F6A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A2F3A9",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#352951", "#655E8F", "#896F93", "#A49DAD", "#C1BCC2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/RJrGM1THFqhv/thumbnail_ART-A2F3A9.webp",
+        "medium": "https://share.paintedd.art/get/QfS0ARQ8n6g2/medium_ART-A2F3A9.webp",
+        "original": "https://share.paintedd.art/get/IbVkrT9ewtS8/original_ART-A2F3A9.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-909375",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1C1F23", "#35434C", "#596065", "#6E8997", "#99ACB4"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/GXm8ePYl7CNO/thumbnail_ART-909375.webp",
+        "medium": "https://share.paintedd.art/get/cjaYciGQkLr3/medium_ART-909375.webp",
+        "original": "https://share.paintedd.art/get/jDdMrcFIqu83/original_ART-909375.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-269348",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#352737", "#7A654F", "#B0A84B", "#3B3E9B", "#B8B5B6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/kl2UAa2XTsGP/thumbnail_ART-269348.webp",
+        "medium": "https://share.paintedd.art/get/JojQYnw9nQU6/medium_ART-269348.webp",
+        "original": "https://share.paintedd.art/get/lr6jIkAVoIlk/original_ART-269348.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-319A0A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1F1F23", "#42403F", "#5F5B55", "#9C8D70", "#CDBC97"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/FEsi6uWmas6z/thumbnail_ART-319A0A.webp",
+        "medium": "https://share.paintedd.art/get/2ELjyATpQGbM/medium_ART-319A0A.webp",
+        "original": "https://share.paintedd.art/get/SM8iBG6VnJGx/original_ART-319A0A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-49F879",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2F3E49", "#2D4E63", "#41728C", "#5C90A5", "#AE818F"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/u1l3nIxkByCR/thumbnail_ART-49F879.webp",
+        "medium": "https://share.paintedd.art/get/h7XauTwB4KHc/medium_ART-49F879.webp",
+        "original": "https://share.paintedd.art/get/7BdQG8VlXKRE/original_ART-49F879.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-995AB9",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1E1213", "#55413A", "#826A6B", "#CEB423", "#D3BCB3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/agG7WTcUBvPm/thumbnail_ART-995AB9.webp",
+        "medium": "https://share.paintedd.art/get/amAQr3KM7atw/medium_ART-995AB9.webp",
+        "original": "https://share.paintedd.art/get/KItmRSW3jDsh/original_ART-995AB9.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-7BBEAA",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0D0E0D", "#585E5C", "#7A8481", "#A0A5A2", "#E2E5E3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/22sTdawd0HED/thumbnail_ART-7BBEAA.webp",
+        "medium": "https://share.paintedd.art/get/BQ1GOcbgaoGY/medium_ART-7BBEAA.webp",
+        "original": "https://share.paintedd.art/get/laU8Pdf1upmT/original_ART-7BBEAA.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-74EEC0",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#42342D", "#A44335", "#5A9734", "#ACAC43", "#AE9A9F"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/V3bxBnVmgASA/thumbnail_ART-74EEC0.webp",
+        "medium": "https://share.paintedd.art/get/iJYVBDg3NPnk/medium_ART-74EEC0.webp",
+        "original": "https://share.paintedd.art/get/mCqLEu6kQUtJ/original_ART-74EEC0.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-948975",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2A111A", "#4F2A31", "#CEBC37", "#F7DD09", "#9B8C88"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/i9MCwN5kiJo3/thumbnail_ART-948975.webp",
+        "medium": "https://share.paintedd.art/get/8RjpBYwbBWNC/medium_ART-948975.webp",
+        "original": "https://share.paintedd.art/get/GDGw5d1ypHYL/original_ART-948975.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-2C4A1E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#37383F", "#565964", "#838F7E", "#686A92", "#9EA0B6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/bas8Yy2BKXGW/thumbnail_ART-2C4A1E.webp",
+        "medium": "https://share.paintedd.art/get/BoryHnCpHkkV/medium_ART-2C4A1E.webp",
+        "original": "https://share.paintedd.art/get/tVmbuJzWdQjL/original_ART-2C4A1E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-51A9AF",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#42396C", "#563F90", "#6956A1", "#986DBE", "#C3A1DB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/hym9BkYrxI18/thumbnail_ART-51A9AF.webp",
+        "medium": "https://share.paintedd.art/get/9biAV4QA2Gcz/medium_ART-51A9AF.webp",
+        "original": "https://share.paintedd.art/get/WsYIRbpouCye/original_ART-51A9AF.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D874A8",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#5A4537", "#966848", "#B3976A", "#5D94B1", "#C3C1B1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/qMYiE1PcCYDN/thumbnail_ART-D874A8.webp",
+        "medium": "https://share.paintedd.art/get/fB51hmpzSymQ/medium_ART-D874A8.webp",
+        "original": "https://share.paintedd.art/get/BsrCEeLK3JPX/original_ART-D874A8.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-81FF16",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#292F33", "#626463", "#818280", "#A39F9A", "#CFC8C2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/S1F4ncihJ1TJ/thumbnail_ART-81FF16.webp",
+        "medium": "https://share.paintedd.art/get/kODHpo8OEMKR/medium_ART-81FF16.webp",
+        "original": "https://share.paintedd.art/get/xt5kH1uetmYM/original_ART-81FF16.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F9FE9C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#382039", "#AC5330", "#D9AD46", "#6E5092", "#E0C7AB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/CvRrDY01YhvK/thumbnail_ART-F9FE9C.webp",
+        "medium": "https://share.paintedd.art/get/tNmepFxVF54f/medium_ART-F9FE9C.webp",
+        "original": "https://share.paintedd.art/get/2pkpmy1YftUP/original_ART-F9FE9C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-848C65",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4B2827", "#A55923", "#B65E2E", "#E1A147", "#8065A4"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/SiBsSEb4NcY5/thumbnail_ART-848C65.webp",
+        "medium": "https://share.paintedd.art/get/MJDnlnx3kQMM/medium_ART-848C65.webp",
+        "original": "https://share.paintedd.art/get/8mMmLeWAbdfP/original_ART-848C65.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-1DFCCC",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#161623", "#3E5344", "#679233", "#C2B619", "#84928B"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/1Td20NqntGuS/thumbnail_ART-1DFCCC.webp",
+        "medium": "https://share.paintedd.art/get/zeYbdVdvQyXk/medium_ART-1DFCCC.webp",
+        "original": "https://share.paintedd.art/get/dVNLfqFmVyar/original_ART-1DFCCC.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-8B4C8F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#515458", "#797E85", "#9FA0A2", "#BDC0C1", "#F2F2F1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/kHlfqkIxdHyf/thumbnail_ART-8B4C8F.webp",
+        "medium": "https://share.paintedd.art/get/YE70nxzTKqsi/medium_ART-8B4C8F.webp",
+        "original": "https://share.paintedd.art/get/Wpb0zOM69wLg/original_ART-8B4C8F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-27CA64",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#181516", "#4D453F", "#6E706F", "#36A8D8", "#BCDADD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/VzdUE5c3btWy/thumbnail_ART-27CA64.webp",
+        "medium": "https://share.paintedd.art/get/egsJtYkpG1Jh/medium_ART-27CA64.webp",
+        "original": "https://share.paintedd.art/get/C98vQ2ywmLMi/original_ART-27CA64.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-48965A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#444A3F", "#6D8072", "#D7D431", "#CED5A7", "#F7F8EB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/DagPn17WPNLj/thumbnail_ART-48965A.webp",
+        "medium": "https://share.paintedd.art/get/7KBengC2TEGC/medium_ART-48965A.webp",
+        "original": "https://share.paintedd.art/get/31xgDFCwdI06/original_ART-48965A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-CD6C15",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3D3235", "#4F5768", "#8F5C63", "#5C6C87", "#9AA0AA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/7h4bFF4QmrBK/thumbnail_ART-CD6C15.webp",
+        "medium": "https://share.paintedd.art/get/WQqpGIAqsozh/medium_ART-CD6C15.webp",
+        "original": "https://share.paintedd.art/get/ilDvmU8HNsQu/original_ART-CD6C15.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-9961B7",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2D3F4A", "#6C7075", "#D7A251", "#5D98AB", "#CEBEB5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/ErpvqJounfhN/thumbnail_ART-9961B7.webp",
+        "medium": "https://share.paintedd.art/get/ydeen0DwBRbq/medium_ART-9961B7.webp",
+        "original": "https://share.paintedd.art/get/Mg3wn38x7R4U/original_ART-9961B7.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-4E3EE2",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0C062D", "#1F1A5C", "#502E71", "#4648A2", "#A083CC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/NfTFtlDi8d1n/thumbnail_ART-4E3EE2.webp",
+        "medium": "https://share.paintedd.art/get/0wwi6sfVesbp/medium_ART-4E3EE2.webp",
+        "original": "https://share.paintedd.art/get/i8t9YOpTVKHN/original_ART-4E3EE2.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C0B9F4",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#254437", "#C5835E", "#236BAF", "#5398C7", "#C8A8B8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/F3Mv4pxiEmW5/thumbnail_ART-C0B9F4.webp",
+        "medium": "https://share.paintedd.art/get/HlSf2AG0n98W/medium_ART-C0B9F4.webp",
+        "original": "https://share.paintedd.art/get/xtmJqiSNxhRO/original_ART-C0B9F4.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-6A212A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2B2150", "#342450", "#544E9C", "#A661B1", "#AEA4D0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/gwBAwnIaoP8z/thumbnail_ART-6A212A.webp",
+        "medium": "https://share.paintedd.art/get/KSyu9CReDlNk/medium_ART-6A212A.webp",
+        "original": "https://share.paintedd.art/get/CiXCWFqzrfyi/original_ART-6A212A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-AE0938",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3F3749", "#8C6960", "#B3A44A", "#4D6297", "#ABACAC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/3VnLuYPlQ1jA/thumbnail_ART-AE0938.webp",
+        "medium": "https://share.paintedd.art/get/L2NdK2k7SI9K/medium_ART-AE0938.webp",
+        "original": "https://share.paintedd.art/get/zRQ7P77kmHXy/original_ART-AE0938.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B56F39",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3A3262", "#4B5D96", "#8C6E8F", "#A3A1AD", "#BDB8C3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/sH5OELaqf5ev/thumbnail_ART-B56F39.webp",
+        "medium": "https://share.paintedd.art/get/1CpK2X45o6n8/medium_ART-B56F39.webp",
+        "original": "https://share.paintedd.art/get/sxvCF12YdAQQ/original_ART-B56F39.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-19FED1",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3B3746", "#C7585C", "#D0B965", "#D05A98", "#999C90"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/BFuBWx38ggVz/thumbnail_ART-19FED1.webp",
+        "medium": "https://share.paintedd.art/get/ax0EaVUvbrOj/medium_ART-19FED1.webp",
+        "original": "https://share.paintedd.art/get/eSODwga3xBXR/original_ART-19FED1.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-5C2555",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#262C5A", "#505E9E", "#8875C1", "#55A6CA", "#A6B3D9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/e1eRcXB7UV2R/thumbnail_ART-5C2555.webp",
+        "medium": "https://share.paintedd.art/get/jxLwrIEnzHKh/medium_ART-5C2555.webp",
+        "original": "https://share.paintedd.art/get/PLASElTepyzT/original_ART-5C2555.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-51CE98",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#5C5A59", "#85827A", "#A4A29F", "#C3C2BB", "#D3D3D1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/hqRu4K6y0aUH/thumbnail_ART-51CE98.webp",
+        "medium": "https://share.paintedd.art/get/o0nWgDrkG4gx/medium_ART-51CE98.webp",
+        "original": "https://share.paintedd.art/get/TQnBObViki6s/original_ART-51CE98.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-DFB592",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#141925", "#3A4C60", "#56728B", "#728A99", "#AAB1B6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/HnDdGYeKxThg/thumbnail_ART-DFB592.webp",
+        "medium": "https://share.paintedd.art/get/BfecRHT2ISRA/medium_ART-DFB592.webp",
+        "original": "https://share.paintedd.art/get/3jpKYD9tNWrh/original_ART-DFB592.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-184A69",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#344334", "#65925B", "#7D8367", "#C3B23F", "#B4C79E"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/WHarvgalBMMJ/thumbnail_ART-184A69.webp",
+        "medium": "https://share.paintedd.art/get/7zuiH6FQBRlR/medium_ART-184A69.webp",
+        "original": "https://share.paintedd.art/get/q9vuEJmR4Tsp/original_ART-184A69.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-62D06B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#354E62", "#7A976F", "#496E8D", "#6494A6", "#A8BBC1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/XHvIDe8u7kYg/thumbnail_ART-62D06B.webp",
+        "medium": "https://share.paintedd.art/get/obrzSuknBAer/medium_ART-62D06B.webp",
+        "original": "https://share.paintedd.art/get/s28jO122KNDx/original_ART-62D06B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-4DE858",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4E442F", "#8B7550", "#63A02E", "#A1BA63", "#C5D194"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Rm1DqlxlanlA/thumbnail_ART-4DE858.webp",
+        "medium": "https://share.paintedd.art/get/K9ahecCazoMt/medium_ART-4DE858.webp",
+        "original": "https://share.paintedd.art/get/FeVSYxM0Fvu4/original_ART-4DE858.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B9D8EB",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3F2B5B", "#5C559A", "#A35286", "#C551AA", "#B1ACD3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/D3y9y1E5vlvo/thumbnail_ART-B9D8EB.webp",
+        "medium": "https://share.paintedd.art/get/h9aV5i4DzwGU/medium_ART-B9D8EB.webp",
+        "original": "https://share.paintedd.art/get/c1QIU6wA4hqa/original_ART-B9D8EB.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-BE35E6",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2D3B38", "#6E706B", "#80857F", "#A2A4A0", "#C8BFC1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/DxK5m8pDMX4z/thumbnail_ART-BE35E6.webp",
+        "medium": "https://share.paintedd.art/get/vJiRXd11om8L/medium_ART-BE35E6.webp",
+        "original": "https://share.paintedd.art/get/vfgFAWShsSjY/original_ART-BE35E6.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-049486",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#484B52", "#767987", "#69A0BB", "#9A9DA7", "#B1C8D7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/lPWfdMwhC8wo/thumbnail_ART-049486.webp",
+        "medium": "https://share.paintedd.art/get/WJ77H83VH0IC/medium_ART-049486.webp",
+        "original": "https://share.paintedd.art/get/hQXYFQPFPgS8/original_ART-049486.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F2CC96",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#42345A", "#8B7078", "#6C5C8A", "#907290", "#C1A69F"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/rzRXWf5gqjYP/thumbnail_ART-F2CC96.webp",
+        "medium": "https://share.paintedd.art/get/fS1wi5lyBWMI/medium_ART-F2CC96.webp",
+        "original": "https://share.paintedd.art/get/gqkTKfVp8Lcd/original_ART-F2CC96.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3BC28B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4B2722", "#AE512B", "#E8AB3B", "#F9D117", "#F0D097"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/bmMeBMtvnblS/thumbnail_ART-3BC28B.webp",
+        "medium": "https://share.paintedd.art/get/FLXX0PvgLU4x/medium_ART-3BC28B.webp",
+        "original": "https://share.paintedd.art/get/n7tx1djMzc8d/original_ART-3BC28B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-18141A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#36355A", "#5D6295", "#7988AA", "#AEACBA", "#DED7D0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/q3sQG1R9pggr/thumbnail_ART-18141A.webp",
+        "medium": "https://share.paintedd.art/get/uHjRxjdguL5T/medium_ART-18141A.webp",
+        "original": "https://share.paintedd.art/get/TMtxtAyN3yqd/original_ART-18141A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F4539F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2C3361", "#666190", "#AF6798", "#AEA6BD", "#A5B5C9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/JCnh7LtNmbXD/thumbnail_ART-F4539F.webp",
+        "medium": "https://share.paintedd.art/get/ig2JRLfvyXhl/medium_ART-F4539F.webp",
+        "original": "https://share.paintedd.art/get/ftQL1UqF0Xks/original_ART-F4539F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C80E68",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4E3754", "#896180", "#A59DA8", "#CCBDBC", "#E5E1D8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/C3OUAouagQMN/thumbnail_ART-C80E68.webp",
+        "medium": "https://share.paintedd.art/get/xpYCH376vz9S/medium_ART-C80E68.webp",
+        "original": "https://share.paintedd.art/get/PzOu86JVRhXh/original_ART-C80E68.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-9DF75D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2B3640", "#566167", "#657985", "#6F8E97", "#ADB0AB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/SiLFjGRW1HCm/thumbnail_ART-9DF75D.webp",
+        "medium": "https://share.paintedd.art/get/wfta1Ganv0YG/medium_ART-9DF75D.webp",
+        "original": "https://share.paintedd.art/get/oIcUjfEGHlOk/original_ART-9DF75D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D0D957",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#212224", "#3B3F4B", "#5D5A65", "#747C8D", "#B6BABE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Wv2Cg6enS2bi/thumbnail_ART-D0D957.webp",
+        "medium": "https://share.paintedd.art/get/ClJrn56tn2Gi/medium_ART-D0D957.webp",
+        "original": "https://share.paintedd.art/get/3w4IEmPWQ2kj/original_ART-D0D957.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-424BC0",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#45433A", "#9E946F", "#7B7F83", "#A2A5A1", "#C0C1BE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/t8cP0fPWJgd3/thumbnail_ART-424BC0.webp",
+        "medium": "https://share.paintedd.art/get/s1Fiq0OMg82Y/medium_ART-424BC0.webp",
+        "original": "https://share.paintedd.art/get/U6FrLXVVwrzD/original_ART-424BC0.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-CA5AB9",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#474A4B", "#918372", "#1E73C7", "#3992E7", "#C2C2B8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/txf85pyUC5Ul/thumbnail_ART-CA5AB9.webp",
+        "medium": "https://share.paintedd.art/get/4XSlTzyqASuc/medium_ART-CA5AB9.webp",
+        "original": "https://share.paintedd.art/get/IxNkmVRufAII/original_ART-CA5AB9.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C51558",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4C4D57", "#70768A", "#7C8395", "#9499A9", "#B8C1D3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/FgV7LtbW5uN8/thumbnail_ART-C51558.webp",
+        "medium": "https://share.paintedd.art/get/FWItzdaiI0tG/medium_ART-C51558.webp",
+        "original": "https://share.paintedd.art/get/3ryxo4HpRRJp/original_ART-C51558.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-FF95FB",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3D3F1C", "#A07626", "#5DA915", "#B2BD25", "#E4E810"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/GYIFtd7RduYk/thumbnail_ART-FF95FB.webp",
+        "medium": "https://share.paintedd.art/get/VdwYOLKtKGie/medium_ART-FF95FB.webp",
+        "original": "https://share.paintedd.art/get/e6X3HGxSjCAq/original_ART-FF95FB.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-56466E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3B332C", "#AF5251", "#A3827E", "#C1A4A2", "#F0E9E6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/NN2jQGhPtgGR/thumbnail_ART-56466E.webp",
+        "medium": "https://share.paintedd.art/get/eDRyao56zpam/medium_ART-56466E.webp",
+        "original": "https://share.paintedd.art/get/Gn8VxzHyvlDA/original_ART-56466E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-1C4EFD",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1B1F20", "#56595C", "#807578", "#9FA6A7", "#BBBFC2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/FrXf6pj6lw7v/thumbnail_ART-1C4EFD.webp",
+        "medium": "https://share.paintedd.art/get/HaW2HvQdnGzG/medium_ART-1C4EFD.webp",
+        "original": "https://share.paintedd.art/get/3xcr7726k3og/original_ART-1C4EFD.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F37D31",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#242626", "#403F3F", "#605F5D", "#86817A", "#BDB9AE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/XqQWqLaGJ3kh/thumbnail_ART-F37D31.webp",
+        "medium": "https://share.paintedd.art/get/mGRa8irt72SB/medium_ART-F37D31.webp",
+        "original": "https://share.paintedd.art/get/e610RvjgQxIL/original_ART-F37D31.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-961DB9",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2A395F", "#334973", "#416594", "#6292C0", "#8DBDE5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/pCeOfzwQLXWt/thumbnail_ART-961DB9.webp",
+        "medium": "https://share.paintedd.art/get/HVGvabRfQBMx/medium_ART-961DB9.webp",
+        "original": "https://share.paintedd.art/get/F9OyDKAVwfQG/original_ART-961DB9.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-15E11F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#53331D", "#BD4C30", "#C6A32D", "#D5D6B4", "#F4F5DB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/fybqkjhsBqIX/thumbnail_ART-15E11F.webp",
+        "medium": "https://share.paintedd.art/get/XbUHuUdyKUWL/medium_ART-15E11F.webp",
+        "original": "https://share.paintedd.art/get/NLLiLDf00xTk/original_ART-15E11F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-21AC66",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#251E1C", "#5B514C", "#8E7568", "#AE976F", "#D8B799"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/I5RflJDIGaRo/thumbnail_ART-21AC66.webp",
+        "medium": "https://share.paintedd.art/get/p844jSSeJzSM/medium_ART-21AC66.webp",
+        "original": "https://share.paintedd.art/get/sMtf4GzUjqex/original_ART-21AC66.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-964606",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#282F3F", "#5A5D65", "#6C798A", "#9D9EA0", "#CCC7C0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/7gDcYr7kca7s/thumbnail_ART-964606.webp",
+        "medium": "https://share.paintedd.art/get/beElUQ3rzwnw/medium_ART-964606.webp",
+        "original": "https://share.paintedd.art/get/73FJmgapGUNj/original_ART-964606.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-47A892",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0E202F", "#2C3B49", "#B73133", "#44B724", "#A4A08D"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/4RfUkw6MneUR/thumbnail_ART-47A892.webp",
+        "medium": "https://share.paintedd.art/get/HoTt45Lk1CBW/medium_ART-47A892.webp",
+        "original": "https://share.paintedd.art/get/hW3sqHSHcIU6/original_ART-47A892.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-7412C2",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1F171F", "#543038", "#A8492F", "#A6955F", "#B0B1B6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/w4uk9KlfvYXm/thumbnail_ART-7412C2.webp",
+        "medium": "https://share.paintedd.art/get/JnYBkXFvapOo/medium_ART-7412C2.webp",
+        "original": "https://share.paintedd.art/get/4Hw9EXK5KVrS/original_ART-7412C2.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-BB353C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#413249", "#C94046", "#D8B554", "#756EA1", "#CDD5C2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/OBfjL8vXa2i7/thumbnail_ART-BB353C.webp",
+        "medium": "https://share.paintedd.art/get/Kz4eU0w3FFkU/medium_ART-BB353C.webp",
+        "original": "https://share.paintedd.art/get/K2xVwQh6q9HK/original_ART-BB353C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-480A8D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2B2630", "#5E5A64", "#7E7A85", "#9E9FA3", "#D7D7D2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/9mcoviu1tTyD/thumbnail_ART-480A8D.webp",
+        "medium": "https://share.paintedd.art/get/w0f9uoJYWWVg/medium_ART-480A8D.webp",
+        "original": "https://share.paintedd.art/get/ftVtbkBtKwpI/original_ART-480A8D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-6790DB",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#292930", "#565865", "#697589", "#788899", "#AFB8C0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/EporiBCDRCFM/thumbnail_ART-6790DB.webp",
+        "medium": "https://share.paintedd.art/get/DkfkELmgUFl5/medium_ART-6790DB.webp",
+        "original": "https://share.paintedd.art/get/KJ85C456PQNv/original_ART-6790DB.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3902C2",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1A1213", "#533B3A", "#C14C34", "#E5B120", "#B19CA7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/cSXqkpwbGc6d/thumbnail_ART-3902C2.webp",
+        "medium": "https://share.paintedd.art/get/uOOhUd11CEA7/medium_ART-3902C2.webp",
+        "original": "https://share.paintedd.art/get/2Fxw80hSrA8l/original_ART-3902C2.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-270182",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#13151A", "#444A57", "#867082", "#BFAAB0", "#F5F2F0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/fKqL0R72anfs/thumbnail_ART-270182.webp",
+        "medium": "https://share.paintedd.art/get/pVzGu1dUDA5i/medium_ART-270182.webp",
+        "original": "https://share.paintedd.art/get/Ry2w1lLhiQRf/original_ART-270182.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D9308C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#272428", "#5F5E62", "#7D7C84", "#9E9DA2", "#CBCBD2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/13X9tjWnrDd8/thumbnail_ART-D9308C.webp",
+        "medium": "https://share.paintedd.art/get/e0jbRSO1lhyf/medium_ART-D9308C.webp",
+        "original": "https://share.paintedd.art/get/eXaXlYfcIHGQ/original_ART-D9308C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C8564B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#493456", "#A44267", "#6C837A", "#A8679B", "#B7ACC1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/INaC85StFzP0/thumbnail_ART-C8564B.webp",
+        "medium": "https://share.paintedd.art/get/hUKPp7qjTzu0/medium_ART-C8564B.webp",
+        "original": "https://share.paintedd.art/get/xaajgwddgNgL/original_ART-C8564B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-97BB52",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#352560", "#5152AC", "#A765C5", "#6C8BCD", "#C1B5E8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/HYxDFnDaxb37/thumbnail_ART-97BB52.webp",
+        "medium": "https://share.paintedd.art/get/Y62RLBp5S9aA/medium_ART-97BB52.webp",
+        "original": "https://share.paintedd.art/get/3IIIOPSRqo6g/original_ART-97BB52.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-56D98F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4B4331", "#B24F31", "#7F806C", "#D5A937", "#E0C5B6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/MiafpD5zx29W/thumbnail_ART-56D98F.webp",
+        "medium": "https://share.paintedd.art/get/HSzvSc5BFyvO/medium_ART-56D98F.webp",
+        "original": "https://share.paintedd.art/get/opVN874Dgg0N/original_ART-56D98F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-FF2999",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#342D4B", "#B98C32", "#613D97", "#9962B9", "#D4B1E5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/KB0zpF3m7QpE/thumbnail_ART-FF2999.webp",
+        "medium": "https://share.paintedd.art/get/8T5qy240dKCC/medium_ART-FF2999.webp",
+        "original": "https://share.paintedd.art/get/6h8XY8NVKrjt/original_ART-FF2999.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-40BA0F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2F3E50", "#56708B", "#7E7E85", "#6F8B9E", "#B6BEC4"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/CP57u8a7XeMs/thumbnail_ART-40BA0F.webp",
+        "medium": "https://share.paintedd.art/get/zcV3phEuBFsw/medium_ART-40BA0F.webp",
+        "original": "https://share.paintedd.art/get/xD3OnioqjaR3/original_ART-40BA0F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D97249",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#101111", "#575C5E", "#768486", "#9DA2A2", "#DCDFDE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/YX161Vc4Ue95/thumbnail_ART-D97249.webp",
+        "medium": "https://share.paintedd.art/get/uM31cRQ9fWIs/medium_ART-D97249.webp",
+        "original": "https://share.paintedd.art/get/wUbGGXi6oYB3/original_ART-D97249.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-5FF386",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#423C5C", "#BF3845", "#848775", "#6EA2BC", "#9EC0CC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/enltlNE0m3cV/thumbnail_ART-5FF386.webp",
+        "medium": "https://share.paintedd.art/get/j5WqU7BppIBM/medium_ART-5FF386.webp",
+        "original": "https://share.paintedd.art/get/6Ryykwxn0EHO/original_ART-5FF386.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A796C7",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#494261", "#6B698D", "#7B7C98", "#9C9CAD", "#BEBFC8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/X1dUmBxK1yhj/thumbnail_ART-A796C7.webp",
+        "medium": "https://share.paintedd.art/get/5gX2D5fIMfeL/medium_ART-A796C7.webp",
+        "original": "https://share.paintedd.art/get/qhwaMaAVFfhh/original_ART-A796C7.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-7C011B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3E4F5B", "#617788", "#6F8F9D", "#9AA2A9", "#CECFCC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/v5TOArNBemu5/thumbnail_ART-7C011B.webp",
+        "medium": "https://share.paintedd.art/get/hDHRh3teg0qO/medium_ART-7C011B.webp",
+        "original": "https://share.paintedd.art/get/mACNIqsfX4YU/original_ART-7C011B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B9AA32",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#263761", "#3D6596", "#857D8B", "#6294B4", "#B2B9C2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/G9dArRVshltg/thumbnail_ART-B9AA32.webp",
+        "medium": "https://share.paintedd.art/get/tW3OkaKxo5pW/medium_ART-B9AA32.webp",
+        "original": "https://share.paintedd.art/get/dK3lkAasL5Qw/original_ART-B9AA32.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-46FDBB",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#30403E", "#7E7E58", "#D1B731", "#294CA1", "#C3C39E"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/gAE7PcDNyIy2/thumbnail_ART-46FDBB.webp",
+        "medium": "https://share.paintedd.art/get/9yC8AhDAiX81/medium_ART-46FDBB.webp",
+        "original": "https://share.paintedd.art/get/p4I6HlUEBE48/original_ART-46FDBB.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-2B0B9C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#39325D", "#483A8D", "#655B9A", "#8977B4", "#9F92C6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/rwN7UpeeXRMS/thumbnail_ART-2B0B9C.webp",
+        "medium": "https://share.paintedd.art/get/duhgQMV05FfW/medium_ART-2B0B9C.webp",
+        "original": "https://share.paintedd.art/get/JiszQG5rVkho/original_ART-2B0B9C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C0091A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#474849", "#848281", "#9F9EA4", "#C8C0BE", "#ECEDEE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/BqKbMLB6Quic/thumbnail_ART-C0091A.webp",
+        "medium": "https://share.paintedd.art/get/SVldxM9HbGQS/medium_ART-C0091A.webp",
+        "original": "https://share.paintedd.art/get/vkmtwbzQ0t7f/original_ART-C0091A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-BA0B9A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#37414F", "#6A7788", "#778797", "#ABB3BE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Ov7Q9o7FlDFf/thumbnail_ART-BA0B9A.webp",
+        "medium": "https://share.paintedd.art/get/JHMajCKYzUX2/medium_ART-BA0B9A.webp",
+        "original": "https://share.paintedd.art/get/b3NC4bWi9AyR/original_ART-BA0B9A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3E5ACA",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3B3D62", "#496498", "#9F748C", "#6296B8", "#B3B4B3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/GPfsGzjghm0r/thumbnail_ART-3E5ACA.webp",
+        "medium": "https://share.paintedd.art/get/VnTfSpVjQntF/medium_ART-3E5ACA.webp",
+        "original": "https://share.paintedd.art/get/6qEfzJvfw3T6/original_ART-3E5ACA.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-334781",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1D1D1F", "#58565D", "#856973", "#9B98A0", "#C4BFC4"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/jvxBuIbd5brx/thumbnail_ART-334781.webp",
+        "medium": "https://share.paintedd.art/get/6TrdYd8i57W6/medium_ART-334781.webp",
+        "original": "https://share.paintedd.art/get/sxA6Nwk1aIqB/original_ART-334781.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-562918",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#151414", "#443D40", "#5F5C5C", "#81797D", "#BBB7B7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/zV96lvKh8t7T/thumbnail_ART-562918.webp",
+        "medium": "https://share.paintedd.art/get/uJuzdKCQ8LjF/medium_ART-562918.webp",
+        "original": "https://share.paintedd.art/get/nwEX794XH5J7/original_ART-562918.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-7D2D20",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#323545", "#BC624C", "#CEBC5D", "#1C91B9", "#568596"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/SKjasDvGnQ0T/thumbnail_ART-7D2D20.webp",
+        "medium": "https://share.paintedd.art/get/AagVpvQCPU1x/medium_ART-7D2D20.webp",
+        "original": "https://share.paintedd.art/get/r0ituE81kIRj/original_ART-7D2D20.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-0F74CA",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#080E65", "#2E4CCB", "#3059E0", "#6294F5", "#A1C6F9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/vmUPTLP7E9XF/thumbnail_ART-0F74CA.webp",
+        "medium": "https://share.paintedd.art/get/Id0uJbVrIds0/medium_ART-0F74CA.webp",
+        "original": "https://share.paintedd.art/get/mkJjFSjzVLls/original_ART-0F74CA.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-497388",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#303541", "#5A5C65", "#64728C", "#828A8E", "#A5A6A1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/y71SIFQGGqLc/thumbnail_ART-497388.webp",
+        "medium": "https://share.paintedd.art/get/psW7PvHxEz7G/medium_ART-497388.webp",
+        "original": "https://share.paintedd.art/get/in4jSh3xU30c/original_ART-497388.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-9E6125",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#13181C", "#46545E", "#668CA1", "#A2B7BF", "#E0DFDA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/RojdpWfECUyl/thumbnail_ART-9E6125.webp",
+        "medium": "https://share.paintedd.art/get/I5yOGsHBPb7f/medium_ART-9E6125.webp",
+        "original": "https://share.paintedd.art/get/1mW5MLe3CthR/original_ART-9E6125.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F08397",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#53444F", "#9F5362", "#717D8E", "#AD6594", "#B497A6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/KjrIA4PIUSlp/thumbnail_ART-F08397.webp",
+        "medium": "https://share.paintedd.art/get/XPxL42l3N1z7/medium_ART-F08397.webp",
+        "original": "https://share.paintedd.art/get/TjXepnzIFxk0/original_ART-F08397.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-87857C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0E111A", "#283C60", "#3E649A", "#6793C0", "#B2C2D7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/ctXOO353N6Ee/thumbnail_ART-87857C.webp",
+        "medium": "https://share.paintedd.art/get/EKEm9kqynvIl/medium_ART-87857C.webp",
+        "original": "https://share.paintedd.art/get/LXWp3gmFAPEe/original_ART-87857C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-54A76A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4C4E54", "#847A7C", "#998978", "#A49F97", "#D8C0B0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/0saOy1Pk0IbP/thumbnail_ART-54A76A.webp",
+        "medium": "https://share.paintedd.art/get/AhgtBtfsh8aK/medium_ART-54A76A.webp",
+        "original": "https://share.paintedd.art/get/6HWNdfB4AngY/original_ART-54A76A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C97CC5",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4E6166", "#697C82", "#718D91", "#A0A8A8", "#C8C4C2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/omr2n63RW9L6/thumbnail_ART-C97CC5.webp",
+        "medium": "https://share.paintedd.art/get/cjRP9X0gJhqM/medium_ART-C97CC5.webp",
+        "original": "https://share.paintedd.art/get/5TR15GkzEsQI/original_ART-C97CC5.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-06382D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#261E22", "#4E444D", "#83787B", "#A49DA1", "#C4BDBC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/1s5bPPkClTK2/thumbnail_ART-06382D.webp",
+        "medium": "https://share.paintedd.art/get/7WDybxJGJzxk/medium_ART-06382D.webp",
+        "original": "https://share.paintedd.art/get/QLSKgBmiyQBI/original_ART-06382D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-079B1D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#463A64", "#6E648F", "#8A7398", "#A29BAF", "#C0BEC9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/ddVNNerb7QVD/thumbnail_ART-079B1D.webp",
+        "medium": "https://share.paintedd.art/get/1NYGE3GB0MVs/medium_ART-079B1D.webp",
+        "original": "https://share.paintedd.art/get/B8Y0ovyHjmUr/original_ART-079B1D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-FD0636",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0E0A0A", "#4D3D35", "#655750", "#8D7464", "#BDA28C"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Q3CWBgueGVvR/thumbnail_ART-FD0636.webp",
+        "medium": "https://share.paintedd.art/get/EQTV5Yh8oPKv/medium_ART-FD0636.webp",
+        "original": "https://share.paintedd.art/get/5CCW40Lrqu18/original_ART-FD0636.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-CA8688",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1A1618", "#4B4142", "#9F2021", "#D34520", "#67948A"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/GerukSB07x9C/thumbnail_ART-CA8688.webp",
+        "medium": "https://share.paintedd.art/get/MAGiCWrVpynQ/medium_ART-CA8688.webp",
+        "original": "https://share.paintedd.art/get/jEPvrE02G2j1/original_ART-CA8688.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3A87C7",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2E3042", "#57586C", "#6E728D", "#7B849B", "#B2B8CD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/dhFoshzTeJWg/thumbnail_ART-3A87C7.webp",
+        "medium": "https://share.paintedd.art/get/OCfllS3DLkM8/medium_ART-3A87C7.webp",
+        "original": "https://share.paintedd.art/get/Oiwovhi4vaJm/original_ART-3A87C7.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-2A038E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#484C53", "#737A87", "#6B9DB5", "#9B9EA6", "#B5C6D2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/VeWApg8NzrMj/thumbnail_ART-2A038E.webp",
+        "medium": "https://share.paintedd.art/get/hDNEo66vDkS6/medium_ART-2A038E.webp",
+        "original": "https://share.paintedd.art/get/7jVVeAkHTyU7/original_ART-2A038E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-658C26",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#29292A", "#3A3E48", "#57595C", "#767E8C", "#AAB0B8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/ef4dQvto1dnm/thumbnail_ART-658C26.webp",
+        "medium": "https://share.paintedd.art/get/6CQ1LFU3DHwd/medium_ART-658C26.webp",
+        "original": "https://share.paintedd.art/get/K6c38rHxfxtY/original_ART-658C26.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-87CDC0",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#43356A", "#42669B", "#B4699F", "#5699BF", "#BF9ABF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/iDBv7dmgYvVr/thumbnail_ART-87CDC0.webp",
+        "medium": "https://share.paintedd.art/get/WCluehmC0QTH/medium_ART-87CDC0.webp",
+        "original": "https://share.paintedd.art/get/uR0Ft9CbYfjf/original_ART-87CDC0.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-BFBDD0",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#29292C", "#5D5E61", "#7F777C", "#9D9F9F", "#D1CEC9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/e3qeiMIugTJw/thumbnail_ART-BFBDD0.webp",
+        "medium": "https://share.paintedd.art/get/Dksioc6VmTrP/medium_ART-BFBDD0.webp",
+        "original": "https://share.paintedd.art/get/5nM3vTT7ld8P/original_ART-BFBDD0.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-50CBE4",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0A0A08", "#364A47", "#5B6460", "#778885", "#A2A9A2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/ALqvWDj8LbVc/thumbnail_ART-50CBE4.webp",
+        "medium": "https://share.paintedd.art/get/fhTFhqHu5wUT/medium_ART-50CBE4.webp",
+        "original": "https://share.paintedd.art/get/qxKDGfRBzDBR/original_ART-50CBE4.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-907D28",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#18191C", "#49525F", "#708190", "#9DA7AE", "#B9C1C7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/N0edYWTPwX1e/thumbnail_ART-907D28.webp",
+        "medium": "https://share.paintedd.art/get/A3vonOpgK3y3/medium_ART-907D28.webp",
+        "original": "https://share.paintedd.art/get/z2Iqxlni36t5/original_ART-907D28.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-03E8D2",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4D5342", "#99777A", "#68954C", "#BDB6A8", "#DDE0E7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/orKv35pq9zeP/thumbnail_ART-03E8D2.webp",
+        "medium": "https://share.paintedd.art/get/ITiGszphTpXQ/medium_ART-03E8D2.webp",
+        "original": "https://share.paintedd.art/get/wYsdDkvNJM0l/original_ART-03E8D2.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F17D7F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#59473A", "#956545", "#B69669", "#5E96B1", "#C9C7B7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/TAoyFrdC9nwC/thumbnail_ART-F17D7F.webp",
+        "medium": "https://share.paintedd.art/get/tA9lw9Jg5lGi/medium_ART-F17D7F.webp",
+        "original": "https://share.paintedd.art/get/rQyRkrFYfE9H/original_ART-F17D7F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-17D3A2",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4A546B", "#69748C", "#79869C", "#969DAD", "#BEC6D1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/5EAcXi44DSGg/thumbnail_ART-17D3A2.webp",
+        "medium": "https://share.paintedd.art/get/n5JgII3LYDlu/medium_ART-17D3A2.webp",
+        "original": "https://share.paintedd.art/get/TEfo8Ei22Uun/original_ART-17D3A2.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-E37AED",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2B2B41", "#AD5838", "#BF9D43", "#5C799A", "#B9B6B7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/05gNroE15gbd/thumbnail_ART-E37AED.webp",
+        "medium": "https://share.paintedd.art/get/3xFPpootBkzE/medium_ART-E37AED.webp",
+        "original": "https://share.paintedd.art/get/hAWASrXuLqJ4/original_ART-E37AED.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-8455B6",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3D2F49", "#B5395A", "#5E5A9D", "#9C69A6", "#A39CC4"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/3jGVIuxPn7Up/thumbnail_ART-8455B6.webp",
+        "medium": "https://share.paintedd.art/get/Ug6IoLbKmT5U/medium_ART-8455B6.webp",
+        "original": "https://share.paintedd.art/get/y4XGEY4n8tJl/original_ART-8455B6.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D21CFE",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#181517", "#574E49", "#8A7460", "#C59F5F", "#D3C7B2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/9YGLG5qegeUj/thumbnail_ART-D21CFE.webp",
+        "medium": "https://share.paintedd.art/get/ke5EXX2kIDif/medium_ART-D21CFE.webp",
+        "original": "https://share.paintedd.art/get/gKqlBQSAdXEk/original_ART-D21CFE.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-61685B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#252028", "#4A495B", "#717F8C", "#A0A19E", "#D1C7BA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/KwX9hnkILVm2/thumbnail_ART-61685B.webp",
+        "medium": "https://share.paintedd.art/get/UEf2G5ynmjWI/medium_ART-61685B.webp",
+        "original": "https://share.paintedd.art/get/YpSgx1TFgbkW/original_ART-61685B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-AD3CB6",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3A2C46", "#605269", "#766988", "#8E7596", "#BEB2BB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/HKh8Ukj0MAiT/thumbnail_ART-AD3CB6.webp",
+        "medium": "https://share.paintedd.art/get/c8R9UwSaXLlq/medium_ART-AD3CB6.webp",
+        "original": "https://share.paintedd.art/get/iukNuDqXodef/original_ART-AD3CB6.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-5DF549",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1D222A", "#444E5E", "#667589", "#76899C", "#A9BACA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/XMcluUyVec8v/thumbnail_ART-5DF549.webp",
+        "medium": "https://share.paintedd.art/get/rzrwptefWzzy/medium_ART-5DF549.webp",
+        "original": "https://share.paintedd.art/get/68cS1r5uKP3J/original_ART-5DF549.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B6E44E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2F2B2F", "#4A3E3B", "#605552", "#B0936E", "#A68B71"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/wTR9YxNQqxpR/thumbnail_ART-B6E44E.webp",
+        "medium": "https://share.paintedd.art/get/M1Pqouuogqt2/medium_ART-B6E44E.webp",
+        "original": "https://share.paintedd.art/get/8s1hIhlJMe8C/original_ART-B6E44E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-805E2F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1B1E1E", "#4D5C58", "#63958D", "#A3B0A7", "#DFE4D9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/PNhDcgli82Po/thumbnail_ART-805E2F.webp",
+        "medium": "https://share.paintedd.art/get/PNGjCpi8Rurp/medium_ART-805E2F.webp",
+        "original": "https://share.paintedd.art/get/dpPrW7I80PFe/original_ART-805E2F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A99BE9",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4B3F3A", "#A25A41", "#B09160", "#788289", "#ABAAAD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/whn7mdSKvPKs/thumbnail_ART-A99BE9.webp",
+        "medium": "https://share.paintedd.art/get/89bYp0tk0r5k/medium_ART-A99BE9.webp",
+        "original": "https://share.paintedd.art/get/r27DrCHiL43J/original_ART-A99BE9.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-DF9FEF",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#272219", "#5C5545", "#8E846F", "#B5AB9E", "#EEE8E3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/5nPAr1OKH5O9/thumbnail_ART-DF9FEF.webp",
+        "medium": "https://share.paintedd.art/get/iRdVxEXsPGPW/medium_ART-DF9FEF.webp",
+        "original": "https://share.paintedd.art/get/kmJHkyaRLQMT/original_ART-DF9FEF.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-03F6A9",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#283952", "#476D8F", "#6D8BA6", "#9AA7B4", "#B6BFCA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/figQ3QiXIQOc/thumbnail_ART-03F6A9.webp",
+        "medium": "https://share.paintedd.art/get/rrln3GwOwaGY/medium_ART-03F6A9.webp",
+        "original": "https://share.paintedd.art/get/50l6imu9MTRU/original_ART-03F6A9.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-1AC66C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#232620", "#505533", "#9D502D", "#76924D", "#B2A341"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Xhuzvmd8egBg/thumbnail_ART-1AC66C.webp",
+        "medium": "https://share.paintedd.art/get/0osssHOSnHl4/medium_ART-1AC66C.webp",
+        "original": "https://share.paintedd.art/get/vCXctrozqTUS/original_ART-1AC66C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3E559D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4D1E20", "#AA344B", "#CC708A", "#DBA7AA", "#EEE1D7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Tt8odivEiyYu/thumbnail_ART-3E559D.webp",
+        "medium": "https://share.paintedd.art/get/OoJHvnW7mWrL/medium_ART-3E559D.webp",
+        "original": "https://share.paintedd.art/get/723LRDTyQnxc/original_ART-3E559D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-07D0E0",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#441D21", "#AF4A3F", "#E7A328", "#B3728B", "#DFC1BD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/KqOjAkNWXqRs/thumbnail_ART-07D0E0.webp",
+        "medium": "https://share.paintedd.art/get/qijC7X7zefn7/medium_ART-07D0E0.webp",
+        "original": "https://share.paintedd.art/get/UlGRjIRxgugw/original_ART-07D0E0.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-14FC12",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3B4459", "#9EA870", "#57708C", "#6D8EA6", "#A5B2B7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Fa4y28IsSBlm/thumbnail_ART-14FC12.webp",
+        "medium": "https://share.paintedd.art/get/GSqiCMizcoV0/medium_ART-14FC12.webp",
+        "original": "https://share.paintedd.art/get/YOSF2ebTXsbF/original_ART-14FC12.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D69C3E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#252626", "#595C5C", "#788484", "#A3A5A3", "#E7E5DF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/trY2I79H5uXs/thumbnail_ART-D69C3E.webp",
+        "medium": "https://share.paintedd.art/get/JEX1fL3xommM/medium_ART-D69C3E.webp",
+        "original": "https://share.paintedd.art/get/aJPVR8PylnCu/original_ART-D69C3E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-567B7C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2D365A", "#ABD354", "#4B5E96", "#7388A5", "#9BB0CE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/QTs3VIE9LaAl/thumbnail_ART-567B7C.webp",
+        "medium": "https://share.paintedd.art/get/MHMw0gkxCuFM/medium_ART-567B7C.webp",
+        "original": "https://share.paintedd.art/get/8TVFcjPI8c8D/original_ART-567B7C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-83E163",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1D1F24", "#3B3944", "#5C6061", "#7C767D", "#B8BDBC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/qhDDUFf9m9B0/thumbnail_ART-83E163.webp",
+        "medium": "https://share.paintedd.art/get/jHoJNfo4tXdr/medium_ART-83E163.webp",
+        "original": "https://share.paintedd.art/get/yBlVKjJ3iJUA/original_ART-83E163.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-136FAE",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#443722", "#CD3638", "#DCBE24", "#7D80A6", "#CBC6CA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/jBfw6CKygvb6/thumbnail_ART-136FAE.webp",
+        "medium": "https://share.paintedd.art/get/jHLVj6MMy1Q2/medium_ART-136FAE.webp",
+        "original": "https://share.paintedd.art/get/pIL1r0YndORd/original_ART-136FAE.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-DD4960",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#A54538", "#834045", "#A76353", "#B69E6C", "#BBBF8E"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/y2GkDnuxfrT4/thumbnail_ART-DD4960.webp",
+        "medium": "https://share.paintedd.art/get/2GwXGlVQ2x0M/medium_ART-DD4960.webp",
+        "original": "https://share.paintedd.art/get/fTwFvYtdp2LD/original_ART-DD4960.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-AD8755",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#17151A", "#554D59", "#986772", "#ADA1A9", "#E3E1E3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/5wgwxHMgm0pw/thumbnail_ART-AD8755.webp",
+        "medium": "https://share.paintedd.art/get/azxU0DLuCT6M/medium_ART-AD8755.webp",
+        "original": "https://share.paintedd.art/get/4Q8tYwJSOfru/original_ART-AD8755.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3AC129",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#262120", "#3E3B3E", "#3B444C", "#53585D", "#95979D"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/3joR5likz5bg/thumbnail_ART-3AC129.webp",
+        "medium": "https://share.paintedd.art/get/DYumFhRwsvCl/medium_ART-3AC129.webp",
+        "original": "https://share.paintedd.art/get/EWp5yuJkNQIf/original_ART-3AC129.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-05087B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#402F30", "#A4594B", "#D8B05C", "#7A7B8E", "#CDBDAF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/VFM6b9LEgb67/thumbnail_ART-05087B.webp",
+        "medium": "https://share.paintedd.art/get/dBLsmCudzUGQ/medium_ART-05087B.webp",
+        "original": "https://share.paintedd.art/get/XmSjWlyx1ukn/original_ART-05087B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-28E931",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#161721", "#43485D", "#6B778E", "#9BA1A5", "#C8CBC3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/02vFMeyPv79V/thumbnail_ART-28E931.webp",
+        "medium": "https://share.paintedd.art/get/rp0boc9uV9J1/medium_ART-28E931.webp",
+        "original": "https://share.paintedd.art/get/io1pwlnHGkwa/original_ART-28E931.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-E9FF3A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#44326C", "#4E5D9A", "#9E6A9B", "#589FCA", "#B9BAD7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/5ounehPz4HGV/thumbnail_ART-E9FF3A.webp",
+        "medium": "https://share.paintedd.art/get/isc82njB2Cf7/medium_ART-E9FF3A.webp",
+        "original": "https://share.paintedd.art/get/FnHwFbUfPJST/original_ART-E9FF3A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-504868",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2A292B", "#463F3D", "#5B5650", "#A28E6D", "#AC956B"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/FfJa1C3Da3hE/thumbnail_ART-504868.webp",
+        "medium": "https://share.paintedd.art/get/4FWSXnHh18gP/medium_ART-504868.webp",
+        "original": "https://share.paintedd.art/get/xMS1t78p5YAk/original_ART-504868.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-867206",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#43342D", "#AB5236", "#C0975B", "#7F7C86", "#BCB3AB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/0HeSPIOqRdgl/thumbnail_ART-867206.webp",
+        "medium": "https://share.paintedd.art/get/eDN8Dhi0y5M4/medium_ART-867206.webp",
+        "original": "https://share.paintedd.art/get/IsHACj7Pnj0h/original_ART-867206.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-AFFA30",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4A4F66", "#7E8387", "#A3A6A9", "#C1C3BB", "#DDDBDC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/qdvkI1GSTTD6/thumbnail_ART-AFFA30.webp",
+        "medium": "https://share.paintedd.art/get/2ErqyK1aBbOh/medium_ART-AFFA30.webp",
+        "original": "https://share.paintedd.art/get/TNqamUJtpamz/original_ART-AFFA30.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A9B6F3",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#554536", "#897664", "#988976", "#A69F9A", "#D4CEC9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Y9mjslTJO6PN/thumbnail_ART-A9B6F3.webp",
+        "medium": "https://share.paintedd.art/get/7WyrTAzzuYTI/medium_ART-A9B6F3.webp",
+        "original": "https://share.paintedd.art/get/n2FupcmPkgVW/original_ART-A9B6F3.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3C16AB",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1C1616", "#5E4B3F", "#936F53", "#B6926C", "#D4BB9B"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/tWqMlmLcPke9/thumbnail_ART-3C16AB.webp",
+        "medium": "https://share.paintedd.art/get/65YX0p4UzuMu/medium_ART-3C16AB.webp",
+        "original": "https://share.paintedd.art/get/3mBEER4zmzEf/original_ART-3C16AB.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-BF8BFC",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#242524", "#3C4145", "#575E60", "#956366", "#ACB1B1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/Q92H1EI8A041/thumbnail_ART-BF8BFC.webp",
+        "medium": "https://share.paintedd.art/get/0SFMyJTcLWOS/medium_ART-BF8BFC.webp",
+        "original": "https://share.paintedd.art/get/eXlSf7wDN9oH/original_ART-BF8BFC.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-79DD50",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#05073B", "#05095C", "#0D11A0", "#183AD0", "#38A6D8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/gyKVfGcDcduj/thumbnail_ART-79DD50.webp",
+        "medium": "https://share.paintedd.art/get/Bzbu0hQNgmbR/medium_ART-79DD50.webp",
+        "original": "https://share.paintedd.art/get/aOdhP2pqlsnp/original_ART-79DD50.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-9B32FC",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0C1422", "#293260", "#4145A9", "#7482BC", "#C1BECD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/qdwj63zt6WdD/thumbnail_ART-9B32FC.webp",
+        "medium": "https://share.paintedd.art/get/Hg0mdxYxWKjl/medium_ART-9B32FC.webp",
+        "original": "https://share.paintedd.art/get/OqQE831i1fw1/original_ART-9B32FC.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-337E99",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1E1016", "#513037", "#DCB73B", "#FAD80D", "#9E7881"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/7xKM59V89nUb/thumbnail_ART-337E99.webp",
+        "medium": "https://share.paintedd.art/get/dIKT9FK7Esoy/medium_ART-337E99.webp",
+        "original": "https://share.paintedd.art/get/bv7pMmzKC8NK/original_ART-337E99.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-7CEA0F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2C2A2B", "#605E60", "#7B7D86", "#A09FA1", "#C7CBD2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/s6VVF7DxxE9H/thumbnail_ART-7CEA0F.webp",
+        "medium": "https://share.paintedd.art/get/IFaRUv2Gv2Pe/medium_ART-7CEA0F.webp",
+        "original": "https://share.paintedd.art/get/4lesUpN4T8lR/original_ART-7CEA0F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3DCD5B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#47374E", "#AA4A4E", "#3463A0", "#849D89", "#B7BABF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/KIzE8n1N1IBr/thumbnail_ART-3DCD5B.webp",
+        "medium": "https://share.paintedd.art/get/NilHtYd8RAhi/medium_ART-3DCD5B.webp",
+        "original": "https://share.paintedd.art/get/c07L2SSijg0W/original_ART-3DCD5B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C64BEA",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2F225A", "#DD9C49", "#4640AF", "#AA5BCC", "#E5BCC0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/5798UmIdEHRg/thumbnail_ART-C64BEA.webp",
+        "medium": "https://share.paintedd.art/get/HJB32TvXjzO2/medium_ART-C64BEA.webp",
+        "original": "https://share.paintedd.art/get/TiFIkT8pnON3/original_ART-C64BEA.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-AFDFF3",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#30354B", "#576C93", "#758AA8", "#A0A8BE", "#E9EAF1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/coNVATIdibg4/thumbnail_ART-AFDFF3.webp",
+        "medium": "https://share.paintedd.art/get/hO2BRES9Nuqq/medium_ART-AFDFF3.webp",
+        "original": "https://share.paintedd.art/get/bzwYDa4vWh7d/original_ART-AFDFF3.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A7C3AF",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2E2958", "#694C87", "#AA6E94", "#B2ACA8", "#C6B8B7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/E5Prm0lyrfV2/thumbnail_ART-A7C3AF.webp",
+        "medium": "https://share.paintedd.art/get/x1CLN6CjNmPa/medium_ART-A7C3AF.webp",
+        "original": "https://share.paintedd.art/get/NwhLJbYgVscb/original_ART-A7C3AF.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-81BADF",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#333335", "#5C5C61", "#7B7C84", "#9B9A9D", "#D0CCC7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/XV0LlGlM9Cnq/thumbnail_ART-81BADF.webp",
+        "medium": "https://share.paintedd.art/get/Kqb3e3VsimpK/medium_ART-81BADF.webp",
+        "original": "https://share.paintedd.art/get/tWst8RW49Kba/original_ART-81BADF.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B7ED44",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2E3349", "#819F7E", "#4C5192", "#9BE0F0", "#C4DDDC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/C5v0qzqhqtAQ/thumbnail_ART-B7ED44.webp",
+        "medium": "https://share.paintedd.art/get/L9YEvSuM7stE/medium_ART-B7ED44.webp",
+        "original": "https://share.paintedd.art/get/qxRIomVv7hyg/original_ART-B7ED44.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-16F883",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1C2025", "#4D5155", "#CC6130", "#A68C72", "#C5C0B8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/BA7pChdEs3dK/thumbnail_ART-16F883.webp",
+        "medium": "https://share.paintedd.art/get/FYxxaOwjS3cb/medium_ART-16F883.webp",
+        "original": "https://share.paintedd.art/get/HyhRYtBgm3Yb/original_ART-16F883.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-834F68",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3A2A29", "#87635F", "#DEAE42", "#B4C7CE", "#F3F9FA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/qNdjNOLWJsN6/thumbnail_ART-834F68.webp",
+        "medium": "https://share.paintedd.art/get/IdQr3XL5RaLQ/medium_ART-834F68.webp",
+        "original": "https://share.paintedd.art/get/IqXiBPt4g06Y/original_ART-834F68.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-21CADD",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#292C2D", "#404042", "#585A5C", "#926B6D", "#A19597"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/nCs3Bu122q7R/thumbnail_ART-21CADD.webp",
+        "medium": "https://share.paintedd.art/get/EkfdYWxyKj0S/medium_ART-21CADD.webp",
+        "original": "https://share.paintedd.art/get/JX3kcfsJ0lFk/original_ART-21CADD.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-E1948E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1F1D1A", "#47403A", "#5E5E5D", "#887E74", "#B3ABA6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/1okNuLUGPLAe/thumbnail_ART-E1948E.webp",
+        "medium": "https://share.paintedd.art/get/HMfF9i3QQ2Sq/medium_ART-E1948E.webp",
+        "original": "https://share.paintedd.art/get/djOFdkspEKsX/original_ART-E1948E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-710898",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2D4458", "#4F708C", "#827986", "#6990A2", "#ADB5BB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/XrswOqjEKQ5D/thumbnail_ART-710898.webp",
+        "medium": "https://share.paintedd.art/get/wsNoX6Yd1ziv/medium_ART-710898.webp",
+        "original": "https://share.paintedd.art/get/mP68c98N9vxf/original_ART-710898.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-131554",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#272226", "#58443C", "#986C49", "#C89A61", "#DCB989"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/mw2upuowqoAu/thumbnail_ART-131554.webp",
+        "medium": "https://share.paintedd.art/get/mHNEQaIOKHG9/medium_ART-131554.webp",
+        "original": "https://share.paintedd.art/get/ySIgpkwsgWYz/original_ART-131554.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-CB2FB7",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#141A1E", "#4F595C", "#758589", "#A7ABA8", "#E4E1D9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/DsIDQVnWqT7N/thumbnail_ART-CB2FB7.webp",
+        "medium": "https://share.paintedd.art/get/OjAxh421Jber/medium_ART-CB2FB7.webp",
+        "original": "https://share.paintedd.art/get/OVSO49NTzUbM/original_ART-CB2FB7.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A3AB44",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#462117", "#AF552E", "#E1BB3C", "#6DB9D7", "#CDDFD5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/VHJ99Cnd7jHe/thumbnail_ART-A3AB44.webp",
+        "medium": "https://share.paintedd.art/get/lEgqIs29EywI/medium_ART-A3AB44.webp",
+        "original": "https://share.paintedd.art/get/QzjjBBM4pqo8/original_ART-A3AB44.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-885B82",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3A3239", "#996957", "#BEA659", "#867D85", "#BFB69F"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/wexa4UGKwCbb/thumbnail_ART-885B82.webp",
+        "medium": "https://share.paintedd.art/get/fdiRVVGkhSYG/medium_ART-885B82.webp",
+        "original": "https://share.paintedd.art/get/pCMnKitljiRw/original_ART-885B82.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-6E2212",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2B3B56", "#C15A4E", "#C0AB5A", "#5B7E88", "#C1C2BC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/g2UWQv9U2D1N/thumbnail_ART-6E2212.webp",
+        "medium": "https://share.paintedd.art/get/wd5QwQrXahfW/medium_ART-6E2212.webp",
+        "original": "https://share.paintedd.art/get/Vl3w7CBnFpKV/original_ART-6E2212.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-782C3F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2E404A", "#667279", "#DAA451", "#5E98AB", "#CFBFB5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/T74LC4hWR5tK/thumbnail_ART-782C3F.webp",
+        "medium": "https://share.paintedd.art/get/TRde33pVkI2g/medium_ART-782C3F.webp",
+        "original": "https://share.paintedd.art/get/9xIeTVJeUUnc/original_ART-782C3F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-7B2037",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#313D39", "#647379", "#65A931", "#B3DC34", "#C8E3AF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/2W2p881ETF7e/thumbnail_ART-7B2037.webp",
+        "medium": "https://share.paintedd.art/get/Mw7UF1zhw9rn/medium_ART-7B2037.webp",
+        "original": "https://share.paintedd.art/get/lF3VPTEu0Plk/original_ART-7B2037.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-77683B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#222728", "#373B40", "#39474D", "#495357", "#99585B"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/d3rihQASoKSS/thumbnail_ART-77683B.webp",
+        "medium": "https://share.paintedd.art/get/1mxehvXzsmmV/medium_ART-77683B.webp",
+        "original": "https://share.paintedd.art/get/cRgWj8VRrkKn/original_ART-77683B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-E8B6A1",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#473174", "#3556B0", "#5DB4DA", "#AECBE9", "#E3EAF7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/GGdFsrgt2SN6/thumbnail_ART-E8B6A1.webp",
+        "medium": "https://share.paintedd.art/get/brv1sUELpqqD/medium_ART-E8B6A1.webp",
+        "original": "https://share.paintedd.art/get/0sBBpFO4jItj/original_ART-E8B6A1.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-070564",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1C1D15", "#474543", "#91886E", "#144EB3", "#DAD8B2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/OSjQWobGnALT/thumbnail_ART-070564.webp",
+        "medium": "https://share.paintedd.art/get/fTeG7mR6WwwX/medium_ART-070564.webp",
+        "original": "https://share.paintedd.art/get/SJBjsdDO6aUi/original_ART-070564.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-55B2A4",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#101013", "#444856", "#7C7886", "#4CAABE", "#A8D3BB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/VELYeqq2qfol/thumbnail_ART-55B2A4.webp",
+        "medium": "https://share.paintedd.art/get/I1DthGmG4TgS/medium_ART-55B2A4.webp",
+        "original": "https://share.paintedd.art/get/TQ8wDT2T7nm0/original_ART-55B2A4.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3920B1",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1A171B", "#54515A", "#797887", "#A6A8B7", "#E2E5EC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/nu6ro8OUSTic/thumbnail_ART-3920B1.webp",
+        "medium": "https://share.paintedd.art/get/67QaIXCixQtE/medium_ART-3920B1.webp",
+        "original": "https://share.paintedd.art/get/SjyaK4E15YdU/original_ART-3920B1.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C428C4",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0A1013", "#43585C", "#657B80", "#6E8E91", "#B4BCB5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/VudAHLR8qwhu/thumbnail_ART-C428C4.webp",
+        "medium": "https://share.paintedd.art/get/3fAYaOYJ8A4v/medium_ART-C428C4.webp",
+        "original": "https://share.paintedd.art/get/TuLtiAUORj83/original_ART-C428C4.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-86E40A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#21243E", "#425DB4", "#817DB7", "#6BA2E1", "#B3D9F0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/7LhTyMiHCirW/thumbnail_ART-86E40A.webp",
+        "medium": "https://share.paintedd.art/get/cECzKOeTuV5k/medium_ART-86E40A.webp",
+        "original": "https://share.paintedd.art/get/a9YAppLyT3ES/original_ART-86E40A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-2C6ED7",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2C2F56", "#53678E", "#75859C", "#A39FAA", "#C7BFC1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/fzOx7fNeY7u1/thumbnail_ART-2C6ED7.webp",
+        "medium": "https://share.paintedd.art/get/6fornsrTFkhW/medium_ART-2C6ED7.webp",
+        "original": "https://share.paintedd.art/get/B1f17iiIGJU8/original_ART-2C6ED7.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C150E3",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#303B50", "#5A6C92", "#837E94", "#738BA8", "#BAC2D1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/mWMGgjfId81h/thumbnail_ART-C150E3.webp",
+        "medium": "https://share.paintedd.art/get/x7JcL9uqvYD8/medium_ART-C150E3.webp",
+        "original": "https://share.paintedd.art/get/d74Ha1ItnriT/original_ART-C150E3.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-CD75DD",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#443636", "#9D5F4E", "#848293", "#C8B2B8", "#F5F0EF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/3qTKqENLk61X/thumbnail_ART-CD75DD.webp",
+        "medium": "https://share.paintedd.art/get/sPaUWizLiQw8/medium_ART-CD75DD.webp",
+        "original": "https://share.paintedd.art/get/OjXRIuOnVuIi/original_ART-CD75DD.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-32F0EA",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#45494E", "#806670", "#7394A6", "#9AA5AB", "#B3C4CD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/HqQfpNpsuylk/thumbnail_ART-32F0EA.webp",
+        "medium": "https://share.paintedd.art/get/NODnvALrsgy1/medium_ART-32F0EA.webp",
+        "original": "https://share.paintedd.art/get/GxoJNprs6iTq/original_ART-32F0EA.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-957C31",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#151518", "#553D50", "#95365C", "#8A7787", "#B7AFB4"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/9SuxaS9VsSMh/thumbnail_ART-957C31.webp",
+        "medium": "https://share.paintedd.art/get/l7rooq1oldV5/medium_ART-957C31.webp",
+        "original": "https://share.paintedd.art/get/yQL1EaGvjAQ2/original_ART-957C31.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-4F8527",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1D1F12", "#545526", "#B45D1F", "#CFB03D", "#B2B670"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/4zjiUGLlf5rh/thumbnail_ART-4F8527.webp",
+        "medium": "https://share.paintedd.art/get/WPr69xUfVtGz/medium_ART-4F8527.webp",
+        "original": "https://share.paintedd.art/get/U7S1YbihLwAp/original_ART-4F8527.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B90A09",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1C181D", "#51505C", "#68708A", "#7C8391", "#ADAFB8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/khskpqeRf2Qe/thumbnail_ART-B90A09.webp",
+        "medium": "https://share.paintedd.art/get/H6UeDATsx44j/medium_ART-B90A09.webp",
+        "original": "https://share.paintedd.art/get/jANuLcGvlJcc/original_ART-B90A09.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-E7DACD",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#503D35", "#966B52", "#C19E6A", "#8E8082", "#D6C2A1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/wgwl7wIdbea7/thumbnail_ART-E7DACD.webp",
+        "medium": "https://share.paintedd.art/get/kYIJLAwJfc2t/medium_ART-E7DACD.webp",
+        "original": "https://share.paintedd.art/get/oXKl99Drfoe4/original_ART-E7DACD.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-5E925A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1F305E", "#364654", "#7C967F", "#3E5D8F", "#BCBBBF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/PEil3rtFKiCB/thumbnail_ART-5E925A.webp",
+        "medium": "https://share.paintedd.art/get/iXuAafxHTDfE/medium_ART-5E925A.webp",
+        "original": "https://share.paintedd.art/get/LBDujTESst2S/original_ART-5E925A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-390298",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1F241C", "#4A4E2E", "#9C662E", "#BFA654", "#BFBBA2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/wAO6Imsj5C60/thumbnail_ART-390298.webp",
+        "medium": "https://share.paintedd.art/get/H764v6bovj61/medium_ART-390298.webp",
+        "original": "https://share.paintedd.art/get/Tb6LSsgUfhfs/original_ART-390298.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-35707F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1C2127", "#574F47", "#937257", "#B5936D", "#CBB090"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/XRFrhyu4oy2R/thumbnail_ART-35707F.webp",
+        "medium": "https://share.paintedd.art/get/G8zpg0A0NiKC/medium_ART-35707F.webp",
+        "original": "https://share.paintedd.art/get/p6pBRJhM0uaf/original_ART-35707F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B053E2",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#37354C", "#9E5357", "#729778", "#275B92", "#B5B1AD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/qBypE8eil5dk/thumbnail_ART-B053E2.webp",
+        "medium": "https://share.paintedd.art/get/jKg98GiEDxA0/medium_ART-B053E2.webp",
+        "original": "https://share.paintedd.art/get/FMhMykVBr5Qh/original_ART-B053E2.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-02ED91",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1F1D1F", "#3A3E47", "#51555E", "#6B7687", "#818899"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/f4zPiuRbvaPl/thumbnail_ART-02ED91.webp",
+        "medium": "https://share.paintedd.art/get/t7Kwsk6Cn2T7/medium_ART-02ED91.webp",
+        "original": "https://share.paintedd.art/get/9ke7AYhBb2Lg/original_ART-02ED91.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A07A90",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#48455E", "#6A698E", "#7D8395", "#A0A2AD", "#BFC3C8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/tGaL6Hdjk0Ed/thumbnail_ART-A07A90.webp",
+        "medium": "https://share.paintedd.art/get/tfaTLbq5bT74/medium_ART-A07A90.webp",
+        "original": "https://share.paintedd.art/get/p4p15l7IWb1E/original_ART-A07A90.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-FFF8F0",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#404247", "#778189", "#A0A3A5", "#BBC0C3", "#D9D7D7"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/TfXQjmt8uLHP/thumbnail_ART-FFF8F0.webp",
+        "medium": "https://share.paintedd.art/get/zR3EPoVcA4Lx/medium_ART-FFF8F0.webp",
+        "original": "https://share.paintedd.art/get/EvWePY6bKuP2/original_ART-FFF8F0.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-9D2600",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3E373B", "#B0744D", "#73A1BA", "#B2C4CE", "#AACBDB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/9sJr8la8SCKi/thumbnail_ART-9D2600.webp",
+        "medium": "https://share.paintedd.art/get/prpyJn6iMHs6/medium_ART-9D2600.webp",
+        "original": "https://share.paintedd.art/get/rsWW1XtsOjDT/original_ART-9D2600.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D91A57",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#37292C", "#C0433A", "#867E7E", "#CAAC4E", "#C7C0B6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/cWqm3gkFkYvh/thumbnail_ART-D91A57.webp",
+        "medium": "https://share.paintedd.art/get/AwhrsTl43sBc/medium_ART-D91A57.webp",
+        "original": "https://share.paintedd.art/get/EOmIFTboGIp4/original_ART-D91A57.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F88E03",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3A334D", "#986177", "#51519D", "#BB61A7", "#D8B7C9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/xcdrCSJl3wD2/thumbnail_ART-F88E03.webp",
+        "medium": "https://share.paintedd.art/get/FWqwOHBmLTUn/medium_ART-F88E03.webp",
+        "original": "https://share.paintedd.art/get/HXgp2sPhVg7z/original_ART-F88E03.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-82E87C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2E313D", "#585B66", "#717788", "#7D828D", "#A0A1A9"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/q3nw9GiVCVO8/thumbnail_ART-82E87C.webp",
+        "medium": "https://share.paintedd.art/get/2PQmLSTGJJPk/medium_ART-82E87C.webp",
+        "original": "https://share.paintedd.art/get/5ymGVqJqKJ3q/original_ART-82E87C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-E7F144",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#363942", "#9A9653", "#3859A8", "#32A7D9", "#B3BDCB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/V75MIPBBrdps/thumbnail_ART-E7F144.webp",
+        "medium": "https://share.paintedd.art/get/gX40a6xyBdgI/medium_ART-E7F144.webp",
+        "original": "https://share.paintedd.art/get/B4z90e9w4bzz/original_ART-E7F144.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-1933D0",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#272928", "#4A3A38", "#5E5F5F", "#936E6B", "#ADAFAE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/L0l5dckMwf44/thumbnail_ART-1933D0.webp",
+        "medium": "https://share.paintedd.art/get/2vDgrxw3AaFs/medium_ART-1933D0.webp",
+        "original": "https://share.paintedd.art/get/qwjLKylYgLl2/original_ART-1933D0.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-FAA335",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#173660", "#2A6096", "#5C98B8", "#A4BECE", "#EEF1F2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/dd3sVGFSSSwu/thumbnail_ART-FAA335.webp",
+        "medium": "https://share.paintedd.art/get/gKdpAqgh4WHG/medium_ART-FAA335.webp",
+        "original": "https://share.paintedd.art/get/F0AJvCVKcFkc/original_ART-FAA335.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-91D864",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1C161F", "#3E3F49", "#CAC830", "#5A7486", "#CACFCD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/WNPWvnowX006/thumbnail_ART-91D864.webp",
+        "medium": "https://share.paintedd.art/get/WhVe4gRUzKO7/medium_ART-91D864.webp",
+        "original": "https://share.paintedd.art/get/XD2ErSzW26Ls/original_ART-91D864.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-556020",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#581318", "#991E25", "#B74B50", "#C37D82", "#DCB4B6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/mAobEW64EeE4/thumbnail_ART-556020.webp",
+        "medium": "https://share.paintedd.art/get/CHswgGK5Wv5a/medium_ART-556020.webp",
+        "original": "https://share.paintedd.art/get/lxr6ztXnjgGd/original_ART-556020.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D4AAC6",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4A3338", "#4B5BA3", "#937E8E", "#B8B5CB", "#E6E6EB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/6H2uKjtY9eXh/thumbnail_ART-D4AAC6.webp",
+        "medium": "https://share.paintedd.art/get/LJSFJ1iq7VD0/medium_ART-D4AAC6.webp",
+        "original": "https://share.paintedd.art/get/XNaQXWoRDtA5/original_ART-D4AAC6.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-969075",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1D1C1C", "#404240", "#595C5D", "#75838A", "#A9B0B0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/MXDTlHE9dkIP/thumbnail_ART-969075.webp",
+        "medium": "https://share.paintedd.art/get/zXtFikGfeAIy/medium_ART-969075.webp",
+        "original": "https://share.paintedd.art/get/vd1aIQQCqC9W/original_ART-969075.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-6EAA53",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2E344F", "#345DA2", "#8CA18E", "#A5C5CF", "#F4F3E5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/fHffVNecLue4/thumbnail_ART-6EAA53.webp",
+        "medium": "https://share.paintedd.art/get/kVjtjOHJGW8D/medium_ART-6EAA53.webp",
+        "original": "https://share.paintedd.art/get/nqbn0jVodhxn/original_ART-6EAA53.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-0FC84C",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2F2C2F", "#615A5A", "#8A7567", "#9D8B75", "#C0B4A5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/L111mNGBPixO/thumbnail_ART-0FC84C.webp",
+        "medium": "https://share.paintedd.art/get/bN0tOloAayRv/medium_ART-0FC84C.webp",
+        "original": "https://share.paintedd.art/get/e2mS93da399d/original_ART-0FC84C.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-44166B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#47216A", "#5651A9", "#AC4FB4", "#55A3D6", "#B0ADDA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/SARcq9aXbmwP/thumbnail_ART-44166B.webp",
+        "medium": "https://share.paintedd.art/get/PDEiptfpsRJj/medium_ART-44166B.webp",
+        "original": "https://share.paintedd.art/get/gDyiwY8Oydtv/original_ART-44166B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-04F4D7",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#191C27", "#3E4C5C", "#5C7488", "#6D90A1", "#AFBEC5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/zM1bsCclN6xF/thumbnail_ART-04F4D7.webp",
+        "medium": "https://share.paintedd.art/get/Kjl3TTEiEOGa/medium_ART-04F4D7.webp",
+        "original": "https://share.paintedd.art/get/iiT5cIwmueVP/original_ART-04F4D7.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-6ED4DD",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#171A1D", "#4C4E53", "#9C5F63", "#90817F", "#C4A7AF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/s6qHT3DbmI6T/thumbnail_ART-6ED4DD.webp",
+        "medium": "https://share.paintedd.art/get/kh8FrsMXWmwg/medium_ART-6ED4DD.webp",
+        "original": "https://share.paintedd.art/get/HGUf8fyItIRN/original_ART-6ED4DD.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-916D50",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3E4566", "#5A6990", "#8D6895", "#6394A1", "#ABAEBD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/uvy13Mwrrkt0/thumbnail_ART-916D50.webp",
+        "medium": "https://share.paintedd.art/get/OCuWmuvWtB5P/medium_ART-916D50.webp",
+        "original": "https://share.paintedd.art/get/yudBrHpMYbvD/original_ART-916D50.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-7321CE",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#4B381F", "#B7471E", "#C5A82A", "#EDD90C", "#9BB57D"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/48dwJyU2fKKR/thumbnail_ART-7321CE.webp",
+        "medium": "https://share.paintedd.art/get/A2B4JwCgdkxu/medium_ART-7321CE.webp",
+        "original": "https://share.paintedd.art/get/H6dLvDq21vbH/original_ART-7321CE.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D76B3D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#212325", "#595D62", "#7A7F86", "#919398", "#D9D6D6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/VT7iiWjO9Ktg/thumbnail_ART-D76B3D.webp",
+        "medium": "https://share.paintedd.art/get/VY3CY9lHv312/medium_ART-D76B3D.webp",
+        "original": "https://share.paintedd.art/get/3MmzKI2aNgfh/original_ART-D76B3D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-1A2FD3",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#302E53", "#3E6999", "#9E5686", "#5387AC", "#C1B7C0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/rdwjkRRT61oU/thumbnail_ART-1A2FD3.webp",
+        "medium": "https://share.paintedd.art/get/Bh9Ie9uIXMEE/medium_ART-1A2FD3.webp",
+        "original": "https://share.paintedd.art/get/Cd96z0nyF7qS/original_ART-1A2FD3.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F75A9D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#292C34", "#585F66", "#758088", "#9DA2A6", "#D3D2D2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/FvcjLzEvCRAn/thumbnail_ART-F75A9D.webp",
+        "medium": "https://share.paintedd.art/get/VC3L5WxV8YBV/medium_ART-F75A9D.webp",
+        "original": "https://share.paintedd.art/get/MEADmnM6e3MO/original_ART-F75A9D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-13D823",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3843B1", "#DD3FED", "#44D9EE", "#B5B8F0", "#E6E7F6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/I73QCcebtkGz/thumbnail_ART-13D823.webp",
+        "medium": "https://share.paintedd.art/get/8on66WfbRVM0/medium_ART-13D823.webp",
+        "original": "https://share.paintedd.art/get/s4kah7GjCTOe/original_ART-13D823.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-2A0015",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3C305A", "#A2467F", "#585D97", "#B8609D", "#C6AFD2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/4QUMjplze8Ti/thumbnail_ART-2A0015.webp",
+        "medium": "https://share.paintedd.art/get/CwJ6VmD9V1Rp/medium_ART-2A0015.webp",
+        "original": "https://share.paintedd.art/get/opYvunpDhIMV/original_ART-2A0015.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-444B58",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#514643", "#8C736B", "#9B857B", "#A99898", "#D6C6C6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/TS33T6YciY9w/thumbnail_ART-444B58.webp",
+        "medium": "https://share.paintedd.art/get/E8nftDzmCFpM/medium_ART-444B58.webp",
+        "original": "https://share.paintedd.art/get/QCMzbD5Ocj0F/original_ART-444B58.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D22421",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#41363B", "#B13D46", "#758598", "#B6AAAF", "#EDEAE0"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/6SPkBHFYhNLW/thumbnail_ART-D22421.webp",
+        "medium": "https://share.paintedd.art/get/kxbafFOXIa4m/medium_ART-D22421.webp",
+        "original": "https://share.paintedd.art/get/jVonB850jJwr/original_ART-D22421.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-1D95C8",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#374262", "#62698F", "#74889F", "#A2A6B7", "#E0E1DD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/6vIuPjGRcv1v/thumbnail_ART-1D95C8.webp",
+        "medium": "https://share.paintedd.art/get/qwzhsHSVKyB0/medium_ART-1D95C8.webp",
+        "original": "https://share.paintedd.art/get/SSmP9hvjA6aK/original_ART-1D95C8.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-1F1B9A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2D255B", "#5D55A5", "#9B6CC3", "#6490CA", "#C6A4E3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/pbr8lBHem3gP/thumbnail_ART-1F1B9A.webp",
+        "medium": "https://share.paintedd.art/get/KBAryNqtFG7N/medium_ART-1F1B9A.webp",
+        "original": "https://share.paintedd.art/get/ni3ExWPoAvPv/original_ART-1F1B9A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-DA475A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2F1659", "#5D32AA", "#AB59DB", "#5C8CD3", "#DEB0F3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/p85XAjTYziKN/thumbnail_ART-DA475A.webp",
+        "medium": "https://share.paintedd.art/get/Ed9meE7ncGyF/medium_ART-DA475A.webp",
+        "original": "https://share.paintedd.art/get/v3tIWe9sriJX/original_ART-DA475A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-5030E7",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#545138", "#A66338", "#708679", "#C7A24E", "#DFCCB8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/vSoDki1iqLV9/thumbnail_ART-5030E7.webp",
+        "medium": "https://share.paintedd.art/get/nqvcYXTzVz42/medium_ART-5030E7.webp",
+        "original": "https://share.paintedd.art/get/A8MCJWGbvzPS/original_ART-5030E7.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B7881E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#331056", "#962D70", "#5822A3", "#A94FC2", "#DBA7E3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/353kss773rVy/thumbnail_ART-B7881E.webp",
+        "medium": "https://share.paintedd.art/get/AANuNBE5kP8x/medium_ART-B7881E.webp",
+        "original": "https://share.paintedd.art/get/ANkTTHDLbw7J/original_ART-B7881E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-6E0706",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#212B42", "#996A64", "#1267B0", "#2396CC", "#BBC0BD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/tJrGW0rvbHU0/thumbnail_ART-6E0706.webp",
+        "medium": "https://share.paintedd.art/get/0knTs7Y43NxP/medium_ART-6E0706.webp",
+        "original": "https://share.paintedd.art/get/I9OO1swrLy52/original_ART-6E0706.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B3DB46",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#234055", "#827771", "#306F8B", "#5C98AA", "#AAC4CA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/QgPMDC5S7zWV/thumbnail_ART-B3DB46.webp",
+        "medium": "https://share.paintedd.art/get/GhKL7gYVMShk/medium_ART-B3DB46.webp",
+        "original": "https://share.paintedd.art/get/5PK0KEcCzDSx/original_ART-B3DB46.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-75D77A",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#1A1B1C", "#394245", "#565C5D", "#738A8B", "#A0ADAD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/mmtDBBfq6kq2/thumbnail_ART-75D77A.webp",
+        "medium": "https://share.paintedd.art/get/fis2MQ06tUli/medium_ART-75D77A.webp",
+        "original": "https://share.paintedd.art/get/5g8m10H4545T/original_ART-75D77A.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-63268F",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0D0A29", "#1B1E54", "#514267", "#7C4EA0", "#AFA2B6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/9kJD7scruycj/thumbnail_ART-63268F.webp",
+        "medium": "https://share.paintedd.art/get/gY3etrpiASVB/medium_ART-63268F.webp",
+        "original": "https://share.paintedd.art/get/XBreLEzCwPmX/original_ART-63268F.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-3443DC",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#150C1B", "#1A195B", "#544B4B", "#726472", "#BDB450"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/V8NLSlFt9cVV/thumbnail_ART-3443DC.webp",
+        "medium": "https://share.paintedd.art/get/nOXb8OdwiDMG/medium_ART-3443DC.webp",
+        "original": "https://share.paintedd.art/get/J6ndFgQept0I/original_ART-3443DC.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-0A0340",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2A3E42", "#3D9453", "#325C9A", "#55A4BE", "#96ACB1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/VCxLrN2sqzJK/thumbnail_ART-0A0340.webp",
+        "medium": "https://share.paintedd.art/get/wCIT0rUwaSVS/medium_ART-0A0340.webp",
+        "original": "https://share.paintedd.art/get/dfxrrRnyF36D/original_ART-0A0340.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-AC63B8",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3C3344", "#6C647F", "#9F50B7", "#B8A9B1", "#D9F5FC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/V58aPx9I0Jra/thumbnail_ART-AC63B8.webp",
+        "medium": "https://share.paintedd.art/get/vF8tvBn6O1OB/medium_ART-AC63B8.webp",
+        "original": "https://share.paintedd.art/get/G5Lw6jz6YLRg/original_ART-AC63B8.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-15396B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#433C3E", "#2E5A5B", "#667877", "#5BA3A2", "#BAC2BD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/fwjShzkgfwB0/thumbnail_ART-15396B.webp",
+        "medium": "https://share.paintedd.art/get/pQSovABhe6zl/medium_ART-15396B.webp",
+        "original": "https://share.paintedd.art/get/MDN7RkmPCNxb/original_ART-15396B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-B47D37",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#0A161C", "#344C5F", "#414F5A", "#5B7892", "#A2A8AC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/mcs8W4e85fwL/thumbnail_ART-B47D37.webp",
+        "medium": "https://share.paintedd.art/get/E983m4o9GQA7/medium_ART-B47D37.webp",
+        "original": "https://share.paintedd.art/get/kubK55FcNuGd/original_ART-B47D37.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-A3F173",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#484750", "#75737C", "#C2AD44", "#C5C1A6", "#DED6CF"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/mAGPcctA2Uxn/thumbnail_ART-A3F173.webp",
+        "medium": "https://share.paintedd.art/get/mERtpp5aYfyQ/medium_ART-A3F173.webp",
+        "original": "https://share.paintedd.art/get/rH6oRCQhMt5k/original_ART-A3F173.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-BB664B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#292844", "#854B58", "#43A5C5", "#A3B2C2", "#F2F6F8"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/LS4zr3dVW2t9/thumbnail_ART-BB664B.webp",
+        "medium": "https://share.paintedd.art/get/OWMWuinXBBfM/medium_ART-BB664B.webp",
+        "original": "https://share.paintedd.art/get/xFOPksvcIu7k/original_ART-BB664B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-13FB2E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#111219", "#4B4356", "#83519B", "#ABA3AD", "#D7F7FE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/OlmgJBkz1eon/thumbnail_ART-13FB2E.webp",
+        "medium": "https://share.paintedd.art/get/WAwv5onXacJK/medium_ART-13FB2E.webp",
+        "original": "https://share.paintedd.art/get/xXF00xIahnvP/original_ART-13FB2E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-2FB0F2",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#010101", "#0C0C0C", "#4A3437", "#ABA1A2", "#FBFAFA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/ahPGo0Eq9tHx/thumbnail_ART-2FB0F2.webp",
+        "medium": "https://share.paintedd.art/get/nsgvsWHAkm6H/medium_ART-2FB0F2.webp",
+        "original": "https://share.paintedd.art/get/DmDaJjUFaMNf/original_ART-2FB0F2.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-8317C4",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#514D4A", "#574B43", "#332229", "#725461", "#BCAD3F"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/5lImuySFR7I1/thumbnail_ART-8317C4.webp",
+        "medium": "https://share.paintedd.art/get/Bz5rIL0kX3X5/medium_ART-8317C4.webp",
+        "original": "https://share.paintedd.art/get/aoJD0RI9acYl/original_ART-8317C4.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F25233",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#003C3A", "#002A28", "#0A0E15", "#9B4492", "#03C4BD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/eaL9IIhjPlX8/thumbnail_ART-F25233.webp",
+        "medium": "https://share.paintedd.art/get/T6e9xVQKbKcv/medium_ART-F25233.webp",
+        "original": "https://share.paintedd.art/get/O8IWvH7inLpp/original_ART-F25233.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-444617",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#407390", "#5D53AB", "#AF50E7", "#B8A7E9", "#FAF9FD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/MbrjAaV2o2P6/thumbnail_ART-444617.webp",
+        "medium": "https://share.paintedd.art/get/L0gQCUN2FE5S/medium_ART-444617.webp",
+        "original": "https://share.paintedd.art/get/KT2WhlqmilpW/original_ART-444617.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-91E374",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#2C4256", "#79819C", "#59BDCF", "#9BC9DB", "#F9FBFC"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/iaVg4iCVx6qL/thumbnail_ART-91E374.webp",
+        "medium": "https://share.paintedd.art/get/lIOIFNWq8dlT/medium_ART-91E374.webp",
+        "original": "https://share.paintedd.art/get/vunzykFfaGgw/original_ART-91E374.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-889B59",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#B3FE47", "#AAFF49", "#865F27", "#E1E734", "#1CF6DB"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/oUbCuV0mLGpL/thumbnail_ART-889B59.webp",
+        "medium": "https://share.paintedd.art/get/IhLlfyQmyWbQ/medium_ART-889B59.webp",
+        "original": "https://share.paintedd.art/get/OXceNLKMRn9Q/original_ART-889B59.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-96FF99",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#86D3F6", "#86D2F6", "#243641", "#568AA6", "#9FDAF5"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/KqMiIMddqHt5/thumbnail_ART-96FF99.webp",
+        "medium": "https://share.paintedd.art/get/tdiHpPjcGz7u/medium_ART-96FF99.webp",
+        "original": "https://share.paintedd.art/get/LY3EjwFeXR81/original_ART-96FF99.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-1E0532",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#6EE4ED", "#6FEDEC", "#4C324D", "#45ECE0", "#B8E2E3"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/99GmVlGjHvUi/thumbnail_ART-1E0532.webp",
+        "medium": "https://share.paintedd.art/get/Tf30z3kaGTgG/medium_ART-1E0532.webp",
+        "original": "https://share.paintedd.art/get/SdfLNXqXO2pA/original_ART-1E0532.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-258F6D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#FDFCFB", "#FEFCFC", "#4A4949", "#B1AFAF", "#FCFAFA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/eoodqviMdeXM/thumbnail_ART-258F6D.webp",
+        "medium": "https://share.paintedd.art/get/I4D8Hi9wVmLz/medium_ART-258F6D.webp",
+        "original": "https://share.paintedd.art/get/O7tuFLzGoGUE/original_ART-258F6D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-5A14CD",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#F724A7", "#F623A6", "#613659", "#F021A7", "#BE0CCA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/nnw250ksGSCw/thumbnail_ART-5A14CD.webp",
+        "medium": "https://share.paintedd.art/get/PPDYmo8a8Xvs/medium_ART-5A14CD.webp",
+        "original": "https://share.paintedd.art/get/VtpdnrWFdK1b/original_ART-5A14CD.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-759FB4",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#B2D142", "#BAD339", "#427E63", "#AEC415", "#F2EF06"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/8gPwktNvFbrS/thumbnail_ART-759FB4.webp",
+        "medium": "https://share.paintedd.art/get/KwydzQecss3g/medium_ART-759FB4.webp",
+        "original": "https://share.paintedd.art/get/8cw0T68iW3ct/original_ART-759FB4.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-D7945B",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#46435F", "#2EB9B7", "#0DFCF8", "#B1B3BA", "#FDFEFE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/HGM2Ju9GJFw0/thumbnail_ART-D7945B.webp",
+        "medium": "https://share.paintedd.art/get/XOqrbCPhLwp0/medium_ART-D7945B.webp",
+        "original": "https://share.paintedd.art/get/ABPtzzC2GC9K/original_ART-D7945B.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-521F7D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#E3FFFE", "#EAFDFD", "#6B5479", "#B2A7AF", "#FAFAFA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/qTQ8Keg9l2Id/thumbnail_ART-521F7D.webp",
+        "medium": "https://share.paintedd.art/get/BUeTMSxf5l6t/medium_ART-521F7D.webp",
+        "original": "https://share.paintedd.art/get/DjmTWei6pSO3/original_ART-521F7D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F4B15E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#545FDB", "#555FDD", "#2E1738", "#5E5BD0", "#C72EC6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/gCFODEfthz1T/thumbnail_ART-F4B15E.webp",
+        "medium": "https://share.paintedd.art/get/E3WtTw08hFxW/medium_ART-F4B15E.webp",
+        "original": "https://share.paintedd.art/get/mg9bnp9poEsX/original_ART-F4B15E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-C27950",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#3EEAF4", "#4BEBF5", "#241C2C", "#2AD7ED", "#ABA8B1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/YtozYWlEqkzn/thumbnail_ART-C27950.webp",
+        "medium": "https://share.paintedd.art/get/aBMQWutOvnt1/medium_ART-C27950.webp",
+        "original": "https://share.paintedd.art/get/SzXRqVYUa1qd/original_ART-C27950.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-6080CF",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#02282A", "#03191F", "#020304", "#25354E", "#537FA6"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/TMowao0W4Wm7/thumbnail_ART-6080CF.webp",
+        "medium": "https://share.paintedd.art/get/RL4la9UjSCAw/medium_ART-6080CF.webp",
+        "original": "https://share.paintedd.art/get/QNc9OHBWhwRe/original_ART-6080CF.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-FF908D",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#150641", "#170641", "#0F0534", "#2B1452", "#9D3ED2"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/I3XPn6cHhkEk/thumbnail_ART-FF908D.webp",
+        "medium": "https://share.paintedd.art/get/fe4O8Jz6wygV/medium_ART-FF908D.webp",
+        "original": "https://share.paintedd.art/get/YRPjKkttJMBr/original_ART-FF908D.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-76DDA1",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#ACFABD", "#A8FAC4", "#667F6F", "#CCD54A", "#B3F6BE"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/BH370EzKaLUc/thumbnail_ART-76DDA1.webp",
+        "medium": "https://share.paintedd.art/get/clC97tCdBdDQ/medium_ART-76DDA1.webp",
+        "original": "https://share.paintedd.art/get/KK4mvENl4iDE/original_ART-76DDA1.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-ED644E",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#172935", "#192732", "#0C141A", "#364A5B", "#7893AD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/rQ0FotcFCHcs/thumbnail_ART-ED644E.webp",
+        "medium": "https://share.paintedd.art/get/QhE7g8uPzMgn/medium_ART-ED644E.webp",
+        "original": "https://share.paintedd.art/get/Gsy0OexbgfqI/original_ART-ED644E.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-62F932",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#7DFCC4", "#8AFCB8", "#CEDD4C", "#619280", "#B7F8BD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/qsolIzV0LuvG/thumbnail_ART-62F932.webp",
+        "medium": "https://share.paintedd.art/get/KqkM937d24GG/medium_ART-62F932.webp",
+        "original": "https://share.paintedd.art/get/9dizqSoWLjVY/original_ART-62F932.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-35BD95",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#552FB9", "#316988", "#9C23D3", "#ADABDD", "#FCFCFD"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/jl3vSLyA9v0z/thumbnail_ART-35BD95.webp",
+        "medium": "https://share.paintedd.art/get/qkzQhl8mdx69/medium_ART-35BD95.webp",
+        "original": "https://share.paintedd.art/get/GFn4QKckeQh5/original_ART-35BD95.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-428696",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#64AAE3", "#58C4D4", "#5D7087", "#57BCD1", "#AACBE1"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/8ddw61A39tbk/thumbnail_ART-428696.webp",
+        "medium": "https://share.paintedd.art/get/JWLRQ8TyGaBP/medium_ART-428696.webp",
+        "original": "https://share.paintedd.art/get/H8IfdLibz2gq/original_ART-428696.webp",
+        "sticker": null,
+        "button": null
+      }
+    },
+    {
+      "id": "ART-F79254",
+      "title": "",
+      "description": "",
+      "status": "SFW",
+      "palette": ["#6E8285", "#68878A", "#363C40", "#6F8A96", "#96A6AA"],
+      "images": {
+        "thumbnail": "https://share.paintedd.art/get/E2HOdq81uruj/thumbnail_ART-F79254.webp",
+        "medium": "https://share.paintedd.art/get/EyvqnKAIu3SH/medium_ART-F79254.webp",
+        "original": "https://share.paintedd.art/get/eUJ8P5WT33fF/original_ART-F79254.webp",
+        "sticker": null,
+        "button": null
+      }
+    }
+  ]
+}

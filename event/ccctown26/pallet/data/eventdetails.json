@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "event_slug": "ccct2026",
+    "event_name": "Comic Con Cape Town",
+    "dates": "27 Apr - 1 May",
+    "status": "active"
+  },
+  
+  "theme": {
+    "primary": "#ff0099", 
+    "accent": "#00d9bf"
+  },
+
+  "pricing_overrides": {
+    "sticker": 50,
+    "button": 35
+  },
+
+  "inventory": [
+    {
+      "id": "ART-RB-042",
+      "config": {
+        "original": { "available": true, "price": 4500 },
+        "prints": ["A4", "A3"],
+        "sticker": true 
+      }
+    },
+    {
+      "id": "ART-CYBER-01",
+      "config": {
+        "original": false,
+        "prints": ["A3"],
+        "sticker": false
+      }
+    }
+  ]
+}

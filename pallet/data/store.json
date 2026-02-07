@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "store_name": "Paintedd Online Gallery",
+    "last_updated": "2026-02-07",
+    "currency": "R"
+  },
+  "blueprints": {
+    "print_sizes": {
+      "A5": { "label": "A5 Print", "base": 60, "code": "A5" },
+      "A4": { "label": "A4 Print", "base": 120, "code": "A4" },
+      "A3": { "label": "A3 Print", "base": 250, "code": "A3" }
+    },
+    "print_papers": {
+      "STD": { "label": "Standard Matte", "tier": 1.0, "code": "STD" },
+      "RAG": { "label": "Cotton Rag", "tier": 2.5, "code": "RAG" }
+    },
+    "sticker_types": {
+      "STD": { "label": "Standard Vinyl", "base": 40, "code": "STK" },
+      "DIE": { "label": "Die Cut", "base": 45, "code": "DIE" }
+    },
+    "sticker_finishes": {
+      "GLS": { "label": "Glossy", "mod": 0, "code": "GLS" },
+      "HOLO": { "label": "Holographic", "mod": 15, "code": "HOLO" },
+      "MAT": { "label": "Matte", "mod": 0, "code": "MAT" }
+    },
+    "button": { "label": "Pin Badge (32mm)", "price": 30, "code": "BTN" }
+  },
+
+  "inventory": [
+    {
+      "id": "ART-RB-042",
+      "config": {
+        "original": { "available": true, "price": 5000 },
+        "prints": ["A4", "A3"],
+        "sticker": true,
+        "button": true
+      }
+    },
+    {
+      "id": "ART-GOLD-01",
+      "config": {
+        "original": false,
+        "prints": [
+          "A4",
+          { "size": "A3", "price_override": 600, "tag": "Signed" }
+        ],
+        "sticker": {
+          "available": true,
+          "type": "DIE",
+          "finish": "HOLO",
+          "price_override": 80
+        },
+        "button": false
+      }
+    }
+  ]
+}

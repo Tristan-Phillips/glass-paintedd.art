@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paintedd | ID QuickRef</title>
+    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png">
+    
+    <style>
+        :root {
+            --bg: #050505;
+            --card: #151515;
+            --text: #eee;
+            --accent: #00d9bf;
+            --border: #333;
+            --success: #4caf50;
+        }
+        
+        * { box-sizing: border-box; }
+
+        body {
+            background: var(--bg); color: var(--text);
+            font-family: monospace; margin: 0; padding: 20px;
+            overflow-y: scroll;
+        }
+        
+        .controls {
+            position: sticky; top: 0; background: rgba(5,5,5,0.95);
+            padding: 10px 0 15px; border-bottom: 1px solid var(--border);
+            display: flex; gap: 15px; align-items: center;
+            z-index: 100; backdrop-filter: blur(5px);
+        }
+        
+        h1 { margin: 0; font-size: 1.2rem; color: var(--accent); letter-spacing: -1px; white-space: nowrap; }
+        
+        .nav-btn {
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            background: #1a1a1a;
+            transition: 0.2s;
+            font-weight: bold;
+        }
+        .nav-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        input#search {
+            background: #1a1a1a; color: #fff; border: 1px solid #333;
+            padding: 8px 12px; font-family: monospace; width: 100%; max-width: 300px;
+            outline: none; border-radius: 4px; transition: border-color 0.2s;
+        }
+        input#search:focus { border-color: var(--accent); }
+        
+        .count-display { color: #555; font-size: 0.8rem; margin-left: auto; }
+
+        .grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 10px; margin-top: 20px; padding-bottom: 50px;
+        }
+
+        .card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 4px; overflow: hidden;
+            display: flex; flex-direction: column;
+            cursor: pointer; transition: transform 0.1s, border-color 0.1s; 
+            position: relative; height: 140px;
+            user-select: none; 
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-2px); z-index: 10; }
+        .card.hidden { display: none; }
+
+        .img-box {
+            flex: 1; width: 100%; background: #000;
+            position: relative; display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        
+        img {
+            width: 100%; height: 100%; object-fit: cover; 
+            opacity: 0; transition: opacity 0.3s;
+        }
+        img.loaded { opacity: 1; }
+
+        .spinner {
+            position: absolute; width: 15px; height: 15px;
+            border: 2px solid #222; border-top-color: #555;
+            border-radius: 50%; animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .info {
+            padding: 6px; font-size: 0.7rem; text-align: center;
+            border-top: 1px solid var(--border); background: #111;
+            color: #888; font-weight: bold; white-space: nowrap; 
+            overflow: hidden; text-overflow: ellipsis;
+        }
+        
+        .card.copied { border-color: var(--success); }
+        .card.copied .info { background: var(--success); color: #000; }
+        
+        .msg { grid-column: 1 / -1; padding: 40px; text-align: center; color: #444; }
+        .error { color: #ff4444; }
+
+        .toast {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
+            background: var(--accent); color: #000; padding: 8px 16px; 
+            border-radius: 4px; font-weight: bold; font-size: 0.8rem;
+            opacity: 0; pointer-events: none; transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 200;
+        }
+        .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <h1>ID REF</h1>
+        <a href="../../index.html" class="nav-btn">HOME</a>
+        <a href="keymap.html" class="nav-btn">KEYMAP</a>
+        <input type="text" id="search" placeholder="Filter IDs..." autofocus autocomplete="off">
+        <span class="count-display" id="count">Connecting...</span>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="toast" id="toast">COPIED</div>
+
+<script>
+    const DB_URL = '/pallet/data/art.json';
+
+    const grid = document.getElementById('grid');
+    const searchInput = document.getElementById('search');
+    const countLabel = document.getElementById('count');
+    const toast = document.getElementById('toast');
+
+    async function init() {
+        try {
+            const res = await fetch(DB_URL);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            
+            const data = await res.json();
+            
+            const items = Array.isArray(data) ? data : (data.artworks || []);
+
+            if (items.length === 0) {
+                grid.innerHTML = '<div class="msg">Database is empty.</div>';
+                countLabel.textContent = '0 items';
+                return;
+            }
+
+            renderGrid(items);
+
+        } catch (err) {
+            console.error(err);
+            grid.innerHTML = `<div class="msg error">DB Connection Failed<br><small>${err.message}</small></div>`;
+            countLabel.textContent = 'ERROR';
+        }
+    }
+
+    function renderGrid(items) {
+        grid.innerHTML = '';
+        countLabel.textContent = `${items.length} loaded`;
+
+        const uniqueItems = Array.from(new Map(items.map(item => [item.id, item])).values());
+        const fragment = document.createDocumentFragment();
+
+        uniqueItems.forEach(item => {
+            if(!item.id) return;
+
+            const imgObj = item.images || {};
+            const thumbUrl = imgObj.thumbnail || imgObj.medium || imgObj.original;
+            const fullResUrl = imgObj.original || imgObj.medium || imgObj.thumbnail;
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.id = item.id.toLowerCase();
+            card.title = `Click to Copy / Dbl-Click to Open`;
+
+            let imgContent = `<div class="img-box" style="color:#333; font-size:10px;">NO IMG</div>`;
+            
+            if (thumbUrl) {
+                imgContent = `
+                    <div class="img-box">
+                        <div class="spinner"></div>
+                        <img src="${thumbUrl}" alt="${item.id}" loading="lazy">
+                    </div>`;
+            }
+
+            card.innerHTML = `
+                ${imgContent}
+                <div class="info">${item.id}</div>
+            `;
+
+            card.addEventListener('click', (e) => {
+                navigator.clipboard.writeText(item.id);
+                flashCard(card);
+                showToast(item.id);
+            });
+
+            card.addEventListener('dblclick', (e) => {
+                if (fullResUrl) {
+                    window.open(fullResUrl, '_blank');
+                }
+            });
+
+            const img = card.querySelector('img');
+            if (img) {
+                img.onload = () => {
+                    img.classList.add('loaded');
+                    const s = card.querySelector('.spinner');
+                    if(s) s.remove();
+                };
+                img.onerror = () => {
+                    const s = card.querySelector('.spinner');
+                    if(s) s.style.borderTopColor = 'red';
+                };
+            }
+
+            fragment.appendChild(card);
+        });
+
+        grid.appendChild(fragment);
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.card');
+        let visible = 0;
+
+        cards.forEach(card => {
+            if (card.dataset.id.includes(term)) {
+                card.classList.remove('hidden');
+                visible++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        countLabel.textContent = `${visible} visible`;
+    });
+
+    function flashCard(card) {
+        card.classList.add('copied');
+        setTimeout(() => card.classList.remove('copied'), 600);
+    }
+
+    function showToast(text) {
+        toast.textContent = `COPIED: ${text}`;
+        toast.classList.add('visible');
+        clearTimeout(window.toastTimer);
+        window.toastTimer = setTimeout(() => toast.classList.remove('visible'), 1500);
+    }
+
+    init();
+
+</script>
+</body>
+</html>

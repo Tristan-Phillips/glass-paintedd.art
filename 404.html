@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Page Not Found | Paintedd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary-red: #d90429;
+            --primary-black: #0a0a0a;
+            --primary-fuchsia: #E725E7;
+            --primary-yellow: #E8CF00;
+            --primary-turquoise: #00D9BF;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0000 0%, var(--primary-black) 100%);
+            color: white;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(217,4,41,0.1) 0%, transparent 25%),
+                radial-gradient(circle at 80% 60%, rgba(231,37,231,0.1) 0%, transparent 25%),
+                radial-gradient(circle at 50% 70%, rgba(0,217,191,0.1) 0%, transparent 25%);
+            z-index: -1;
+        }
+
+        .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(10, 10, 10, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(10, 10, 10, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            z-index: 1;
+        }
+
+        .error-content {
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-content:before {
+            content: '';
+            position: absolute;
+            top: -120%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: conic-gradient(
+                transparent 0deg,
+                transparent 90deg,
+                var(--primary-red) 90deg,
+                var(--primary-red) 180deg,
+                transparent 180deg,
+                transparent 270deg,
+                var(--primary-fuchsia) 270deg,
+                var(--primary-fuchsia) 360deg
+            );
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-number {
+            font-size: clamp(5rem, 15vw, 8rem);
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-red), var(--primary-fuchsia));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 0 20px rgba(231, 37, 231, 0.3);
+        }
+
+        .error-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .home-button i {
+            margin-right: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .home-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(217, 4, 41, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .home-button:hover i {
+            transform: translateX(5px);
+        }
+
+        .home-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(231, 37, 231, 0.1) 50%, 
+                transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .home-button:hover:before {
+            transform: translateX(100%);
+        }
+
+        .floating-art {
+            position: absolute;
+            opacity: 0.03;
+        }
+
+        .art-1 {
+            top: 10%;
+            left: 10%;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-red), transparent);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .art-2 {
+            bottom: 15%;
+            right: 20%;
+            width: 80px;
+            height: 80px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(45deg, var(--primary-turquoise), var(--primary-fuchsia));
+            animation: float 12s ease-in-out infinite 2s;
+        }
+
+        .art-3 {
+            top: 40%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--primary-red));
+            animation: float 18s ease-in-out infinite 1s;
+        }
+
+        .art-4 {
+            bottom: 30%;
+            left: 5%;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background: linear-gradient(225deg, var(--primary-fuchsia), var(--primary-turquoise));
+            animation: float 14s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .error-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .art-1, .art-2, .art-3, .art-4 {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="grid-pattern"></div>
+
+    <div class="floating-art art-1"></div>
+    <div class="floating-art art-2"></div>
+    <div class="floating-art art-3"></div>
+    <div class="floating-art art-4"></div>
+
+    <div class="container">
+        <div class="error-content">
+            <div class="error-number">404</div>
+            <div class="error-title">Lost in the Gallery</div>
+            <div class="error-message">
+                The page you're looking for seems to have wandered off. 
+                Perhaps it's exploring one of Paintedd's artworks or lost in a creative moment.
+            </div>
+            <a href="/" class="home-button">
+                <i class="fas fa-palette"></i>
+                Return to Gallery
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2025 Paintedd.art - All Rights Reserved
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Floating effect for the error content
+            const errorContent = document.querySelector('.error-content');
+            window.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 768) {
+                    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                    errorContent.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                }
+            });
+
+            // Button hover effect enhancement
+            const homeButton = document.querySelector('.home-button');
+            homeButton.addEventListener('mouseenter', () => {
+                errorContent.style.transform = 'scale(1.02)';
+            });
+
+            homeButton.addEventListener('mouseleave', () => {
+                errorContent.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>

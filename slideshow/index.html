@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paintedd | Art Slideshow</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/slideshow/pallet/style/slideshow.css" />
+    <script src="/slideshow/pallet/script/slideshow.js" defer></script>
+  </head>
+  <body>
+    <div id="gallery-container"></div>
+    <div id="progress-timeline">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="nav-area left" id="prev-area"></div>
+    <div class="nav-area right" id="next-area"></div>
+
+    <div class="signature-container">
+      <div id="fullscreen-btn">
+        <i class="fas fa-expand"></i>
+      </div>
+      <div class="paintedd-signature">paintedd</div>
+    </div>
+    <div class="art-count" id="art-count">1/0</div>
+    <div class="preloader" id="preloader"></div>
+    <script>
+      window.returnHomeConfig = {
+        position: "topLeft",
+        iconClass: "fas fa-home",
+        size: 20,
+        padding: 10,
+        color: "#fff",
+        bgColor: "rgba(0, 0, 0, 0.8)",
+        borderRadius: "5px",
+        enableSlideAnimation: true,
+      };
+    </script>
+    <script src="/pallet/script/return.js" id="return-home-script"></script>
+  </body>
+</html>
