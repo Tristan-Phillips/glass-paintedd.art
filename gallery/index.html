@@ -26,8 +26,7 @@
             --glass-border: rgba(255, 255, 255, 0.1);
             --card-radius: 12px;
             
-            /* KINETIC PHYSICS */
-            --ease-expo: cubic-bezier(0.2, 1, 0.3, 1); /* The "Premium" Feel */
+            --ease-smooth: cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -71,14 +70,17 @@
         .nav-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
 
         .resonance-pill {
-            background: rgba(10, 10, 10, 0.6); border: 1px solid var(--glass-border);
+            background: rgba(20, 20, 20, 0.6); border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 30px;
             font-size: 0.9rem; font-weight: 600; letter-spacing: 1px;
-            display: flex; gap: 10px; align-items: center; pointer-events: auto;
+            display: flex; gap: 12px; align-items: center; pointer-events: auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
         }
         .score-bump { animation: flashGold 0.5s ease-out; border-color: var(--c-gold); color: #fff; }
         @keyframes flashGold { 50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); transform: scale(1.05); } }
+
+        .progress-text { font-family: monospace; font-size: 0.8rem; color: #888; display: flex; align-items: center; gap: 6px; }
+        .progress-text i { font-size: 0.7rem; color: #555; }
 
         /* --- STAGE --- */
         #gallery-stage {
@@ -104,12 +106,12 @@
             position: relative; background: #1a1a20;
             border-radius: var(--card-radius); overflow: hidden;
             cursor: pointer; opacity: 0; transform: translateY(40px);
-            transition: transform 0.8s var(--ease-expo), box-shadow 0.6s ease;
+            transition: transform 0.8s var(--ease-smooth), box-shadow 0.6s ease, border-color 0.6s ease;
             border: 1px solid rgba(255,255,255,0.05);
             user-select: none; display: block; width: 100%;
         }
         
-        .art-card.visible { animation: softFloat 1s var(--ease-expo) forwards; }
+        .art-card.visible { animation: softFloat 1s var(--ease-smooth) forwards; }
         @keyframes softFloat { to { opacity: 1; transform: translateY(0); } }
 
         .art-card:hover {
@@ -118,6 +120,7 @@
             border-color: rgba(255,255,255,0.2);
         }
 
+        /* Glint */
         .art-card::after {
             content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
             background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
@@ -134,6 +137,7 @@
         .art-card:hover img { filter: brightness(1); transition: 0.4s; }
         .art-card img.loaded { opacity: 1; }
 
+        /* Rarity */
         .art-card[data-border="green"] { border-bottom: 2px solid var(--c-green); }
         .art-card[data-border="blue"] { border-bottom: 2px solid var(--c-blue); }
         .art-card[data-border="purple"] { border-bottom: 2px solid var(--c-purple); }
@@ -157,11 +161,10 @@
             width: 100px; height: 100px; border-radius: 50%;
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.15);
-            /* NEON BLEED */
             box-shadow: 0 0 50px rgba(0, 217, 191, 0.1);
             display: flex; align-items: center; justify-content: center;
             font-size: 2rem; color: rgba(255,255,255,0.4);
-            cursor: pointer; transition: all 0.5s var(--ease-expo);
+            cursor: pointer; transition: all 0.5s var(--ease-smooth);
             position: relative; backdrop-filter: blur(5px);
         }
         
@@ -170,21 +173,15 @@
             box-shadow: 0 0 80px rgba(0, 217, 191, 0.3), inset 0 0 30px rgba(0, 217, 191, 0.1);
         }
         
-        .prism-orb::before {
-            content:''; position: absolute; inset: -8px; border-radius: 50%;
-            border: 1px solid transparent; border-top-color: rgba(255,255,255,0.1);
-            animation: orbit 8s linear infinite; pointer-events: none;
+        .prism-orb::before, .prism-orb::after {
+            content:''; position: absolute; border-radius: 50%; border: 1px solid transparent; pointer-events: none;
         }
-        .prism-orb::after {
-            content:''; position: absolute; inset: -4px; border-radius: 50%;
-            border: 1px solid transparent; border-bottom-color: rgba(255,255,255,0.2);
-            animation: orbitReverse 6s linear infinite; pointer-events: none;
-        }
+        .prism-orb::before { inset: -8px; border-top-color: rgba(255,255,255,0.1); animation: orbit 8s linear infinite; }
+        .prism-orb::after { inset: -4px; border-bottom-color: rgba(255,255,255,0.2); animation: orbitReverse 6s linear infinite; }
 
         .prism-orb.rolling { animation: pulse 0.2s infinite alternate; }
-        .prism-orb.rolling i { animation: iconFlip 0.4s linear infinite; }
+        .prism-orb.rolling i { animation: iconFlip 0.8s linear infinite; }
 
-        /* TIER GLOWS */
         .prism-orb.green { box-shadow: 0 0 80px var(--c-green); border-color: var(--c-green); color: var(--c-green); }
         .prism-orb.blue { box-shadow: 0 0 100px var(--c-blue); border-color: var(--c-blue); color: var(--c-blue); }
         .prism-orb.purple { box-shadow: 0 0 120px var(--c-purple); border-color: var(--c-purple); color: var(--c-purple); }
@@ -203,7 +200,7 @@
         @keyframes iconFlip { 0% { opacity:0; transform: scale(0.5); } 50% { opacity:1; transform: scale(1.2); } 100% { opacity:0; transform: scale(0.5); } }
         @keyframes spinGold { to { transform: rotate(360deg); } }
 
-        /* --- THEATER (Dual-Buffer Physics) --- */
+        /* --- THEATER --- */
         .theater {
             position: fixed; inset: 0; z-index: 1000;
             background: rgba(0,0,0,0.98); 
@@ -218,39 +215,17 @@
             overflow: hidden; 
         }
 
-        /* Image Containers */
         .t-img {
-            position: absolute; /* Crucial for overlay */
             max-width: 95%; max-height: 95%; object-fit: contain;
             box-shadow: 0 0 100px rgba(0,0,0,0.8);
-            transform-origin: center; will-change: transform, opacity;
+            transform-origin: center; will-change: transform;
             user-select: none; -webkit-user-drag: none;
+            transition: opacity 0.2s ease;
+            opacity: 0;
         }
+        .t-img.show { opacity: 1; }
 
-        /* PHYSICS ANIMATIONS (The Secret Sauce) */
-        .anim-in-right { animation: slideInRight 0.5s var(--ease-expo) forwards; }
-        .anim-out-left { animation: slideOutLeft 0.5s var(--ease-expo) forwards; }
-        .anim-in-left { animation: slideInLeft 0.5s var(--ease-expo) forwards; }
-        .anim-out-right { animation: slideOutRight 0.5s var(--ease-expo) forwards; }
-
-        @keyframes slideInRight {
-            0% { transform: translateX(100px) scale(0.9); opacity: 0; }
-            100% { transform: translateX(0) scale(1); opacity: 1; }
-        }
-        @keyframes slideOutLeft {
-            0% { transform: translateX(0) scale(1); opacity: 1; }
-            100% { transform: translateX(-50px) scale(0.9); opacity: 0; }
-        }
-        @keyframes slideInLeft {
-            0% { transform: translateX(-100px) scale(0.9); opacity: 0; }
-            100% { transform: translateX(0) scale(1); opacity: 1; }
-        }
-        @keyframes slideOutRight {
-            0% { transform: translateX(0) scale(1); opacity: 1; }
-            100% { transform: translateX(50px) scale(0.9); opacity: 0; }
-        }
-
-        /* CONTROLS (Glass Dock) */
+        /* FIXED: Controls are separate, not affected by innerHTML wipes */
         .t-controls {
             position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
             display: flex; gap: 8px; z-index: 20;
@@ -269,10 +244,8 @@
             transition: 0.2s;
         }
         .tc-btn:hover { background: rgba(255,255,255,0.15); color: #fff; transform: translateY(-3px); }
-        .tc-btn:active { transform: scale(0.95); }
         .tc-sep { width: 1px; height: 25px; background: rgba(255,255,255,0.1); align-self: center; margin: 0 5px; }
 
-        /* PANEL */
         .t-panel {
             width: 400px; background: rgba(20, 20, 25, 0.95); 
             border-left: 1px solid var(--glass-border);
@@ -282,11 +255,7 @@
         }
         @media(max-width: 900px) { 
             .theater { flex-direction: column; } 
-            .t-panel { 
-                width: 100%; height: auto; min-height: 200px; max-height: 40%;
-                border-left: none; border-top: 1px solid var(--glass-border); 
-                padding: 25px;
-            } 
+            .t-panel { width: 100%; height: auto; min-height: 200px; max-height: 40%; border-left: none; border-top: 1px solid var(--glass-border); padding: 25px; } 
             .t-controls { bottom: 20px; padding: 6px; }
             .tc-btn { width: 40px; height: 40px; }
         }
@@ -304,17 +273,19 @@
         .t-meta p { font-family: monospace; color: var(--c-blue); margin-top: 8px; opacity: 0.7; font-size: 0.85rem; }
         .t-desc { color: #aaa; line-height: 1.7; font-size: 0.9rem; font-weight: 300; }
 
-        /* WHATSAPP BUTTON (Readable & Stylish) */
+        /* WHATSAPP GREEN (Restored High-Vis) */
         .action-btn {
             width: 100%; padding: 15px; border-radius: 12px;
-            background: #25D366; 
-            color: #000; font-weight: 800; letter-spacing: 1px; font-size: 0.9rem;
-            border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: rgba(0,0,0,0.4); 
+            border: 1px solid #25D366; 
+            color: #25D366; 
+            font-weight: 700; letter-spacing: 1px; font-size: 0.9rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
             transition: transform 0.2s, box-shadow 0.2s; margin-top: auto;
             text-shadow: none;
         }
         .action-btn:hover { 
-            background: #20bd5a; color: #fff;
+            background: #25D366; color: #000;
             box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
             transform: translateY(-2px); 
         }
@@ -329,11 +300,10 @@
         .end-score { font-size: 3.5rem; font-weight: 800; color: #fff; }
         .end-rank { font-size: 1.2rem; color: #ffd700; letter-spacing: 2px; margin-top: 10px; }
 
-        /* SPINNER (Subtle) */
         .spinner {
-            position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin: -20px;
-            border: 2px solid rgba(255,255,255,0.1); border-top-color: #fff;
-            border-radius: 50%; animation: spin 0.8s infinite linear; z-index: 0;
+            position: absolute; top: 50%; left: 50%; width: 30px; height: 30px; margin: -15px;
+            border: 3px solid rgba(255,255,255,0.1); border-top-color: #fff;
+            border-radius: 50%; animation: spin 1s infinite linear; display: none;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -349,8 +319,12 @@
         </div>
         <div class="header-right">
             <div class="resonance-pill">
-                <span class="res-icon">🎈</span>
                 <span class="res-val" id="score-val">0</span>
+                <span class="res-icon">🎈</span>
+                <div class="progress-text" style="margin-left:8px; border-left:1px solid #444; padding-left:10px;">
+                    <span id="unlock-count">0</span> <span style="opacity:0.5">/</span> <span id="total-count">...</span>
+                    <i class="fas fa-lock" style="margin-left:4px;"></i>
+                </div>
             </div>
             <a href="/universe/quickview/" class="nav-btn" title="QuickView"><i class="fas fa-search"></i></a>
         </div>
@@ -363,6 +337,8 @@
         
         <div class="t-stage" id="t-stage">
             <div class="spinner" id="t-spinner"></div>
+            <img src="" class="t-img" id="t-img" ondragstart="return false;">
+            
             <div class="t-controls">
                 <button class="tc-btn" id="btn-prev" title="Previous"><i class="fas fa-chevron-left"></i></button>
                 <button class="tc-btn" id="btn-next" title="Next"><i class="fas fa-chevron-right"></i></button>
@@ -392,6 +368,8 @@
 
         const stage = document.getElementById('gallery-stage');
         const scoreVal = document.getElementById('score-val');
+        const unlockCount = document.getElementById('unlock-count');
+        const totalCount = document.getElementById('total-count');
         
         let allArtworks = [];
         let loadedChunks = []; 
@@ -400,15 +378,13 @@
         let userScore = 0; 
         let theaterIndex = -1;
 
-        // Tiers
         const TIERS = [
-            { id: 'green',  label: '8 ARTIFACTS',    color: '#00ff9d', count: 8,  weight: 50 },
-            { id: 'blue',   label: '16 ARTIFACTS',   color: '#00a8ff', count: 16, weight: 30 },
-            { id: 'purple', label: '24 ARTIFACTS',   color: '#bd00ff', count: 24, weight: 15 },
-            { id: 'gold',   label: '40 ARTIFACTS',   color: '#ffd700', count: 40, weight: 5 }
+            { id: 'green',  label: '8 ARTWORKS DETECTED',    color: '#00ff9d', count: 8,  weight: 50 },
+            { id: 'blue',   label: '16 ARTWORKS DETECTED',   color: '#00a8ff', count: 16, weight: 30 },
+            { id: 'purple', label: '24 ARTWORKS DETECTED',   color: '#bd00ff', count: 24, weight: 15 },
+            { id: 'gold',   label: '40 ARTWORKS DETECTED',   color: '#ffd700', count: 40, weight: 5 }
         ];
 
-        // --- INIT ---
         async function init() {
             try {
                 const [artRes, storeRes] = await Promise.all([
@@ -419,6 +395,7 @@
                 if(!artRes.ok) throw new Error("404");
                 const data = await artRes.json();
                 allArtworks = Array.isArray(data) ? data : (data.artworks || []);
+                totalCount.textContent = allArtworks.length;
                 
                 // Shuffle
                 for (let i = allArtworks.length - 1; i > 0; i--) {
@@ -431,7 +408,7 @@
                     (store.inventory || []).forEach(i => storeData[i.art_id] = i);
                 }
 
-                loadChunk(8, null); 
+                loadChunk(20, null); // Start with 20
 
             } catch(e) {
                 console.error(e);
@@ -518,6 +495,7 @@
             });
 
             loadedCount += chunk.length;
+            unlockCount.textContent = loadedCount;
 
             if(loadedCount < allArtworks.length) {
                 spawnPrism();
@@ -526,7 +504,6 @@
             }
         }
 
-        // --- GACHA (THE CARNIVAL) ---
         function spawnPrism() {
             const gate = document.createElement('div');
             gate.className = 'prism-gate';
@@ -555,7 +532,7 @@
                 orb.innerHTML = `<i class="fas ${icons[iconIdx]}"></i>`;
                 orb.style.boxShadow = `0 0 60px ${colors[iconIdx % 4]}`;
                 iconIdx = (iconIdx + 1) % icons.length;
-            }, 150);
+            }, 400); // SLOWED DOWN
 
             setTimeout(() => {
                 clearInterval(cycle);
@@ -572,7 +549,7 @@
                 orb.className = `prism-orb ${result.id}`;
                 orb.innerHTML = result.id === 'gold' ? '<i class="fas fa-crown"></i>' : '<i class="fas fa-check"></i>';
                 
-                text.innerText = `// ${result.label} UNLOCKED`;
+                text.innerText = `// ${result.label}`;
                 text.style.color = result.color;
                 
                 addScore(500); 
@@ -601,82 +578,67 @@
             stage.appendChild(card);
         }
 
-        // --- THEATER ENGINE (DUAL BUFFER) ---
+        // --- THEATER ENGINE (BUG FIXED) ---
         const theater = document.getElementById('theater');
+        const tImg = document.getElementById('t-img');
+        const tSpinner = document.getElementById('t-spinner');
         const tStage = document.getElementById('t-stage');
-        let currentImg = null;
         let state = { x:0, y:0, scale:1, rotation:0 };
-        let isAnimating = false;
 
         function openTheater(index) {
             if(index < 0) return;
             
-            // Auto Unlock Loop
+            // Auto-Unlock Trigger
             if (index >= loadedChunks.length) {
                 closeTheater();
                 setTimeout(() => {
                     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                     const orb = document.getElementById('main-orb');
-                    if(orb) orb.classList.add('active'); 
+                    if(orb) {
+                        orb.classList.add('active'); // Pulse gold
+                        rollGacha(orb); // AUTO TRIGGER
+                    }
                 }, 300);
                 return;
             }
 
-            // Direction Detection
-            const direction = index > theaterIndex ? 'next' : 'prev';
             theaterIndex = index;
             const item = loadedChunks[index];
 
-            // Update Meta
-            updateMeta(item);
+            // 1. CLEAR BUFFER
+            tImg.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+            tImg.classList.remove('show');
+            tSpinner.style.display = 'block';
 
-            // Create New Image (Buffer)
-            const newImg = document.createElement('img');
-            newImg.className = 't-img';
-            newImg.draggable = false;
-            
-            const src = item.images.medium || item.images.original;
-            newImg.src = src;
-
-            // Wait for load to ensure smooth transition
-            newImg.onload = () => {
-                // If it's the first open (no current image)
-                if(!currentImg) {
-                    tStage.appendChild(newImg);
-                    newImg.classList.add('show'); // Fade In
-                    currentImg = newImg;
-                    theater.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                } 
-                else {
-                    // SLIDE TRANSITION
-                    tStage.appendChild(newImg);
-                    
-                    if(direction === 'next') {
-                        newImg.classList.add('anim-in-right');
-                        currentImg.classList.add('anim-out-left');
-                    } else {
-                        newImg.classList.add('anim-in-left');
-                        currentImg.classList.add('anim-out-right');
-                    }
-
-                    // Clean up old image after animation
-                    setTimeout(() => {
-                        if(currentImg && currentImg.parentNode) currentImg.remove();
-                        currentImg = newImg;
-                        // Remove animation classes to allow dragging later
-                        currentImg.className = 't-img show';
-                    }, 500);
-                }
-            };
-        }
-
-        function updateMeta(item) {
-            const title = item.title || item.id;
-            document.getElementById('t-title').textContent = title;
+            // 2. Set Text
+            document.getElementById('t-title').textContent = item.title || item.id;
             document.getElementById('t-id').textContent = item.id;
             document.getElementById('t-desc').textContent = item.description || "";
             
+            // 3. Load Medium
+            const medium = item.images.medium || item.images.thumbnail;
+            const original = item.images.original;
+            
+            const loader = new Image();
+            loader.src = medium;
+            
+            loader.onload = () => {
+                if(theaterIndex === index) {
+                    tImg.src = medium;
+                    tImg.onload = () => {
+                        tSpinner.style.display = 'none';
+                        tImg.classList.add('show');
+                        
+                        if(original) {
+                            const hd = new Image();
+                            hd.src = original;
+                            hd.onload = () => { if(tImg.src === medium) tImg.src = original; };
+                        }
+                    }
+                }
+            };
+
+            // Store Info
             const store = storeData[item.id];
             const btn = document.getElementById('inquire-btn');
             const statusDiv = document.getElementById('t-status');
@@ -691,34 +653,70 @@
                 statusDiv.innerHTML = '';
                 btn.innerHTML = `<i class="fab fa-whatsapp"></i> GENERAL INQUIRY`;
             }
+
+            state = { x:0, y:0, scale:1, rotation:0 };
+            updateTransform();
+            
+            if(!theater.classList.contains('active')) {
+                theater.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeTheater() {
             theater.classList.remove('active');
             document.body.style.overflow = '';
+            // Only clear img state, DO NOT CLEAR HTML
             setTimeout(() => {
-                tStage.innerHTML = '<div class="spinner" id="t-spinner"></div>';
-                currentImg = null;
+                tImg.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+                tImg.classList.remove('show');
             }, 300);
         }
 
         function updateTransform() {
-            if(currentImg) {
-                currentImg.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg) scale(${state.scale})`;
-            }
+            tImg.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg) scale(${state.scale})`;
         }
 
         // --- GESTURES ---
-        // (Simplified for Reliability: Drag moves the current image)
+        let touchStartDist = 0;
+        let startScale = 1;
         let isDrag = false;
         let startX=0, startY=0, initX=0, initY=0;
+
+        tStage.addEventListener('touchstart', e => {
+            if(e.touches.length === 2) {
+                e.preventDefault();
+                touchStartDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                startScale = state.scale;
+            } else if(e.touches.length === 1) {
+                isDrag = true;
+                startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+                initX = state.x; initY = state.y;
+                tImg.style.transition = 'none';
+            }
+        }, {passive: false});
+
+        tStage.addEventListener('touchmove', e => {
+            e.preventDefault();
+            if(e.touches.length === 2) {
+                const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                state.scale = Math.max(0.5, Math.min(4, startScale * (dist / touchStartDist)));
+                updateTransform();
+            } else if(isDrag && e.touches.length === 1) {
+                state.x = initX + (e.touches[0].clientX - startX);
+                state.y = initY + (e.touches[0].clientY - startY);
+                updateTransform();
+            }
+        }, {passive: false});
+
+        tStage.addEventListener('touchend', e => { if(e.touches.length < 2) { isDrag = false; handleRelease(); } });
 
         tStage.addEventListener('mousedown', e => {
             if(e.target.closest('.tc-btn')) return;
             isDrag = true;
             startX = e.clientX; startY = e.clientY;
             initX = state.x; initY = state.y;
-            if(currentImg) currentImg.style.transition = 'none';
+            tImg.style.transition = 'none';
         });
 
         window.addEventListener('mousemove', e => {
@@ -729,24 +727,28 @@
             updateTransform();
         });
 
-        window.addEventListener('mouseup', () => {
-            if(isDrag) {
-                isDrag = false;
-                if(currentImg) currentImg.style.transition = 'transform 0.3s cubic-bezier(0.2,1,0.3,1)';
-                
-                // Swipe Nav Logic
-                if(state.scale <= 1.1) {
-                    if(state.x < -100) { nextItem(); return; }
-                    if(state.x > 100) { prevItem(); return; }
-                    state.x = 0; state.y = 0; state.scale = 1;
-                    updateTransform();
-                }
-            }
+        window.addEventListener('mouseup', () => { if(isDrag) { isDrag = false; handleRelease(); } });
+
+        tStage.addEventListener('wheel', e => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            state.scale = Math.max(0.5, Math.min(4, state.scale + delta));
+            updateTransform();
         });
+
+        function handleRelease() {
+            tImg.style.transition = 'opacity 0.2s ease, transform 0.3s cubic-bezier(0.2,1,0.3,1)';
+            if(state.scale <= 1.1) {
+                if(state.x < -80) { nextItem(); return; }
+                if(state.x > 80) { prevItem(); return; }
+                state.x = 0; state.y = 0; state.scale = 1;
+                updateTransform();
+            }
+        }
 
         // --- NAV ---
         function nextItem() { openTheater(theaterIndex + 1); }
-        function prevItem() { openTheater(theaterIndex - 1); }
+        function prevItem() { if(theaterIndex > 0) openTheater(theaterIndex - 1); }
 
         document.getElementById('btn-next').onclick = nextItem;
         document.getElementById('btn-prev').onclick = prevItem;
