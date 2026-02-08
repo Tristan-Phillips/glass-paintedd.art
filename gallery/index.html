@@ -5,41 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Paintedd | The Archive</title>
     
-    <link rel="preload" as="image" href="/pallet/img/logo-circular.png">
+    <meta name="theme-color" content="#0f0f12">
+    <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png">
     
     <script src="https://kit.fontawesome.com/29c25c094f.js" crossorigin="anonymous"></script>
     
     <style>
         :root {
-            --bg: #050505;
+            --bg-deep: #0f0f12;
             --text: #ffffff;
             
-            /* TIER PALETTE */
+            /* TIER COLORS */
             --c-green: #00ff9d;
             --c-blue: #00a8ff;
             --c-purple: #bd00ff;
             --c-gold: #ffd700;
-            --c-void: #333;
             
             --glass: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
             --card-radius: 12px;
             
-            /* PHYSICS ENGINE: Fast Up (0.3s), Slow Down (0.6s) */
-            --hover-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
-            --hover-exit: cubic-bezier(0.4, 0.0, 0.2, 1);
+            /* KINETIC PHYSICS */
+            --ease-expo: cubic-bezier(0.2, 1, 0.3, 1); /* The "Premium" Feel */
         }
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         body {
-            background-color: var(--bg);
-            background: radial-gradient(circle at 50% 0%, #151520 0%, #050505 100%);
+            background-color: var(--bg-deep);
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(217, 4, 41, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 217, 191, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #100510 0%, #020202 100%);
+            background-attachment: fixed;
             color: var(--text);
             font-family: "Segoe UI", Tahoma, sans-serif;
             margin: 0; min-height: 100vh; overflow-x: hidden;
             overscroll-behavior-y: none;
+        }
+
+        .noise-overlay {
+            position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
         /* --- HEADER --- */
@@ -47,7 +55,7 @@
             position: fixed; top: 0; left: 0; right: 0; z-index: 50;
             padding: 20px 30px;
             display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0) 100%);
+            background: linear-gradient(to bottom, rgba(15,15,18,0.95) 0%, rgba(15,15,18,0) 100%);
             pointer-events: none;
         }
 
@@ -58,69 +66,58 @@
             background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px); color: #fff;
             display: flex; align-items: center; justify-content: center;
-            text-decoration: none; transition: 0.3s ease;
+            text-decoration: none; transition: 0.3s;
         }
-        .nav-btn:hover { background: rgba(255,255,255,0.15); transform: scale(1.1); border-color: #fff; }
+        .nav-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
 
         .resonance-pill {
-            background: rgba(0, 0, 0, 0.6); border: 1px solid var(--glass-border);
+            background: rgba(10, 10, 10, 0.6); border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 30px;
             font-size: 0.9rem; font-weight: 600; letter-spacing: 1px;
             display: flex; gap: 10px; align-items: center; pointer-events: auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
         }
-        .res-val { font-variant-numeric: tabular-nums; font-family: monospace; }
-        
+        .score-bump { animation: flashGold 0.5s ease-out; border-color: var(--c-gold); color: #fff; }
+        @keyframes flashGold { 50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); transform: scale(1.05); } }
+
         /* --- STAGE --- */
         #gallery-stage {
-            /* Removed excessive top padding since we deleted the top divider */
-            padding: 100px 20px 50px;
+            padding: 100px 20px 100px;
             max-width: 1600px; margin: 0 auto;
-            min-height: 100vh;
+            position: relative; z-index: 2;
         }
 
-        /* --- DIVIDER (Only for new chunks) --- */
         .chunk-divider {
             display: flex; align-items: center; justify-content: center;
-            margin: 60px 0 30px; opacity: 0; animation: fadeIn 1s forwards;
+            margin: 60px 0 40px; opacity: 0; animation: fadeIn 1s forwards;
         }
-        .div-line { height: 1px; width: 100px; background: linear-gradient(90deg, transparent, currentColor, transparent); opacity: 0.5; }
-        .div-node { width: 8px; height: 8px; border-radius: 50%; background: currentColor; margin: 0 15px; box-shadow: 0 0 10px currentColor; }
+        .div-line { height: 1px; width: 120px; background: linear-gradient(90deg, transparent, currentColor, transparent); opacity: 0.6; }
+        .div-node { width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin: 0 20px; box-shadow: 0 0 15px currentColor; transform: rotate(45deg); }
         @keyframes fadeIn { to { opacity: 1; } }
 
-        /* --- MASONRY --- */
-        .masonry-row {
-            display: flex; gap: 20px; width: 100%; align-items: flex-start;
-        }
-        .masonry-col {
-            flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 0;
-        }
+        .masonry-row { display: flex; gap: 20px; width: 100%; align-items: flex-start; }
+        .masonry-col { flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
         @media (max-width: 800px) { .masonry-row { gap: 10px; } .masonry-col { gap: 10px; } }
 
-        /* --- ARTIFACT CARD (Physics Fix) --- */
+        /* --- ARTIFACT CARD --- */
         .art-card {
-            position: relative; background: #111;
+            position: relative; background: #1a1a20;
             border-radius: var(--card-radius); overflow: hidden;
-            cursor: zoom-in; opacity: 0; transform: translateY(40px);
-            
-            /* Default State (Exit Animation): Slow and Smooth */
-            transition: transform 0.6s var(--hover-exit), box-shadow 0.6s var(--hover-exit), border-color 0.6s ease;
-            
+            cursor: pointer; opacity: 0; transform: translateY(40px);
+            transition: transform 0.8s var(--ease-expo), box-shadow 0.6s ease;
             border: 1px solid rgba(255,255,255,0.05);
-            user-select: none;
+            user-select: none; display: block; width: 100%;
         }
-        .art-card.visible { animation: floatUp 0.8s ease-out forwards; }
-        @keyframes floatUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .art-card.visible { animation: softFloat 1s var(--ease-expo) forwards; }
+        @keyframes softFloat { to { opacity: 1; transform: translateY(0); } }
 
         .art-card:hover {
-            /* Hover State (Enter Animation): Snappy but Fluid */
-            transform: translateY(-8px); 
-            z-index: 5;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            transition: transform 0.3s var(--hover-enter), box-shadow 0.3s var(--hover-enter), border-color 0.3s ease;
+            transform: translateY(-6px) !important; z-index: 5;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-color: rgba(255,255,255,0.2);
         }
 
-        /* Glint */
         .art-card::after {
             content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
             background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
@@ -129,165 +126,222 @@
         .art-card:hover::after { left: 150%; transition: 0.8s; }
 
         .art-card img {
-            width: 100%; height: auto; display: block;
-            transition: opacity 0.5s; opacity: 0; filter: brightness(0.9);
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: cover;
+            transition: opacity 0.8s ease; opacity: 0; 
+            filter: brightness(0.9);
         }
-        .art-card:hover img { filter: brightness(1.1); }
+        .art-card:hover img { filter: brightness(1); transition: 0.4s; }
         .art-card img.loaded { opacity: 1; }
 
-        /* Rarity Borders */
-        .art-card[data-border="green"] { border-color: rgba(0, 255, 157, 0.3); }
-        .art-card[data-border="blue"] { border-color: rgba(0, 168, 255, 0.3); }
-        .art-card[data-border="purple"] { border-color: rgba(189, 0, 255, 0.3); box-shadow: 0 0 15px rgba(189,0,255,0.1); }
-        .art-card[data-border="gold"] { border-color: rgba(255, 215, 0, 0.4); box-shadow: 0 0 20px rgba(255,215,0,0.15); }
+        .art-card[data-border="green"] { border-bottom: 2px solid var(--c-green); }
+        .art-card[data-border="blue"] { border-bottom: 2px solid var(--c-blue); }
+        .art-card[data-border="purple"] { border-bottom: 2px solid var(--c-purple); }
+        .art-card[data-border="gold"] { border: 1px solid var(--c-gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); }
+
+        .art-card.pearl::before {
+            content:''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+            background: linear-gradient(135deg, rgba(255,0,128,0.1), rgba(0,255,255,0.1));
+            mix-blend-mode: overlay; opacity: 0.5;
+        }
 
         /* --- THE PRISM (Gacha) --- */
         .prism-gate {
-            width: 100%; padding: 80px 0;
+            width: 100%; padding: 120px 0;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 0.5s;
         }
-        .prism-gate.vanish { opacity: 0; pointer-events: none; height: 0; padding: 0; }
+        .prism-gate.vanish { opacity: 0; pointer-events: none; }
 
         .prism-orb {
-            width: 110px; height: 110px; border-radius: 50%;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 0 40px rgba(255,255,255,0.02);
+            width: 100px; height: 100px; border-radius: 50%;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.15);
+            /* NEON BLEED */
+            box-shadow: 0 0 50px rgba(0, 217, 191, 0.1);
             display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; color: rgba(255,255,255,0.5);
-            cursor: pointer; transition: all 0.5s ease;
-            position: relative; overflow: hidden; backdrop-filter: blur(5px);
+            font-size: 2rem; color: rgba(255,255,255,0.4);
+            cursor: pointer; transition: all 0.5s var(--ease-expo);
+            position: relative; backdrop-filter: blur(5px);
         }
         
-        .prism-orb:hover { transform: scale(1.1); border-color: #fff; color: #fff; box-shadow: 0 0 60px rgba(255,255,255,0.15); }
-        .prism-orb:active { transform: scale(0.95); }
-
-        /* SPIN FIX: Rotates the whole orb */
-        .prism-orb.rolling { 
-            animation: spin 1s linear infinite;
-            border-top-color: #fff;
-            border-left-color: var(--c-purple);
+        .prism-orb:hover { 
+            transform: scale(1.1); color: #fff; border-color: #fff; 
+            box-shadow: 0 0 80px rgba(0, 217, 191, 0.3), inset 0 0 30px rgba(0, 217, 191, 0.1);
         }
-        /* Counter-rotate icon to keep it upright-ish or just chaotic */
-        .prism-orb.rolling i { animation: spinReverse 1s linear infinite; }
+        
+        .prism-orb::before {
+            content:''; position: absolute; inset: -8px; border-radius: 50%;
+            border: 1px solid transparent; border-top-color: rgba(255,255,255,0.1);
+            animation: orbit 8s linear infinite; pointer-events: none;
+        }
+        .prism-orb::after {
+            content:''; position: absolute; inset: -4px; border-radius: 50%;
+            border: 1px solid transparent; border-bottom-color: rgba(255,255,255,0.2);
+            animation: orbitReverse 6s linear infinite; pointer-events: none;
+        }
 
-        .prism-orb.green { border-color: var(--c-green); box-shadow: 0 0 50px var(--c-green); color: var(--c-green); }
-        .prism-orb.blue { border-color: var(--c-blue); box-shadow: 0 0 60px var(--c-blue); color: var(--c-blue); }
-        .prism-orb.purple { border-color: var(--c-purple); box-shadow: 0 0 80px var(--c-purple); color: var(--c-purple); }
-        .prism-orb.gold { border-color: var(--c-gold); box-shadow: 0 0 100px var(--c-gold); color: var(--c-gold); animation: pulseGold 2s infinite; }
+        .prism-orb.rolling { animation: pulse 0.2s infinite alternate; }
+        .prism-orb.rolling i { animation: iconFlip 0.4s linear infinite; }
+
+        /* TIER GLOWS */
+        .prism-orb.green { box-shadow: 0 0 80px var(--c-green); border-color: var(--c-green); color: var(--c-green); }
+        .prism-orb.blue { box-shadow: 0 0 100px var(--c-blue); border-color: var(--c-blue); color: var(--c-blue); }
+        .prism-orb.purple { box-shadow: 0 0 120px var(--c-purple); border-color: var(--c-purple); color: var(--c-purple); }
+        .prism-orb.gold { box-shadow: 0 0 150px var(--c-gold); border-color: var(--c-gold); color: var(--c-gold); animation: spinGold 2s infinite linear; }
 
         .prism-text {
             margin-top: 30px; font-family: monospace; font-weight: 700; 
-            letter-spacing: 4px; color: rgba(255,255,255,0.3); font-size: 0.8rem;
+            letter-spacing: 3px; color: rgba(255,255,255,0.3); font-size: 0.8rem;
             transition: 0.3s;
         }
-        .prism-orb:hover + .prism-text { color: #fff; opacity: 1; }
+        .prism-orb:hover + .prism-text { color: #fff; opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
 
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes spinReverse { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
-        @keyframes pulseGold { 0% { box-shadow: 0 0 50px var(--c-gold); } 50% { box-shadow: 0 0 100px var(--c-gold); } 100% { box-shadow: 0 0 50px var(--c-gold); } }
+        @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes orbitReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+        @keyframes iconFlip { 0% { opacity:0; transform: scale(0.5); } 50% { opacity:1; transform: scale(1.2); } 100% { opacity:0; transform: scale(0.5); } }
+        @keyframes spinGold { to { transform: rotate(360deg); } }
 
-        /* --- THEATER (Lightbox) --- */
+        /* --- THEATER (Dual-Buffer Physics) --- */
         .theater {
             position: fixed; inset: 0; z-index: 1000;
-            background: rgba(0,0,0,0.96); backdrop-filter: blur(20px);
-            opacity: 0; pointer-events: none; transition: opacity 0.4s;
-            display: flex;
+            background: rgba(0,0,0,0.98); 
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            display: flex; touch-action: none;
         }
         .theater.active { opacity: 1; pointer-events: auto; }
 
         .t-stage {
-            flex: 2; position: relative;
+            flex: 1; position: relative;
             display: flex; align-items: center; justify-content: center;
-            overflow: hidden; cursor: grab;
+            overflow: hidden; 
         }
-        .t-stage:active { cursor: grabbing; }
 
+        /* Image Containers */
         .t-img {
-            max-width: 90%; max-height: 90%; object-fit: contain;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-            transform-origin: center; will-change: transform;
+            position: absolute; /* Crucial for overlay */
+            max-width: 95%; max-height: 95%; object-fit: contain;
+            box-shadow: 0 0 100px rgba(0,0,0,0.8);
+            transform-origin: center; will-change: transform, opacity;
             user-select: none; -webkit-user-drag: none;
-            opacity: 0; transition: opacity 0.3s;
         }
-        .t-img.show { opacity: 1; }
 
-        .t-controls {
-            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-            display: flex; gap: 10px; z-index: 20;
-            background: rgba(40, 40, 40, 0.6);
-            backdrop-filter: blur(20px); padding: 10px 15px; border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        /* PHYSICS ANIMATIONS (The Secret Sauce) */
+        .anim-in-right { animation: slideInRight 0.5s var(--ease-expo) forwards; }
+        .anim-out-left { animation: slideOutLeft 0.5s var(--ease-expo) forwards; }
+        .anim-in-left { animation: slideInLeft 0.5s var(--ease-expo) forwards; }
+        .anim-out-right { animation: slideOutRight 0.5s var(--ease-expo) forwards; }
+
+        @keyframes slideInRight {
+            0% { transform: translateX(100px) scale(0.9); opacity: 0; }
+            100% { transform: translateX(0) scale(1); opacity: 1; }
         }
+        @keyframes slideOutLeft {
+            0% { transform: translateX(0) scale(1); opacity: 1; }
+            100% { transform: translateX(-50px) scale(0.9); opacity: 0; }
+        }
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100px) scale(0.9); opacity: 0; }
+            100% { transform: translateX(0) scale(1); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            0% { transform: translateX(0) scale(1); opacity: 1; }
+            100% { transform: translateX(50px) scale(0.9); opacity: 0; }
+        }
+
+        /* CONTROLS (Glass Dock) */
+        .t-controls {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 20;
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            padding: 8px; border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
         .tc-btn {
             width: 45px; height: 45px; border-radius: 50%; border: none;
             background: transparent; color: #eee;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; cursor: pointer; transition: 0.2s;
+            font-size: 1.1rem; cursor: pointer;
+            transition: 0.2s;
         }
         .tc-btn:hover { background: rgba(255,255,255,0.15); color: #fff; transform: translateY(-3px); }
+        .tc-btn:active { transform: scale(0.95); }
+        .tc-sep { width: 1px; height: 25px; background: rgba(255,255,255,0.1); align-self: center; margin: 0 5px; }
 
         /* PANEL */
         .t-panel {
-            flex: 1; min-width: 350px; max-width: 450px;
-            background: rgba(20, 20, 20, 0.95); border-left: 1px solid var(--glass-border);
+            width: 400px; background: rgba(20, 20, 25, 0.95); 
+            border-left: 1px solid var(--glass-border);
             padding: 40px; display: flex; flex-direction: column; gap: 20px;
             overflow-y: auto; z-index: 10;
+            backdrop-filter: blur(30px);
         }
         @media(max-width: 900px) { 
             .theater { flex-direction: column; } 
             .t-panel { 
-                width: 100%; max-width: none; 
-                height: auto; max-height: 40%; min-height: 200px;
+                width: 100%; height: auto; min-height: 200px; max-height: 40%;
                 border-left: none; border-top: 1px solid var(--glass-border); 
-                padding: 20px;
+                padding: 25px;
             } 
+            .t-controls { bottom: 20px; padding: 6px; }
+            .tc-btn { width: 40px; height: 40px; }
         }
 
         .t-close {
-            position: absolute; top: 20px; right: 20px; z-index: 50;
+            position: absolute; top: 25px; right: 25px; z-index: 50;
             width: 45px; height: 45px; border-radius: 50%;
-            background: rgba(255,255,255,0.1); color: #fff;
+            background: rgba(255,255,255,0.05); color: #fff;
             display: flex; align-items: center; justify-content: center; cursor: pointer;
-            transition: 0.2s; backdrop-filter: blur(5px);
+            transition: 0.3s; backdrop-filter: blur(10px);
         }
         .t-close:hover { background: #d90429; transform: rotate(90deg); }
 
-        .t-meta h1 { margin: 0; font-size: 2rem; font-weight: 700; color: #fff; line-height: 1.1; }
-        .t-meta p { font-family: monospace; color: var(--c-blue); margin-top: 5px; opacity: 0.8; }
-        .t-desc { color: #ccc; line-height: 1.6; font-size: 0.95rem; border-left: 2px solid var(--c-purple); padding-left: 15px; }
+        .t-meta h1 { margin: 0; font-size: 1.8rem; font-weight: 700; color: #fff; line-height: 1.1; }
+        .t-meta p { font-family: monospace; color: var(--c-blue); margin-top: 8px; opacity: 0.7; font-size: 0.85rem; }
+        .t-desc { color: #aaa; line-height: 1.7; font-size: 0.9rem; font-weight: 300; }
 
-        /* WHATSAPP GREEN BUTTON */
+        /* WHATSAPP BUTTON (Readable & Stylish) */
         .action-btn {
-            width: 100%; padding: 15px; border-radius: 8px;
-            /* Official WhatsApp Green */
+            width: 100%; padding: 15px; border-radius: 12px;
             background: #25D366; 
-            color: #fff; font-weight: 700; letter-spacing: 1px;
+            color: #000; font-weight: 800; letter-spacing: 1px; font-size: 0.9rem;
             border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
             transition: transform 0.2s, box-shadow 0.2s; margin-top: auto;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            text-shadow: none;
         }
         .action-btn:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); 
-            background: #20bd5a; 
+            background: #20bd5a; color: #fff;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+            transform: translateY(-2px); 
         }
 
-        /* End Card */
         .end-card {
             width: 100%; max-width: 500px; margin: 100px auto; padding: 60px 40px;
             border: 1px solid rgba(255,255,255,0.1); 
             background: linear-gradient(180deg, rgba(20,20,25,0.9), rgba(5,5,5,0.95));
             border-radius: 4px; text-align: center; backdrop-filter: blur(20px);
-            animation: floatUp 1s ease;
+            animation: softFloat 1s ease;
         }
-        .end-score { font-size: 3.5rem; font-weight: 800; color: #fff; line-height: 1; }
+        .end-score { font-size: 3.5rem; font-weight: 800; color: #fff; }
         .end-rank { font-size: 1.2rem; color: #ffd700; letter-spacing: 2px; margin-top: 10px; }
+
+        /* SPINNER (Subtle) */
+        .spinner {
+            position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; margin: -20px;
+            border: 2px solid rgba(255,255,255,0.1); border-top-color: #fff;
+            border-radius: 50%; animation: spin 0.8s infinite linear; z-index: 0;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
     </style>
 </head>
 <body>
+
+    <div class="noise-overlay"></div>
 
     <header class="gallery-header">
         <div class="header-left">
@@ -308,23 +362,23 @@
         <div class="t-close" id="close-theater"><i class="fas fa-times"></i></div>
         
         <div class="t-stage" id="t-stage">
-            <img src="" class="t-img" id="t-img" ondragstart="return false;">
-            
+            <div class="spinner" id="t-spinner"></div>
             <div class="t-controls">
-                <button class="tc-btn" id="btn-prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="tc-btn" id="btn-next"><i class="fas fa-chevron-right"></i></button>
-                <div class="tc-sep" style="width:1px; height:20px; background:rgba(255,255,255,0.2); margin:0 5px;"></div>
-                <button class="tc-btn" id="btn-rotate"><i class="fas fa-rotate-right"></i></button>
+                <button class="tc-btn" id="btn-prev" title="Previous"><i class="fas fa-chevron-left"></i></button>
+                <button class="tc-btn" id="btn-next" title="Next"><i class="fas fa-chevron-right"></i></button>
+                <div class="tc-sep"></div>
+                <button class="tc-btn" id="btn-rotate" title="Rotate"><i class="fas fa-rotate-right"></i></button>
+                <button class="tc-btn" id="btn-download" title="Download"><i class="fas fa-download"></i></button>
             </div>
         </div>
         
         <div class="t-panel">
-            <div id="t-status"></div>
             <div class="t-meta">
                 <h1 id="t-title"></h1>
                 <p id="t-id"></p>
             </div>
             <div class="t-desc" id="t-desc"></div>
+            <div id="t-status" style="margin-top:20px;"></div>
             
             <button class="action-btn" id="inquire-btn">
                 <i class="fab fa-whatsapp"></i> <span>INQUIRE ARTIST</span>
@@ -339,7 +393,6 @@
         const stage = document.getElementById('gallery-stage');
         const scoreVal = document.getElementById('score-val');
         
-        // Data
         let allArtworks = [];
         let loadedChunks = []; 
         let storeData = {};
@@ -349,10 +402,10 @@
 
         // Tiers
         const TIERS = [
-            { id: 'green',  label: 'COMMON',    color: '#00ff9d', count: 8,  weight: 50 },
-            { id: 'blue',   label: 'RARE',      color: '#00a8ff', count: 16, weight: 30 },
-            { id: 'purple', label: 'LEGENDARY', color: '#bd00ff', count: 24, weight: 15 },
-            { id: 'gold',   label: 'EXOTIC',    color: '#ffd700', count: 40, weight: 5 }
+            { id: 'green',  label: '8 ARTIFACTS',    color: '#00ff9d', count: 8,  weight: 50 },
+            { id: 'blue',   label: '16 ARTIFACTS',   color: '#00a8ff', count: 16, weight: 30 },
+            { id: 'purple', label: '24 ARTIFACTS',   color: '#bd00ff', count: 24, weight: 15 },
+            { id: 'gold',   label: '40 ARTIFACTS',   color: '#ffd700', count: 40, weight: 5 }
         ];
 
         // --- INIT ---
@@ -378,7 +431,6 @@
                     (store.inventory || []).forEach(i => storeData[i.art_id] = i);
                 }
 
-                // Initial Load (Free) - NO DIVIDER
                 loadChunk(8, null); 
 
             } catch(e) {
@@ -387,17 +439,18 @@
             }
         }
 
-        // --- SCORING ---
         function addScore(amt) {
             userScore += amt;
             scoreVal.textContent = userScore;
+            const pill = document.querySelector('.resonance-pill');
+            pill.classList.remove('score-bump');
+            void pill.offsetWidth;
+            pill.classList.add('score-bump');
         }
 
-        // --- LAYOUT ---
         function createColumns() {
             const row = document.createElement('div');
             row.className = 'masonry-row';
-            
             const w = window.innerWidth;
             const cols = w > 1400 ? 4 : (w > 900 ? 3 : 2);
             
@@ -412,14 +465,9 @@
             return buckets;
         }
 
-        // --- LOADING LOGIC ---
         function loadChunk(amount, tierData) {
-            if(loadedCount >= allArtworks.length) {
-                showEndCard();
-                return;
-            }
+            if(loadedCount >= allArtworks.length) { showEndCard(); return; }
 
-            // Divider (Only if tierData is provided, skips on initial load)
             if(tierData) {
                 const div = document.createElement('div');
                 div.className = 'chunk-divider';
@@ -434,11 +482,12 @@
             chunk.forEach((item, i) => {
                 loadedChunks.push(item);
                 const globalIdx = loadedChunks.length - 1;
-
-                const imgObj = item.images || {};
-                const src = imgObj.thumbnail || imgObj.medium || imgObj.original;
+                const src = item.images.thumbnail || item.images.medium;
                 
-                // Visual RNG
+                let aspect = '1 / 1';
+                if(item.orientation === 'portrait') aspect = '3 / 4';
+                if(item.orientation === 'landscape') aspect = '4 / 3';
+
                 const rand = Math.random();
                 let border = '';
                 if(rand > 0.95) border = 'gold';
@@ -446,9 +495,12 @@
                 else if(rand > 0.70) border = 'blue';
                 else if(rand > 0.50) border = 'green';
                 
+                const isPearl = Math.random() > 0.92;
+
                 const card = document.createElement('div');
-                card.className = `art-card`;
-                card.style.animationDelay = `${i * 50}ms`;
+                card.className = `art-card ${isPearl ? 'pearl' : ''}`;
+                card.style.aspectRatio = aspect;
+                card.style.animationDelay = `${i * 80}ms`; 
                 if(border) card.dataset.border = border;
                 
                 const img = document.createElement('img');
@@ -462,7 +514,6 @@
 
                 card.appendChild(img);
                 card.onclick = () => openTheater(globalIdx);
-
                 buckets[i % buckets.length].appendChild(card);
             });
 
@@ -475,15 +526,16 @@
             }
         }
 
-        // --- GACHA (THE PRISM) ---
+        // --- GACHA (THE CARNIVAL) ---
         function spawnPrism() {
             const gate = document.createElement('div');
             gate.className = 'prism-gate';
+            gate.id = "gacha-anchor"; 
             gate.innerHTML = `
-                <div class="prism-orb" onclick="rollGacha(this)">
+                <div class="prism-orb" onclick="rollGacha(this)" id="main-orb">
                     <i class="fas fa-fingerprint"></i>
                 </div>
-                <div class="prism-text">TOUCH TO RESONATE</div>
+                <div class="prism-text">ROLLING FOR ART...</div>
             `;
             stage.appendChild(gate);
         }
@@ -493,22 +545,21 @@
             orb.classList.add('rolling');
             
             const text = orb.nextElementSibling;
-            text.innerText = "TUNING...";
+            text.innerText = "ALIGNING LAYERS...";
             
-            // 4 Seconds Roll
-            let step = 0;
-            const colors = ['green', 'blue', 'purple', 'gold'];
+            const icons = ['fa-bolt', 'fa-eye', 'fa-gem', 'fa-star', 'fa-moon', 'fa-sun'];
+            let iconIdx = 0;
+            const colors = ['#00ff9d', '#00a8ff', '#bd00ff', '#ffd700'];
             
-            const interval = setInterval(() => {
-                orb.className = `prism-orb rolling ${colors[step % 4]}`;
-                orb.innerHTML = '<i class="fas fa-circle-notch"></i>';
-                step++;
-            }, 200); 
+            const cycle = setInterval(() => {
+                orb.innerHTML = `<i class="fas ${icons[iconIdx]}"></i>`;
+                orb.style.boxShadow = `0 0 60px ${colors[iconIdx % 4]}`;
+                iconIdx = (iconIdx + 1) % icons.length;
+            }, 150);
 
             setTimeout(() => {
-                clearInterval(interval);
+                clearInterval(cycle);
                 
-                // Result
                 let rand = Math.floor(Math.random() * 100);
                 let result = TIERS[0];
                 let sum = 0;
@@ -517,9 +568,10 @@
                     if(rand < sum) { result = t; break; }
                 }
 
-                // Show
+                orb.classList.remove('rolling');
                 orb.className = `prism-orb ${result.id}`;
-                orb.innerHTML = result.id === 'gold' ? '<i class="fas fa-star"></i>' : '<i class="fas fa-check"></i>';
+                orb.innerHTML = result.id === 'gold' ? '<i class="fas fa-crown"></i>' : '<i class="fas fa-check"></i>';
+                
                 text.innerText = `// ${result.label} UNLOCKED`;
                 text.style.color = result.color;
                 
@@ -532,9 +584,9 @@
                         gate.remove();
                         loadChunk(result.count, { color: result.color });
                     }, 500);
-                }, 1500);
+                }, 1200);
 
-            }, 4000); // 4 Seconds
+            }, 4000); 
         };
 
         function showEndCard() {
@@ -549,41 +601,115 @@
             stage.appendChild(card);
         }
 
-        // --- THEATER ENGINE ---
+        // --- THEATER ENGINE (DUAL BUFFER) ---
         const theater = document.getElementById('theater');
-        const tImg = document.getElementById('t-img');
         const tStage = document.getElementById('t-stage');
+        let currentImg = null;
         let state = { x:0, y:0, scale:1, rotation:0 };
+        let isAnimating = false;
 
         function openTheater(index) {
+            if(index < 0) return;
+            
+            // Auto Unlock Loop
+            if (index >= loadedChunks.length) {
+                closeTheater();
+                setTimeout(() => {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    const orb = document.getElementById('main-orb');
+                    if(orb) orb.classList.add('active'); 
+                }, 300);
+                return;
+            }
+
+            // Direction Detection
+            const direction = index > theaterIndex ? 'next' : 'prev';
             theaterIndex = index;
             const item = loadedChunks[index];
-            if(!item) return;
 
-            // Content Logic (Smart Title)
-            const displayTitle = item.title ? item.title : item.id;
-            document.getElementById('t-title').textContent = displayTitle;
+            // Update Meta
+            updateMeta(item);
+
+            // Create New Image (Buffer)
+            const newImg = document.createElement('img');
+            newImg.className = 't-img';
+            newImg.draggable = false;
+            
+            const src = item.images.medium || item.images.original;
+            newImg.src = src;
+
+            // Wait for load to ensure smooth transition
+            newImg.onload = () => {
+                // If it's the first open (no current image)
+                if(!currentImg) {
+                    tStage.appendChild(newImg);
+                    newImg.classList.add('show'); // Fade In
+                    currentImg = newImg;
+                    theater.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } 
+                else {
+                    // SLIDE TRANSITION
+                    tStage.appendChild(newImg);
+                    
+                    if(direction === 'next') {
+                        newImg.classList.add('anim-in-right');
+                        currentImg.classList.add('anim-out-left');
+                    } else {
+                        newImg.classList.add('anim-in-left');
+                        currentImg.classList.add('anim-out-right');
+                    }
+
+                    // Clean up old image after animation
+                    setTimeout(() => {
+                        if(currentImg && currentImg.parentNode) currentImg.remove();
+                        currentImg = newImg;
+                        // Remove animation classes to allow dragging later
+                        currentImg.className = 't-img show';
+                    }, 500);
+                }
+            };
+        }
+
+        function updateMeta(item) {
+            const title = item.title || item.id;
+            document.getElementById('t-title').textContent = title;
             document.getElementById('t-id').textContent = item.id;
             document.getElementById('t-desc').textContent = item.description || "";
             
-            // Image
-            tImg.classList.remove('show');
-            tImg.src = item.images.medium || item.images.original;
-            tImg.onload = () => tImg.classList.add('show');
+            const store = storeData[item.id];
+            const btn = document.getElementById('inquire-btn');
+            const statusDiv = document.getElementById('t-status');
+            
+            if(store && store.status === 'available') {
+                statusDiv.innerHTML = `<span style="color:#00ff9d; font-family:monospace; letter-spacing:1px; font-size:0.8rem;">● AVAILABLE FOR PURCHASE</span>`;
+                btn.innerHTML = `<i class="fab fa-whatsapp"></i> PURCHASE REQUEST`;
+            } else if (store && store.status === 'sold') {
+                statusDiv.innerHTML = `<span style="color:#ff3333; font-family:monospace; letter-spacing:1px; font-size:0.8rem;">● SOLD OUT</span>`;
+                btn.innerHTML = `<i class="fab fa-whatsapp"></i> INQUIRE PRINT`;
+            } else {
+                statusDiv.innerHTML = '';
+                btn.innerHTML = `<i class="fab fa-whatsapp"></i> GENERAL INQUIRY`;
+            }
+        }
 
-            // Reset Transform
-            state = { x:0, y:0, scale:1, rotation:0 };
-            updateTransform();
-
-            theater.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        function closeTheater() {
+            theater.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                tStage.innerHTML = '<div class="spinner" id="t-spinner"></div>';
+                currentImg = null;
+            }, 300);
         }
 
         function updateTransform() {
-            tImg.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg) scale(${state.scale})`;
+            if(currentImg) {
+                currentImg.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg) scale(${state.scale})`;
+            }
         }
 
-        // --- GESTURES & ZOOM ---
+        // --- GESTURES ---
+        // (Simplified for Reliability: Drag moves the current image)
         let isDrag = false;
         let startX=0, startY=0, initX=0, initY=0;
 
@@ -592,7 +718,7 @@
             isDrag = true;
             startX = e.clientX; startY = e.clientY;
             initX = state.x; initY = state.y;
-            tImg.style.transition = 'none';
+            if(currentImg) currentImg.style.transition = 'none';
         });
 
         window.addEventListener('mousemove', e => {
@@ -604,36 +730,41 @@
         });
 
         window.addEventListener('mouseup', () => {
-            if(!isDrag) return;
-            isDrag = false;
-            tImg.style.transition = 'transform 0.3s cubic-bezier(0.2,1,0.3,1)';
-            // Snap logic
-            if(state.scale === 1) {
-                if(state.x < -100) { nextItem(); return; }
-                if(state.x > 100) { prevItem(); return; }
-                state.x = 0; state.y = 0; updateTransform();
+            if(isDrag) {
+                isDrag = false;
+                if(currentImg) currentImg.style.transition = 'transform 0.3s cubic-bezier(0.2,1,0.3,1)';
+                
+                // Swipe Nav Logic
+                if(state.scale <= 1.1) {
+                    if(state.x < -100) { nextItem(); return; }
+                    if(state.x > 100) { prevItem(); return; }
+                    state.x = 0; state.y = 0; state.scale = 1;
+                    updateTransform();
+                }
             }
         });
 
-        tStage.addEventListener('wheel', e => {
-            e.preventDefault();
-            const delta = e.deltaY > 0 ? -0.1 : 0.1;
-            state.scale = Math.max(0.5, Math.min(4, state.scale + delta));
-            updateTransform();
-        });
-
-        // Navigation
-        function nextItem() { if(theaterIndex < loadedChunks.length-1) openTheater(theaterIndex+1); }
-        function prevItem() { if(theaterIndex > 0) openTheater(theaterIndex-1); }
+        // --- NAV ---
+        function nextItem() { openTheater(theaterIndex + 1); }
+        function prevItem() { openTheater(theaterIndex - 1); }
 
         document.getElementById('btn-next').onclick = nextItem;
         document.getElementById('btn-prev').onclick = prevItem;
-        document.getElementById('close-theater').onclick = () => {
-            theater.classList.remove('active');
-            document.body.style.overflow = '';
-        };
+        document.getElementById('close-theater').onclick = closeTheater;
+        
         document.getElementById('btn-rotate').onclick = () => {
             state.rotation += 90; updateTransform();
+        };
+
+        document.getElementById('btn-download').onclick = () => {
+            const item = loadedChunks[theaterIndex];
+            if(!item) return;
+            const a = document.createElement('a');
+            a.href = item.images.original || item.images.medium;
+            a.download = `Paintedd-${item.id}`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         };
 
         document.getElementById('inquire-btn').onclick = () => {
@@ -645,7 +776,7 @@
 
         document.addEventListener('keydown', e => {
             if(!theater.classList.contains('active')) return;
-            if(e.key === 'Escape') document.getElementById('close-theater').click();
+            if(e.key === 'Escape') closeTheater();
             if(e.key === 'ArrowRight') nextItem();
             if(e.key === 'ArrowLeft') prevItem();
         });
