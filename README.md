@@ -1,3 +1,3 @@
 # Paintedd.Art 
 
-- Website gallery and personal art platform
+- Paintedd Artist, Online Galery Website and so much more

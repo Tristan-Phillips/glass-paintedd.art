@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Paintedd | The Archive</title>
     
-    <link rel="icon" href="../pallet/img/logo-circular.png" type="image/png">
+    <link rel="preload" as="image" href="/pallet/img/logo-circular.png">
+    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png">
     
     <script src="https://kit.fontawesome.com/29c25c094f.js" crossorigin="anonymous"></script>
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     
     <style>
         :root {
-            --bg: #080808;
+            --bg: #050505;
             --text: #ffffff;
-            --tint: #00d9bf;
-            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
             
-            --c-void: #888;
-            --c-green: #00ff88; 
-            --c-blue: #00ccff;  
-            --c-purple: #bd00ff; 
-            --c-gold: #f1c40f;   
-            --c-red: #ff3333;    
+            /* TIER PALETTE */
+            --c-green: #00ff9d;
+            --c-blue: #00a8ff;
+            --c-purple: #bd00ff;
+            --c-gold: #ffd700;
+            --c-void: #333;
+            
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-radius: 12px;
+            
+            /* PHYSICS ENGINE: Fast Up (0.3s), Slow Down (0.6s) */
+            --hover-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
+            --hover-exit: cubic-bezier(0.4, 0.0, 0.2, 1);
         }
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -31,809 +37,621 @@
             background-color: var(--bg);
             background: radial-gradient(circle at 50% 0%, #151520 0%, #050505 100%);
             color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: "Segoe UI", Tahoma, sans-serif;
             margin: 0; min-height: 100vh; overflow-x: hidden;
+            overscroll-behavior-y: none;
         }
 
-        .ambient-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        .fog { position: absolute; border-radius: 50%; filter: blur(150px); opacity: 0.15; transition: background 1s; mix-blend-mode: screen; }
-        .fog.a { top: -10%; left: -10%; width: 80vw; height: 80vw; background: #222; animation: drift 40s infinite alternate; }
-        .fog.b { bottom: -10%; right: -10%; width: 90vw; height: 90vw; background: #111; animation: drift 50s infinite alternate-reverse; }
-        @keyframes drift { from { transform: translate(0,0); } to { transform: translate(40px, 40px); } }
-
-        .breadcrumbs {
-            position: fixed; top: 30px; left: 30px; z-index: 20;
-            font-family: monospace; font-size: 0.75rem; color: #888;
-            letter-spacing: 1px; pointer-events: auto; mix-blend-mode: difference;
-        }
-        .breadcrumbs a { color: #aaa; text-decoration: none; } .breadcrumbs a:hover { color: #fff; }
-
-        header {
-            position: fixed; top: 30px; right: 30px; z-index: 50;
-            display: flex; gap: 15px; align-items: center;
+        /* --- HEADER --- */
+        .gallery-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+            padding: 20px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0) 100%);
+            pointer-events: none;
         }
 
-        /* SEARCH CRYSTAL (Replaced Fidget) */
-        .search-uplink {
-            width: 35px; height: 35px;
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; backdrop-filter: blur(10px);
-            transition: 0.3s var(--ease-spring);
-            text-decoration: none; /* Link reset */
+        .header-left, .header-right { pointer-events: auto; display: flex; gap: 15px; align-items: center; }
+
+        .nav-btn {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s ease;
         }
-        .search-uplink i { color: #fff; font-size: 0.9rem; transition: 0.3s; opacity: 0.7; }
+        .nav-btn:hover { background: rgba(255,255,255,0.15); transform: scale(1.1); border-color: #fff; }
+
+        .resonance-pill {
+            background: rgba(0, 0, 0, 0.6); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 30px;
+            font-size: 0.9rem; font-weight: 600; letter-spacing: 1px;
+            display: flex; gap: 10px; align-items: center; pointer-events: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .res-val { font-variant-numeric: tabular-nums; font-family: monospace; }
         
-        .search-uplink:hover { transform: scale(1.1); border-color: #fff; background: rgba(255,255,255,0.1); }
-        .search-uplink:hover i { opacity: 1; color: #fff; }
-        .search-uplink:active { transform: scale(0.9); }
-
-        .archive-stat {
-            font-family: monospace; font-size: 0.7rem; color: #fff;
-            background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-            text-transform: uppercase; letter-spacing: 2px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: all 0.5s ease;
-        }
-        .stat-label { color: #aaa; margin-right: 5px; }
-        
-        .score-up { border-color: var(--c-green); color: var(--c-green); box-shadow: 0 0 15px rgba(0,255,136,0.2); }
-        .score-down { border-color: var(--c-void); color: var(--c-void); opacity: 0.7; }
-
-        #main-stage {
-            position: relative; z-index: 10;
-            padding: 100px 4vw 50px;
-            min-height: 50vh;
+        /* --- STAGE --- */
+        #gallery-stage {
+            /* Removed excessive top padding since we deleted the top divider */
+            padding: 100px 20px 50px;
+            max-width: 1600px; margin: 0 auto;
+            min-height: 100vh;
         }
 
-        .roll-divider {
-            width: 100%; display: flex; align-items: center; justify-content: center;
-            margin: 40px 0 20px; opacity: 0; animation: fadeIn 1s forwards;
+        /* --- DIVIDER (Only for new chunks) --- */
+        .chunk-divider {
+            display: flex; align-items: center; justify-content: center;
+            margin: 60px 0 30px; opacity: 0; animation: fadeIn 1s forwards;
         }
-        .div-line { height: 1px; flex: 1; background: linear-gradient(90deg, transparent, currentColor, transparent); opacity: 0.3; }
-        .div-node { 
-            width: 6px; height: 6px; border-radius: 50%; background: currentColor; 
-            box-shadow: 0 0 15px currentColor; margin: 0 15px;
-        }
+        .div-line { height: 1px; width: 100px; background: linear-gradient(90deg, transparent, currentColor, transparent); opacity: 0.5; }
+        .div-node { width: 8px; height: 8px; border-radius: 50%; background: currentColor; margin: 0 15px; box-shadow: 0 0 10px currentColor; }
         @keyframes fadeIn { to { opacity: 1; } }
 
-        .gallery-segment {
-            display: flex; gap: 15px; align-items: flex-start;
-            margin-bottom: 20px; width: 100%;
+        /* --- MASONRY --- */
+        .masonry-row {
+            display: flex; gap: 20px; width: 100%; align-items: flex-start;
         }
-        .gallery-column {
-            flex: 1; display: flex; flex-direction: column; gap: 15px;
-            min-width: 0;
+        .masonry-col {
+            flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 0;
         }
-        @media (max-width: 600px) { .gallery-segment { gap: 10px; } .gallery-column { gap: 10px; } }
+        @media (max-width: 800px) { .masonry-row { gap: 10px; } .masonry-col { gap: 10px; } }
 
-        .artifact {
-            position: relative; cursor: pointer;
-            border-radius: 6px; overflow: hidden;
-            background: #111; width: 100%;
+        /* --- ARTIFACT CARD (Physics Fix) --- */
+        .art-card {
+            position: relative; background: #111;
+            border-radius: var(--card-radius); overflow: hidden;
+            cursor: zoom-in; opacity: 0; transform: translateY(40px);
+            
+            /* Default State (Exit Animation): Slow and Smooth */
+            transition: transform 0.6s var(--hover-exit), box-shadow 0.6s var(--hover-exit), border-color 0.6s ease;
+            
             border: 1px solid rgba(255,255,255,0.05);
-            opacity: 0; transform: scale(0.95) translateY(20px);
-            transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+            user-select: none;
         }
-        
-        .artifact.reveal { animation: popIn 0.6s var(--ease-spring) forwards; }
-        @keyframes popIn { to { opacity: 1; transform: scale(1) translateY(0); } }
+        .art-card.visible { animation: floatUp 0.8s ease-out forwards; }
+        @keyframes floatUp { to { opacity: 1; transform: translateY(0); } }
 
-        .artifact:hover { transform: scale(1.02) !important; z-index: 5; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.2); }
+        .art-card:hover {
+            /* Hover State (Enter Animation): Snappy but Fluid */
+            transform: translateY(-8px); 
+            z-index: 5;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            transition: transform 0.3s var(--hover-enter), box-shadow 0.3s var(--hover-enter), border-color 0.3s ease;
+        }
 
-        .artifact::after {
+        /* Glint */
+        .art-card::after {
             content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
             background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
             transform: skewX(-20deg); pointer-events: none; transition: 0.6s; z-index: 2;
         }
-        .artifact:hover::after { left: 150%; transition: 0.6s; }
+        .art-card:hover::after { left: 150%; transition: 0.8s; }
 
-        .artifact.pearl::after {
-            background: linear-gradient(115deg, transparent 30%, rgba(255,0,150,0.15) 45%, rgba(0,255,255,0.15) 50%, rgba(255,255,0,0.15) 55%, transparent 70%);
+        .art-card img {
+            width: 100%; height: auto; display: block;
+            transition: opacity 0.5s; opacity: 0; filter: brightness(0.9);
         }
+        .art-card:hover img { filter: brightness(1.1); }
+        .art-card img.loaded { opacity: 1; }
 
-        .art-img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-            opacity: 0; transition: opacity 0.4s ease;
-            position: absolute; top: 0; left: 0;
-        }
-        .art-img.loaded { opacity: 1; }
+        /* Rarity Borders */
+        .art-card[data-border="green"] { border-color: rgba(0, 255, 157, 0.3); }
+        .art-card[data-border="blue"] { border-color: rgba(0, 168, 255, 0.3); }
+        .art-card[data-border="purple"] { border-color: rgba(189, 0, 255, 0.3); box-shadow: 0 0 15px rgba(189,0,255,0.1); }
+        .art-card[data-border="gold"] { border-color: rgba(255, 215, 0, 0.4); box-shadow: 0 0 20px rgba(255,215,0,0.15); }
 
-        .artifact[data-rarity="rare"] { border: 1px solid var(--c-blue); }
-        .artifact[data-rarity="epic"] { border: 1px solid var(--c-purple); box-shadow: 0 0 15px rgba(189, 0, 255, 0.2); }
-        .artifact[data-rarity="legendary"] { border: 1px solid var(--c-gold); box-shadow: 0 0 20px rgba(255, 204, 0, 0.3); }
-        .artifact[data-rarity="legendary"]::before {
-            content: '✦'; position: absolute; top: 6px; right: 6px; z-index: 3;
-            color: var(--c-gold); font-size: 10px; text-shadow: 0 0 5px var(--c-gold);
-        }
-
-        .gacha-gate {
-            width: 100%; max-width: 400px; margin: 80px auto; padding: 40px;
+        /* --- THE PRISM (Gacha) --- */
+        .prism-gate {
+            width: 100%; padding: 80px 0;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            position: relative; transition: all 0.5s var(--ease-spring);
+            transition: opacity 0.5s;
         }
-        .gacha-gate.unlocked { opacity: 0; transform: scale(0.8); pointer-events: none; height: 0; margin: 0; padding: 0; }
+        .prism-gate.vanish { opacity: 0; pointer-events: none; height: 0; padding: 0; }
 
-        .loot-orb {
-            width: 90px; height: 90px; border-radius: 50%;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 0 40px rgba(255,255,255,0.05), inset 0 0 20px rgba(255,255,255,0.02);
-            cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: rgba(255,255,255,0.5);
-            backdrop-filter: blur(8px);
+        .prism-orb {
+            width: 110px; height: 110px; border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 40px rgba(255,255,255,0.02);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: rgba(255,255,255,0.5);
+            cursor: pointer; transition: all 0.5s ease;
+            position: relative; overflow: hidden; backdrop-filter: blur(5px);
         }
-        .loot-orb:hover { transform: scale(1.1); color: #fff; border-color: #fff; box-shadow: 0 0 60px rgba(255,255,255,0.2); }
-        .loot-orb:active { transform: scale(0.9); }
-        .loot-orb.rolling { animation: float 0.2s infinite; pointer-events: none; color: #fff; border-color: #fff; }
         
-        .loot-orb.fail   { border-color: var(--c-void); box-shadow: 0 0 50px var(--c-void); color: var(--c-void); animation: shake 0.4s; }
-        .loot-orb.green  { border-color: var(--c-green); box-shadow: 0 0 50px var(--c-green); color: var(--c-green); }
-        .loot-orb.blue   { border-color: var(--c-blue); box-shadow: 0 0 50px var(--c-blue); color: var(--c-blue); }
-        .loot-orb.purple { border-color: var(--c-purple); box-shadow: 0 0 60px var(--c-purple); color: var(--c-purple); }
-        .loot-orb.gold   { border-color: var(--c-gold); box-shadow: 0 0 80px var(--c-gold); color: var(--c-gold); animation: pulseGold 1s infinite; }
+        .prism-orb:hover { transform: scale(1.1); border-color: #fff; color: #fff; box-shadow: 0 0 60px rgba(255,255,255,0.15); }
+        .prism-orb:active { transform: scale(0.95); }
 
-        .loot-text {
-            font-family: monospace; font-weight: 700; font-size: 0.8rem; letter-spacing: 3px;
-            margin-top: 30px; color: #fff; opacity: 0.6; transition: opacity 0.2s;
-            text-transform: uppercase; text-align: center;
+        /* SPIN FIX: Rotates the whole orb */
+        .prism-orb.rolling { 
+            animation: spin 1s linear infinite;
+            border-top-color: #fff;
+            border-left-color: var(--c-purple);
         }
-        .loot-text.show { opacity: 1; }
-        .loot-sub { font-size: 0.6rem; opacity: 0.5; margin-top: 5px; display: block; letter-spacing: 1px; font-weight: normal; }
+        /* Counter-rotate icon to keep it upright-ish or just chaotic */
+        .prism-orb.rolling i { animation: spinReverse 1s linear infinite; }
 
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
-        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } 100% { transform: translateX(0); } }
-        @keyframes pulseGold { 0% { transform: scale(1); box-shadow: 0 0 50px var(--c-gold); } 50% { transform: scale(1.05); box-shadow: 0 0 80px var(--c-gold); } 100% { transform: scale(1); box-shadow: 0 0 50px var(--c-gold); } }
+        .prism-orb.green { border-color: var(--c-green); box-shadow: 0 0 50px var(--c-green); color: var(--c-green); }
+        .prism-orb.blue { border-color: var(--c-blue); box-shadow: 0 0 60px var(--c-blue); color: var(--c-blue); }
+        .prism-orb.purple { border-color: var(--c-purple); box-shadow: 0 0 80px var(--c-purple); color: var(--c-purple); }
+        .prism-orb.gold { border-color: var(--c-gold); box-shadow: 0 0 100px var(--c-gold); color: var(--c-gold); animation: pulseGold 2s infinite; }
 
+        .prism-text {
+            margin-top: 30px; font-family: monospace; font-weight: 700; 
+            letter-spacing: 4px; color: rgba(255,255,255,0.3); font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .prism-orb:hover + .prism-text { color: #fff; opacity: 1; }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes spinReverse { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
+        @keyframes pulseGold { 0% { box-shadow: 0 0 50px var(--c-gold); } 50% { box-shadow: 0 0 100px var(--c-gold); } 100% { box-shadow: 0 0 50px var(--c-gold); } }
+
+        /* --- THEATER (Lightbox) --- */
+        .theater {
+            position: fixed; inset: 0; z-index: 1000;
+            background: rgba(0,0,0,0.96); backdrop-filter: blur(20px);
+            opacity: 0; pointer-events: none; transition: opacity 0.4s;
+            display: flex;
+        }
+        .theater.active { opacity: 1; pointer-events: auto; }
+
+        .t-stage {
+            flex: 2; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; cursor: grab;
+        }
+        .t-stage:active { cursor: grabbing; }
+
+        .t-img {
+            max-width: 90%; max-height: 90%; object-fit: contain;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            transform-origin: center; will-change: transform;
+            user-select: none; -webkit-user-drag: none;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .t-img.show { opacity: 1; }
+
+        .t-controls {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 10px; z-index: 20;
+            background: rgba(40, 40, 40, 0.6);
+            backdrop-filter: blur(20px); padding: 10px 15px; border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .tc-btn {
+            width: 45px; height: 45px; border-radius: 50%; border: none;
+            background: transparent; color: #eee;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; cursor: pointer; transition: 0.2s;
+        }
+        .tc-btn:hover { background: rgba(255,255,255,0.15); color: #fff; transform: translateY(-3px); }
+
+        /* PANEL */
+        .t-panel {
+            flex: 1; min-width: 350px; max-width: 450px;
+            background: rgba(20, 20, 20, 0.95); border-left: 1px solid var(--glass-border);
+            padding: 40px; display: flex; flex-direction: column; gap: 20px;
+            overflow-y: auto; z-index: 10;
+        }
+        @media(max-width: 900px) { 
+            .theater { flex-direction: column; } 
+            .t-panel { 
+                width: 100%; max-width: none; 
+                height: auto; max-height: 40%; min-height: 200px;
+                border-left: none; border-top: 1px solid var(--glass-border); 
+                padding: 20px;
+            } 
+        }
+
+        .t-close {
+            position: absolute; top: 20px; right: 20px; z-index: 50;
+            width: 45px; height: 45px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); color: #fff;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            transition: 0.2s; backdrop-filter: blur(5px);
+        }
+        .t-close:hover { background: #d90429; transform: rotate(90deg); }
+
+        .t-meta h1 { margin: 0; font-size: 2rem; font-weight: 700; color: #fff; line-height: 1.1; }
+        .t-meta p { font-family: monospace; color: var(--c-blue); margin-top: 5px; opacity: 0.8; }
+        .t-desc { color: #ccc; line-height: 1.6; font-size: 0.95rem; border-left: 2px solid var(--c-purple); padding-left: 15px; }
+
+        /* WHATSAPP GREEN BUTTON */
+        .action-btn {
+            width: 100%; padding: 15px; border-radius: 8px;
+            /* Official WhatsApp Green */
+            background: #25D366; 
+            color: #fff; font-weight: 700; letter-spacing: 1px;
+            border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s; margin-top: auto;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .action-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); 
+            background: #20bd5a; 
+        }
+
+        /* End Card */
         .end-card {
             width: 100%; max-width: 500px; margin: 100px auto; padding: 60px 40px;
             border: 1px solid rgba(255,255,255,0.1); 
             background: linear-gradient(180deg, rgba(20,20,25,0.9), rgba(5,5,5,0.95));
             border-radius: 4px; text-align: center; backdrop-filter: blur(20px);
-            animation: popIn 1s var(--ease-spring); position: relative;
+            animation: floatUp 1s ease;
         }
-        .end-card::before {
-            content:''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
-            border: 1px solid rgba(255,255,255,0.05); pointer-events: none;
-        }
-        .end-icon { font-size: 2.5rem; color: var(--tint); margin-bottom: 20px; opacity: 0.8; }
-        .end-score { font-size: 3.5rem; font-weight: 800; color: #fff; font-family: -apple-system, sans-serif; letter-spacing: -2px; line-height: 1; }
-        .end-label { font-family: monospace; color: #888; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 10px; margin-bottom: 30px; }
-        .end-rank { font-size: 1.2rem; color: #fff; font-weight: bold; letter-spacing: 1px; text-shadow: 0 0 20px var(--tint); }
-
-        .theater {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.96); z-index: 100;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s;
-            display: flex; align-items: center; justify-content: center;
-            backdrop-filter: blur(15px);
-        }
-        .theater.active { opacity: 1; pointer-events: auto; }
-
-        .stage {
-            width: 95%; max-width: 1400px; height: 90vh;
-            display: flex; gap: 40px; position: relative;
-        }
-        @media(max-width: 900px) { .stage { flex-direction: column; overflow-y: auto; height: 100%; padding: 40px 0; } }
-
-        .stage-view { 
-            flex: 2; display: flex; align-items: center; justify-content: center; 
-            position: relative; overflow: hidden; 
-        }
-        
-        .stage-img { 
-            width: 100%; height: 100%; 
-            object-fit: contain; 
-            box-shadow: 0 0 80px rgba(0,0,0,0.5); 
-            transition: filter 0.8s ease; 
-            opacity: 0;
-        }
-        .stage-img.visible { opacity: 1; }
-        .stage-img.blur { filter: blur(30px); transform: scale(1.02); }
-
-        .stage-panel {
-            flex: 1; min-width: 300px;
-            background: rgba(10, 10, 12, 0.95); padding: 30px;
-            border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
-            display: flex; flex-direction: column; gap: 20px;
-            overflow-y: auto;
-            backdrop-filter: blur(20px);
-        }
-
-        .panel-header h1 { font-size: 2rem; margin: 0; line-height: 1; font-weight: 800; letter-spacing: -1px; color: #fff; }
-        .panel-header p { font-family: monospace; color: var(--tint); margin-top: 5px; opacity: 1; letter-spacing: 1px; }
-        
-        #t-desc { color: #e0e0e0; font-weight: 400; line-height: 1.6; font-size: 0.95rem; }
-
-        .palette-row { display: flex; gap: 12px; margin-top: 5px; }
-        .ampule { 
-            width: 30px; height: 50px; background: rgba(255,255,255,0.05); 
-            border-radius: 0 0 15px 15px; position: relative; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: 0.2s;
-        }
-        .ampule:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.3); }
-        .liquid { 
-            position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; 
-            background: var(--c); transition: height 0.3s;
-            box-shadow: 0 0 10px var(--c);
-        }
-        .ampule:hover .liquid { height: 80%; }
-
-        .mood-grid { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
-        .mood-chip {
-            padding: 8px 16px; background: rgba(255,255,255,0.05); border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-size: 0.8rem;
-            cursor: pointer; transition: 0.2s; user-select: none;
-        }
-        .mood-chip:hover { background: rgba(255,255,255,0.1); color: #fff; }
-        .mood-chip.selected { background: var(--tint); color: #000; border-color: var(--tint); font-weight: bold; }
-
-        .bio-scan {
-            border: 1px dashed rgba(255,255,255,0.15); padding: 15px; border-radius: 4px;
-            position: relative; margin-top: 10px;
-        }
-        .bio-label {
-            position: absolute; top: -8px; left: 10px; background: #0a0a0c; 
-            padding: 0 5px; font-size: 0.6rem; color: #888; font-family: monospace; letter-spacing: 1px;
-        }
-
-        .transmit-btn {
-            position: relative; width: 100%; height: 55px; margin-top: 20px;
-            background: rgba(0,0,0,0.3); border: 1px solid #444;
-            color: #666; font-family: monospace; font-size: 1rem; letter-spacing: 2px;
-            cursor: not-allowed; overflow: hidden; transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); 
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; filter: grayscale(1);
-        }
-        
-        .transmit-btn.ready {
-            background: rgba(0, 217, 191, 0.1); border-color: var(--tint);
-            color: var(--tint); cursor: pointer; filter: grayscale(0);
-            box-shadow: 0 0 15px rgba(0, 217, 191, 0.1);
-        }
-        .transmit-btn.ready:hover { background: rgba(0, 217, 191, 0.2); box-shadow: 0 0 25px rgba(0, 217, 191, 0.3); }
-        
-        .btn-fill {
-            position: absolute; top: 0; left: 0; height: 100%; width: 0%;
-            background: var(--tint); z-index: 0; transition: width 0s;
-        }
-        .btn-text { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; }
-        
-        .transmit-btn.sending .btn-fill { width: 100%; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
-        .transmit-btn.sending .btn-text { color: #000; }
-
-        .close-btn { 
-            position: absolute; top: 20px; right: 20px; 
-            color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.6; 
-            z-index: 3000;
-            width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
-            background: rgba(0,0,0,0.5); border-radius: 50%; backdrop-filter: blur(5px);
-            transition: transform 0.2s;
-        }
-        .close-btn:hover { transform: rotate(90deg); opacity: 1; background: rgba(255,255,255,0.1); }
-        
-        .store-badge {
-            display: inline-block; padding: 4px 8px; font-size: 0.6rem; font-weight: bold; letter-spacing: 1px;
-            background: var(--tint); color: #000; border-radius: 2px; margin-bottom: 10px; font-family: monospace;
-        }
-        .price-tag { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 10px; display: block; font-family: monospace; }
-
-        .error-box {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: rgba(255,0,0,0.1); border: 1px solid var(--c-red);
-            padding: 20px; color: var(--c-red); font-family: monospace;
-            text-align: center; z-index: 2000; display: none;
-        }
+        .end-score { font-size: 3.5rem; font-weight: 800; color: #fff; line-height: 1; }
+        .end-rank { font-size: 1.2rem; color: #ffd700; letter-spacing: 2px; margin-top: 10px; }
 
     </style>
 </head>
 <body>
 
-    <div class="ambient-layer">
-        <div class="fog a"></div>
-        <div class="fog b"></div>
-    </div>
-
-    <nav class="breadcrumbs">
-        <a href="../index.html">HOME</a> <span>/</span> ARCHIVE
-    </nav>
-
-    <header>
-        <a href="../pallet/tools/quick.html" class="search-uplink" title="Manual Override">
-            <i class="fas fa-search"></i>
-        </a>
-
-        <div class="archive-stat" id="score-display">
-            <span class="stat-label">RESONANCE:</span>1000
+    <header class="gallery-header">
+        <div class="header-left">
+            <a href="/" class="nav-btn" title="Home"><i class="fas fa-home"></i></a>
+        </div>
+        <div class="header-right">
+            <div class="resonance-pill">
+                <span class="res-icon">🎈</span>
+                <span class="res-val" id="score-val">0</span>
+            </div>
+            <a href="/universe/quickview/" class="nav-btn" title="QuickView"><i class="fas fa-search"></i></a>
         </div>
     </header>
 
-    <div id="main-stage">
-        <div style="text-align:center; padding-top:100px; opacity:0.5; font-family:monospace;" id="loading-msg">INITIALIZING ARCHIVE...</div>
-    </div>
-    
-    <div id="error-display" class="error-box"></div>
+    <div id="gallery-stage"></div>
 
     <div class="theater" id="theater">
-        <div class="close-btn" id="close-theater">&times;</div>
-        <div class="stage">
-            <div class="stage-view">
-                <img src="" class="stage-img" id="t-img">
-            </div>
+        <div class="t-close" id="close-theater"><i class="fas fa-times"></i></div>
+        
+        <div class="t-stage" id="t-stage">
+            <img src="" class="t-img" id="t-img" ondragstart="return false;">
             
-            <div class="stage-panel">
-                <div id="store-meta"></div>
-                
-                <div class="panel-header" id="header-area"></div>
-                
-                <div id="t-desc"></div>
-                
-                <div style="margin-top:20px;">
-                    <div style="font-size:0.6rem; color:#888; margin-bottom:10px; text-transform:uppercase; letter-spacing:1px;">Chromatic Analysis</div>
-                    <div class="palette-row" id="t-palette"></div>
-                </div>
-
-                <div style="margin-top:30px;">
-                    <div style="font-size:0.6rem; color:#888; margin-bottom:10px; text-transform:uppercase; letter-spacing:1px;">Your Current Mood?</div>
-                    <div class="mood-grid" id="mood-grid"></div>
-                    
-                    <div class="bio-scan">
-                        <div class="bio-label">BIO-SIGNATURE REQUIRED</div>
-                        <div class="h-captcha" data-sitekey="e130f2a8-1380-49c2-9852-f6a4b1eec244" data-theme="dark" data-callback="onCaptchaSuccess"></div>
-                    </div>
-
-                    <div class="transmit-btn" id="main-btn">
-                        <div class="btn-fill"></div>
-                        <div class="btn-text">
-                            <i class="fab fa-whatsapp"></i> <span id="btn-label">INITIATE LINK</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="t-controls">
+                <button class="tc-btn" id="btn-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="tc-btn" id="btn-next"><i class="fas fa-chevron-right"></i></button>
+                <div class="tc-sep" style="width:1px; height:20px; background:rgba(255,255,255,0.2); margin:0 5px;"></div>
+                <button class="tc-btn" id="btn-rotate"><i class="fas fa-rotate-right"></i></button>
             </div>
+        </div>
+        
+        <div class="t-panel">
+            <div id="t-status"></div>
+            <div class="t-meta">
+                <h1 id="t-title"></h1>
+                <p id="t-id"></p>
+            </div>
+            <div class="t-desc" id="t-desc"></div>
+            
+            <button class="action-btn" id="inquire-btn">
+                <i class="fab fa-whatsapp"></i> <span>INQUIRE ARTIST</span>
+            </button>
         </div>
     </div>
 
     <script>
-        const ART_URL = '../pallet/data/art.json';
-        const STORE_URL = '../pallet/data/store.json';
+        const ART_URL = '/pallet/data/art.json';
+        const STORE_URL = '/pallet/data/store.json';
+
+        const stage = document.getElementById('gallery-stage');
+        const scoreVal = document.getElementById('score-val');
         
-        const MOODS_POS = ["Ethereal", "Hypnotic", "Radiant", "Sublime", "Inspired", "Electric"];
-        const MOODS_NEU = ["Observing", "Present", "Calibrated", "Aligned", "Drifting", "Focusing"];
-        const MOODS_CHAOS = ["My retinas vibrate", "The pixels taste purple", "Glitch in the matrix", "Brain go brrr", "System Overload"];
-
-        const TIERS = [
-            { id: 'fail',   count: 0,  label: "AETHER STATIC", sub: "NO SIGNAL ECHO", color: "var(--c-void)", weight: 15, points: -50 },
-            { id: 'green',  count: 8,  label: "LEY LINE BLOOM", sub: "8 FRAGMENTS", color: "var(--c-green)", weight: 40, points: 10 },
-            { id: 'blue',   count: 16, label: "RARE CACHE", sub: "16 FRAGMENTS", color: "var(--c-blue)", weight: 30, points: 30 },
-            { id: 'purple', count: 32, label: "PRECIOUS CACHE", sub: "32 FRAGMENTS", color: "var(--c-purple)", weight: 10, points: 100 },
-            { id: 'gold',   count: 64, label: "LUXURIOUS CACHE", sub: "64 FRAGMENTS", color: "var(--c-gold)", weight: 5, points: 500 }
-        ];
-
-        const FRAME_POINTS = { 'rare': 5, 'epic': 15, 'legendary': 50 };
-
+        // Data
         let allArtworks = [];
+        let loadedChunks = []; 
         let storeData = {};
         let loadedCount = 0;
-        let theaterItem = null;
-        let selectedMood = "";
-        let userScore = parseInt(localStorage.getItem('paintedd_resonance') || 1000);
-        let rollHistory = JSON.parse(localStorage.getItem('paintedd_history') || '[]');
-        let scoreTimer;
+        let userScore = 0; 
+        let theaterIndex = -1;
 
-        const mainStage = document.getElementById('main-stage');
-        const scoreDisplay = document.getElementById('score-display');
-        const rootStyle = document.documentElement.style;
-        const errorDisplay = document.getElementById('error-display');
-        const mainBtn = document.getElementById('main-btn');
+        // Tiers
+        const TIERS = [
+            { id: 'green',  label: 'COMMON',    color: '#00ff9d', count: 8,  weight: 50 },
+            { id: 'blue',   label: 'RARE',      color: '#00a8ff', count: 16, weight: 30 },
+            { id: 'purple', label: 'LEGENDARY', color: '#bd00ff', count: 24, weight: 15 },
+            { id: 'gold',   label: 'EXOTIC',    color: '#ffd700', count: 40, weight: 5 }
+        ];
 
+        // --- INIT ---
         async function init() {
-            updateScoreUI(0, ''); 
-
             try {
                 const [artRes, storeRes] = await Promise.all([
                     fetch(ART_URL),
                     fetch(STORE_URL).catch(() => ({ ok: false }))
                 ]);
 
-                if(!artRes.ok) throw new Error("ARCHIVE DISCONNECTED (404)");
-                const artJson = await artRes.json();
+                if(!artRes.ok) throw new Error("404");
+                const data = await artRes.json();
+                allArtworks = Array.isArray(data) ? data : (data.artworks || []);
                 
-                allArtworks = Array.isArray(artJson) ? artJson : (artJson.artworks || []);
-                
-                if (allArtworks.length === 0) throw new Error("ARCHIVE EMPTY");
-
-                if (storeRes.ok) {
-                    const storeJson = await storeRes.json();
-                    const inventory = Array.isArray(storeJson) ? storeJson : (storeJson.inventory || []);
-                    inventory.forEach(item => { storeData[item.art_id] = item; });
-                }
-                
+                // Shuffle
                 for (let i = allArtworks.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [allArtworks[i], allArtworks[j]] = [allArtworks[j], allArtworks[i]];
                 }
 
-                document.getElementById('loading-msg').style.display = 'none';
+                if(storeRes.ok) {
+                    const store = await storeRes.json();
+                    (store.inventory || []).forEach(i => storeData[i.art_id] = i);
+                }
 
-                loadChunk(12, null);
+                // Initial Load (Free) - NO DIVIDER
+                loadChunk(8, null); 
 
-            } catch (err) {
-                console.error(err);
-                errorDisplay.style.display = 'block';
-                errorDisplay.innerText = `// FATAL ERROR: ${err.message}`;
+            } catch(e) {
+                console.error(e);
+                stage.innerHTML = `<div style="text-align:center; color:#666; margin-top:100px;">ARCHIVE OFFLINE</div>`;
             }
         }
 
-        function updateScoreUI(change, fxClass) {
-            userScore += change;
-            if(userScore < 0) userScore = 0; 
-            localStorage.setItem('paintedd_resonance', userScore);
-            
-            const label = scoreDisplay.querySelector('.stat-label');
-            scoreDisplay.innerHTML = '';
-            scoreDisplay.appendChild(label);
-            scoreDisplay.append(userScore);
-
-            clearTimeout(scoreTimer);
-            scoreDisplay.className = 'archive-stat';
-
-            if(fxClass) {
-                scoreDisplay.classList.add(fxClass);
-            } else if(change > 0) {
-                scoreDisplay.classList.add('score-up');
-            } else if(change < 0) {
-                scoreDisplay.classList.add('score-down');
-            }
-            
-            scoreTimer = setTimeout(() => {
-                scoreDisplay.className = 'archive-stat';
-            }, 1000);
+        // --- SCORING ---
+        function addScore(amt) {
+            userScore += amt;
+            scoreVal.textContent = userScore;
         }
 
-        function checkCombos(currentId) {
-            rollHistory.push(currentId);
-            if(rollHistory.length > 5) rollHistory.shift();
-            localStorage.setItem('paintedd_history', JSON.stringify(rollHistory));
-
-            const last = rollHistory[rollHistory.length - 2];
-            const secondLast = rollHistory[rollHistory.length - 3];
-
-            if (currentId === 'fail' && last === 'fail' && secondLast === 'fail') {
-                const penalty = -userScore; 
-                setTimeout(() => updateScoreUI(penalty, 'score-down'), 500);
-                return "VOID COLLAPSE DETECTED";
-            }
-            if (currentId === 'gold' && last === 'gold') {
-                const bonus = userScore; 
-                setTimeout(() => updateScoreUI(bonus, 'score-double'), 500);
-                return "HARMONIC RESONANCE ACHIEVED";
-            }
-            return null;
-        }
-
-        function createSegment() {
-            const segment = document.createElement('div');
-            segment.className = 'gallery-segment';
+        // --- LAYOUT ---
+        function createColumns() {
+            const row = document.createElement('div');
+            row.className = 'masonry-row';
             
             const w = window.innerWidth;
-            let cols = 4;
-            if(w < 1400) cols = 4;
-            if(w < 1000) cols = 3;
-            if(w < 600) cols = 2; 
-
-            let bucketEls = [];
+            const cols = w > 1400 ? 4 : (w > 900 ? 3 : 2);
+            
+            const buckets = [];
             for(let i=0; i<cols; i++) {
                 const col = document.createElement('div');
-                col.className = 'gallery-column';
-                segment.appendChild(col);
-                bucketEls.push(col);
+                col.className = 'masonry-col';
+                row.appendChild(col);
+                buckets.push(col);
             }
-            
-            mainStage.appendChild(segment);
-            return bucketEls;
+            stage.appendChild(row);
+            return buckets;
         }
 
-        function loadChunk(amount, rollData) {
-            if (loadedCount >= allArtworks.length) {
-                showEndGame();
+        // --- LOADING LOGIC ---
+        function loadChunk(amount, tierData) {
+            if(loadedCount >= allArtworks.length) {
+                showEndCard();
                 return;
             }
 
-            if(rollData) {
+            // Divider (Only if tierData is provided, skips on initial load)
+            if(tierData) {
                 const div = document.createElement('div');
-                div.className = 'roll-divider';
-                div.style.color = rollData.color;
+                div.className = 'chunk-divider';
+                div.style.color = tierData.color;
                 div.innerHTML = `<div class="div-line"></div><div class="div-node"></div><div class="div-line"></div>`;
-                mainStage.appendChild(div);
+                stage.appendChild(div);
             }
 
-            const buckets = createSegment();
-            let bucketHeights = new Array(buckets.length).fill(0);
+            const buckets = createColumns();
             const chunk = allArtworks.slice(loadedCount, loadedCount + amount);
-            let batchScore = 0;
-
-            chunk.forEach((item, index) => {
-                const hex = (item.palette && item.palette[0]) ? item.palette[0] : '#1a1a1a';
-                
-                const rand = Math.random();
-                let rarity = '';
-                if(rand > 0.96) { rarity = 'legendary'; batchScore += FRAME_POINTS.legendary; }
-                else if(rand > 0.88) { rarity = 'epic'; batchScore += FRAME_POINTS.epic; }
-                else if(rand > 0.75) { rarity = 'rare'; batchScore += FRAME_POINTS.rare; }
-                
-                const isPearl = Math.random() > 0.8;
-
-                const el = document.createElement('div');
-                el.className = `artifact ${isPearl ? 'pearl' : ''}`;
-                el.style.backgroundColor = hex; 
-                if(rarity) el.dataset.rarity = rarity;
-                
-                const ratio = item.orientation === 'landscape' ? '1.5' : (item.orientation === 'portrait' ? '0.75' : '1');
-                el.style.aspectRatio = ratio; 
-                
-                el.style.animationDelay = `${index * 50}ms`;
-                el.classList.add('reveal');
+            
+            chunk.forEach((item, i) => {
+                loadedChunks.push(item);
+                const globalIdx = loadedChunks.length - 1;
 
                 const imgObj = item.images || {};
                 const src = imgObj.thumbnail || imgObj.medium || imgObj.original;
-
-                const loadingType = index < 6 ? "eager" : "lazy";
-                el.innerHTML = `<img src="${src}" class="art-img" loading="${loadingType}" decoding="sync" onload="this.classList.add('loaded')">`;
-
-                el.addEventListener('mouseenter', () => {
-                    if(item.palette && item.palette[0]) {
-                        rootStyle.setProperty('--tint', item.palette[0]);
-                    }
-                });
                 
-                el.addEventListener('click', () => openTheater(item, src));
+                // Visual RNG
+                const rand = Math.random();
+                let border = '';
+                if(rand > 0.95) border = 'gold';
+                else if(rand > 0.85) border = 'purple';
+                else if(rand > 0.70) border = 'blue';
+                else if(rand > 0.50) border = 'green';
                 
-                const minIndex = bucketHeights.indexOf(Math.min(...bucketHeights));
-                buckets[minIndex].appendChild(el);
-                bucketHeights[minIndex] += (item.orientation === 'landscape' ? 150 : 300);
+                const card = document.createElement('div');
+                card.className = `art-card`;
+                card.style.animationDelay = `${i * 50}ms`;
+                if(border) card.dataset.border = border;
+                
+                const img = document.createElement('img');
+                img.loading = 'lazy';
+                img.src = src;
+                img.onload = () => {
+                    img.classList.add('loaded');
+                    card.classList.add('visible');
+                    addScore(10);
+                };
+
+                card.appendChild(img);
+                card.onclick = () => openTheater(globalIdx);
+
+                buckets[i % buckets.length].appendChild(card);
             });
-
-            if(amount > 0 && batchScore !== 0) {
-                setTimeout(() => updateScoreUI(batchScore, ''), 1000);
-            }
 
             loadedCount += chunk.length;
 
-            if (loadedCount < allArtworks.length) {
-                spawnGacha();
+            if(loadedCount < allArtworks.length) {
+                spawnPrism();
             } else {
-                showEndGame();
+                showEndCard();
             }
         }
 
-        function spawnGacha() {
+        // --- GACHA (THE PRISM) ---
+        function spawnPrism() {
             const gate = document.createElement('div');
-            gate.className = 'gacha-gate';
-            
+            gate.className = 'prism-gate';
             gate.innerHTML = `
-                <div class="loot-orb" onclick="rollGacha(this)">
+                <div class="prism-orb" onclick="rollGacha(this)">
                     <i class="fas fa-fingerprint"></i>
                 </div>
-                <div class="loot-text">TOUCH TO RESONATE</div>
+                <div class="prism-text">TOUCH TO RESONATE</div>
             `;
-            
-            mainStage.appendChild(gate);
-        }
-
-        function showEndGame() {
-            let title = "Observer";
-            if(userScore > 5000) title = "Adept Curator";
-            if(userScore > 10000) title = "Grand Arcanist";
-            if(userScore > 50000) title = "Void Walker";
-
-            const card = document.createElement('div');
-            card.className = 'end-card';
-            card.innerHTML = `
-                <div class="end-icon"><i class="fas fa-crown"></i></div>
-                <div class="end-score">${userScore}</div>
-                <div class="end-label">TOTAL RESONANCE</div>
-                <div class="end-rank">${title}</div>
-            `;
-            mainStage.appendChild(card);
+            stage.appendChild(gate);
         }
 
         window.rollGacha = function(orb) {
-            if(orb.classList.contains('rolling')) return; 
-            
-            const gate = orb.parentElement;
-            const text = gate.querySelector('.loot-text');
-            
-            let random = Math.floor(Math.random() * 100);
-            let result = TIERS[0];
-            let resultIndex = 0;
-            let sum = 0;
-            for(let i=0; i<TIERS.length; i++) {
-                sum += TIERS[i].weight;
-                if(random < sum) { result = TIERS[i]; break; }
-            }
-
+            if(orb.classList.contains('rolling')) return;
             orb.classList.add('rolling');
-            orb.innerHTML = '<i class="fas fa-spin fa-circle-notch"></i>';
+            
+            const text = orb.nextElementSibling;
             text.innerText = "TUNING...";
-            text.classList.add('show');
-
+            
+            // 4 Seconds Roll
             let step = 0;
-            const visualTiers = ['green', 'blue', 'purple', 'gold']; 
+            const colors = ['green', 'blue', 'purple', 'gold'];
             
-            const cycle = setInterval(() => {
-                orb.className = `loot-orb rolling ${visualTiers[step % 4]}`;
+            const interval = setInterval(() => {
+                orb.className = `prism-orb rolling ${colors[step % 4]}`;
+                orb.innerHTML = '<i class="fas fa-circle-notch"></i>';
                 step++;
-            }, 100); 
+            }, 200); 
 
             setTimeout(() => {
-                clearInterval(cycle);
+                clearInterval(interval);
                 
-                orb.className = `loot-orb ${result.id}`;
-                text.innerHTML = `${result.label}<span class="loot-sub">${result.sub}</span>`;
+                // Result
+                let rand = Math.floor(Math.random() * 100);
+                let result = TIERS[0];
+                let sum = 0;
+                for(let t of TIERS) {
+                    sum += t.weight;
+                    if(rand < sum) { result = t; break; }
+                }
+
+                // Show
+                orb.className = `prism-orb ${result.id}`;
+                orb.innerHTML = result.id === 'gold' ? '<i class="fas fa-star"></i>' : '<i class="fas fa-check"></i>';
+                text.innerText = `// ${result.label} UNLOCKED`;
                 text.style.color = result.color;
-
-                updateScoreUI(result.points, '');
                 
-                const comboMsg = checkCombos(result.id);
-                if(comboMsg) text.innerHTML += `<br><span style="color:#fff; font-size:0.6rem; opacity:0.8;">// ${comboMsg}</span>`;
+                addScore(500); 
 
-                if(result.count > 0) {
-                    orb.innerHTML = '<i class="fas fa-star"></i>';
-                    orb.style.animation = 'pulseGold 0.5s';
+                setTimeout(() => {
+                    const gate = orb.parentElement;
+                    gate.classList.add('vanish');
                     setTimeout(() => {
-                        gate.classList.add('unlocked');
-                        setTimeout(() => {
-                            gate.remove();
-                            loadChunk(result.count, { color: result.color });
-                        }, 500);
-                    }, 1200);
-                } else {
-                    orb.innerHTML = '<i class="fas fa-times"></i>';
-                    setTimeout(() => {
-                        orb.className = "loot-orb";
-                        orb.style.animation = "";
-                        orb.innerHTML = '<i class="fas fa-fingerprint"></i>';
-                        text.innerText = "RETRY RESONANCE";
-                        text.style.color = "#fff";
-                    }, 1500);
-                }
+                        gate.remove();
+                        loadChunk(result.count, { color: result.color });
+                    }, 500);
+                }, 1500);
 
-            }, 1000); 
+            }, 4000); // 4 Seconds
         };
 
-        window.onCaptchaSuccess = function() {
-            mainBtn.classList.add('ready');
-        };
+        function showEndCard() {
+            const card = document.createElement('div');
+            card.className = 'end-card';
+            card.innerHTML = `
+                <div style="font-size:3rem; color:#ffd700; margin-bottom:20px;"><i class="fas fa-crown"></i></div>
+                <div class="end-score">${userScore}</div>
+                <div style="color:#888; font-family:monospace; letter-spacing:2px;">TOTAL RESONANCE</div>
+                <div class="end-rank">ARCHIVE COMPLETE</div>
+            `;
+            stage.appendChild(card);
+        }
 
-        function openTheater(item, thumbUrl) {
-            theaterItem = item;
-            const imgObj = item.images || {};
-            const highRes = imgObj.original || imgObj.medium;
-            
-            const stageImg = document.getElementById('t-img');
-            
-            stageImg.classList.remove('visible'); 
-            stageImg.src = ''; 
-            
-            setTimeout(() => {
-                stageImg.src = thumbUrl;
-                stageImg.classList.add('blur');
-                stageImg.classList.add('visible');
-            }, 10);
-            
-            const loader = new Image();
-            loader.src = highRes;
-            loader.onload = () => {
-                stageImg.src = highRes;
-                stageImg.classList.remove('blur');
-            };
+        // --- THEATER ENGINE ---
+        const theater = document.getElementById('theater');
+        const tImg = document.getElementById('t-img');
+        const tStage = document.getElementById('t-stage');
+        let state = { x:0, y:0, scale:1, rotation:0 };
 
-            const headerArea = document.getElementById('header-area');
-            if (item.title) {
-                headerArea.innerHTML = `<h1 id="t-title">${item.title}</h1><p id="t-id">${item.id}</p>`;
-            } else {
-                headerArea.innerHTML = `<h1 id="t-title" style="font-family:monospace; letter-spacing:2px;">${item.id}</h1>`;
-            }
-            
-            document.getElementById('t-desc').innerText = item.description || "";
+        function openTheater(index) {
+            theaterIndex = index;
+            const item = loadedChunks[index];
+            if(!item) return;
 
-            const pal = document.getElementById('t-palette');
-            pal.innerHTML = '';
-            if(item.palette) {
-                item.palette.forEach(c => {
-                    const s = document.createElement('div');
-                    s.className = 'ampule';
-                    s.innerHTML = `<div class="liquid" style="--c:${c}"></div>`;
-                    s.onclick = () => { navigator.clipboard.writeText(c); };
-                    pal.appendChild(s);
-                });
-            }
+            // Content Logic (Smart Title)
+            const displayTitle = item.title ? item.title : item.id;
+            document.getElementById('t-title').textContent = displayTitle;
+            document.getElementById('t-id').textContent = item.id;
+            document.getElementById('t-desc').textContent = item.description || "";
+            
+            // Image
+            tImg.classList.remove('show');
+            tImg.src = item.images.medium || item.images.original;
+            tImg.onload = () => tImg.classList.add('show');
 
-            const moodGrid = document.getElementById('mood-grid');
-            moodGrid.innerHTML = '';
-            selectedMood = ""; 
-            
-            const randP = MOODS_POS[Math.floor(Math.random()*MOODS_POS.length)];
-            const randN = MOODS_NEU[Math.floor(Math.random()*MOODS_NEU.length)];
-            const randC = MOODS_CHAOS[Math.floor(Math.random()*MOODS_CHAOS.length)];
-            
-            [randP, randN, randC].forEach(m => {
-                const chip = document.createElement('div');
-                chip.className = 'mood-chip';
-                chip.innerText = m;
-                chip.onclick = () => {
-                    document.querySelectorAll('.mood-chip').forEach(c => c.classList.remove('selected'));
-                    chip.classList.add('selected');
-                    selectedMood = m;
-                };
-                moodGrid.appendChild(chip);
-            });
+            // Reset Transform
+            state = { x:0, y:0, scale:1, rotation:0 };
+            updateTransform();
 
-            const storeEntry = storeData[item.id];
-            const metaDiv = document.getElementById('store-meta');
-            const btnLabel = document.getElementById('btn-label');
-            
-            metaDiv.innerHTML = ''; 
-            
-            mainBtn.className = 'transmit-btn'; 
-            mainBtn.querySelector('.btn-fill').style.width = '0%';
-            hcaptcha.reset(); 
-            mainBtn.classList.remove('ready'); 
-            
-            if (storeEntry) {
-                if (storeEntry.status === 'available') {
-                    metaDiv.innerHTML = `<span class="store-badge">AVAILABLE</span>`;
-                    if(storeEntry.price) metaDiv.innerHTML += `<span class="price-tag">R ${storeEntry.price}</span>`;
-                    btnLabel.innerText = "TRANSMIT PURCHASE REQUEST";
-                } else if (storeEntry.status === 'sold') {
-                    metaDiv.innerHTML = `<span class="store-badge" style="background:var(--c-red); color:#fff">SOLD</span>`;
-                    btnLabel.innerText = "QUERY ARCHIVE PRINTS";
-                }
-            } else {
-                btnLabel.innerText = "INITIATE INQUIRY LINK";
-            }
-
-            document.getElementById('theater').classList.add('active');
+            theater.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        document.getElementById('close-theater').addEventListener('click', () => {
-            document.getElementById('theater').classList.remove('active');
-            document.body.style.overflow = '';
+        function updateTransform() {
+            tImg.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg) scale(${state.scale})`;
+        }
+
+        // --- GESTURES & ZOOM ---
+        let isDrag = false;
+        let startX=0, startY=0, initX=0, initY=0;
+
+        tStage.addEventListener('mousedown', e => {
+            if(e.target.closest('.tc-btn')) return;
+            isDrag = true;
+            startX = e.clientX; startY = e.clientY;
+            initX = state.x; initY = state.y;
+            tImg.style.transition = 'none';
         });
 
-        mainBtn.addEventListener('click', function() {
-            if(!this.classList.contains('ready')) {
-                alert("Identity verification required.");
-                return;
+        window.addEventListener('mousemove', e => {
+            if(!isDrag) return;
+            e.preventDefault();
+            state.x = initX + (e.clientX - startX);
+            state.y = initY + (e.clientY - startY);
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            if(!isDrag) return;
+            isDrag = false;
+            tImg.style.transition = 'transform 0.3s cubic-bezier(0.2,1,0.3,1)';
+            // Snap logic
+            if(state.scale === 1) {
+                if(state.x < -100) { nextItem(); return; }
+                if(state.x > 100) { prevItem(); return; }
+                state.x = 0; state.y = 0; updateTransform();
             }
-            if(this.classList.contains('sending')) return;
-            if(!theaterItem) return;
-            if(!selectedMood) { alert("Please select a resonance mood."); return; }
+        });
 
-            this.classList.add('sending');
-            const label = document.getElementById('btn-label');
-            const originalText = label.innerText;
-            label.innerText = "ESTABLISHING UPLINK...";
+        tStage.addEventListener('wheel', e => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            state.scale = Math.max(0.5, Math.min(4, state.scale + delta));
+            updateTransform();
+        });
 
-            setTimeout(() => {
-                let intent = "General Inquiry";
-                const storeEntry = storeData[theaterItem.id];
-                if(storeEntry && storeEntry.status === 'available') intent = "PURCHASE REQUEST";
-                
-                const msg = `🎨 *${intent}* \nID: ${theaterItem.id} \nTitle: ${theaterItem.title || 'Untitled'} \nResonance: ${selectedMood}`;
-                window.open(`https://wa.me/27641417574?text=${encodeURIComponent(msg)}`, '_blank');
-                
-                this.classList.remove('sending');
-                this.querySelector('.btn-fill').style.width = '0%';
-                label.innerText = originalText;
-                
-            }, 1500); 
+        // Navigation
+        function nextItem() { if(theaterIndex < loadedChunks.length-1) openTheater(theaterIndex+1); }
+        function prevItem() { if(theaterIndex > 0) openTheater(theaterIndex-1); }
+
+        document.getElementById('btn-next').onclick = nextItem;
+        document.getElementById('btn-prev').onclick = prevItem;
+        document.getElementById('close-theater').onclick = () => {
+            theater.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        document.getElementById('btn-rotate').onclick = () => {
+            state.rotation += 90; updateTransform();
+        };
+
+        document.getElementById('inquire-btn').onclick = () => {
+            const item = loadedChunks[theaterIndex];
+            if(!item) return;
+            const title = item.title || item.id;
+            window.open(`https://wa.me/27641417574?text=Hi, inquiring about "${title}" (ID: ${item.id})`, '_blank');
+        };
+
+        document.addEventListener('keydown', e => {
+            if(!theater.classList.contains('active')) return;
+            if(e.key === 'Escape') document.getElementById('close-theater').click();
+            if(e.key === 'ArrowRight') nextItem();
+            if(e.key === 'ArrowLeft') prevItem();
         });
 
         init();
+
     </script>
 </body>
 </html>

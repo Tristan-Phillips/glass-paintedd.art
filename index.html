@@ -11,15 +11,311 @@
       name="description"
       content="Explore the vibrant and chaotic world of Paintedd. A digital gallery and community space for art lovers and creative souls."
     />
-    <link rel="stylesheet" href="/pallet/style/home.css" />
-    <script
-      src="https://kit.fontawesome.com/29c25c094f.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="/pallet/script/home.js" defer></script>
+    
+    <link rel="preload" as="image" href="/pallet/img/logo-circular.png">
+    
+    <script src="https://kit.fontawesome.com/29c25c094f.js" crossorigin="anonymous"></script>
+
+    <style>
+      :root {
+        --primary-red: #d90429;
+        --primary-turquoise: #00d9bf;
+        --primary-fuchsia: #e725e7;
+        --primary-yellow: #e8cf00;
+        --primary-black: #0a0a0a;
+        
+        --glow-turquoise: rgba(0, 217, 191, 0.3);
+        --glass-bg: rgba(255, 255, 255, 0.08);
+        
+        --reflection-1: rgba(255, 255, 255, 0);
+        --reflection-2: rgba(255, 255, 255, 0.03);
+        --reflection-3: rgba(255, 255, 255, 0.4);
+
+        /* --- THE GEOMETRY FIX --- */
+        /* Mobile Default: 34% of viewport min dimension.
+           Desktop Override (in media query below): Uses min() to cap size.
+        */
+        --nav-radius: 34vmin; 
+        --nav-item-size: 3.5rem;
+      }
+
+      /* Desktop Expansion with Safety Cap */
+      @media (min-width: 768px) {
+        :root {
+            /* CRITICAL FIX: 
+               Use 12rem as standard, BUT shrink if 36% of the screen (vmin) is smaller.
+               This prevents clipping on short landscape windows.
+            */
+            --nav-radius: min(12rem, 36vmin); 
+            --nav-item-size: 4rem;
+        }
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        overflow-x: hidden;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #0a0a0a;
+        color: white;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* --- HERO --- */
+      #hero-header {
+        display: flex; align-items: center; justify-content: center;
+        min-height: 100dvh; width: 100vw;
+        background: radial-gradient(circle at center, #330000 0%, #0a0a0a 90%),
+          repeating-linear-gradient(45deg, rgba(10, 10, 10, 0.2) 0px, rgba(10, 10, 10, 0.2) 1px, transparent 1px, transparent 11px);
+        background-size: cover; position: relative; padding: 1rem;
+        overflow: hidden;
+      }
+
+      #hero-header::before {
+        content: ""; position: absolute; inset: 0;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: 0;
+      }
+
+      .hero-container {
+        display: flex; position: relative; z-index: 2;
+        width: 100%; max-width: 1400px; padding: 2rem;
+        flex-direction: column;
+      }
+
+      .logo-wrapper {
+        flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+        margin-bottom: 3rem;
+      }
+
+      .logo-circle {
+        position: relative;
+        width: 40vmin; height: 40vmin;
+        max-width: 350px; max-height: 350px;
+        min-width: 250px; min-height: 250px;
+        border-radius: 50%;
+        cursor: pointer;
+        will-change: transform;
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+      }
+
+      .logo-circle::before {
+        content: ""; position: absolute; inset: -10px;
+        border-radius: 50%;
+        background: conic-gradient(from 0deg at center, var(--primary-red), var(--primary-turquoise), var(--primary-fuchsia), var(--primary-yellow), var(--primary-red));
+        filter: blur(15px); opacity: 0.7; z-index: 1;
+        animation: color-rotate 120s infinite linear;
+      }
+
+      @keyframes color-rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .logo-main {
+        user-select: none; width: 100%; height: 100%;
+        border-radius: 50%; object-fit: cover;
+        position: relative; z-index: 2;
+        box-shadow: 0 0 20px rgba(217, 4, 41, 0.5), 0 0 40px rgba(0, 217, 191, 0.3);
+      }
+
+      @media (hover: hover) {
+        .logo-circle.tap-target:hover { transform: scale(1.05); filter: brightness(115%); }
+      }
+      .logo-circle.tap-target:active { transform: scale(0.95); }
+
+      .hero-content {
+        flex: 0 0 auto; display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+      }
+
+      .creative-text {
+        color: white;
+        font-size: clamp(3.5rem, 9vw, 5.5rem);
+        text-align: center; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 3px; margin-bottom: 3rem; position: relative;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      }
+
+      /* --- SOCIALS --- */
+      .social-container {
+        display: flex; gap: 1.5rem; position: relative; margin-bottom: 2.5rem;
+      }
+
+      .social-icon {
+        display: flex; align-items: center; justify-content: center;
+        width: clamp(50px, 10vw, 70px); height: clamp(50px, 10vw, 70px);
+        border-radius: 50%; color: white;
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative; overflow: hidden; z-index: 2; text-decoration: none;
+      }
+
+      .social-icon::before {
+        content: ""; position: absolute; inset: 0;
+        background: var(--glass-bg); backdrop-filter: blur(12px);
+        border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); z-index: -1;
+      }
+
+      .social-icon::after {
+        content: ""; position: absolute; top: -50%; left: -50%; width: 40%; height: 200%;
+        background: linear-gradient(to right, var(--reflection-1), var(--reflection-2), var(--reflection-3), var(--reflection-1));
+        transform: rotate(30deg); transition: transform 0.6s ease; z-index: -1;
+      }
+
+      @media (hover: hover) {
+        .social-icon:hover { transform: translateY(-8px) scale(1.1); }
+        .social-icon:hover::after { transform: rotate(25deg) translate(1em, 7em); }
+      }
+
+      .tap-hint {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0.3; z-index: 10; color: rgba(240, 240, 240, 0.6);
+        font-size: 3rem; transition: all 0.8s ease;
+        animation: tap-pulse 3s infinite; pointer-events: none;
+      }
+
+      @keyframes tap-pulse {
+        0%, 100% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.3; }
+        50% { transform: translate(-50%, -50%) scale(0.9); opacity: 1; }
+      }
+
+      /* --- NAV SYSTEM --- */
+      #radial-nav {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 1000; pointer-events: none;
+      }
+
+      .radial-menu {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        width: 5rem; height: 5rem; border-radius: 50%;
+        opacity: 0; pointer-events: none;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 1001; will-change: transform, opacity;
+        /* ALLOWS ICONS TO BLEED OUTSIDE HUB */
+        overflow: visible; 
+      }
+
+      .radial-menu.active {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1; pointer-events: all;
+        /* Safe bounds relative to min viewport size */
+        width: 10vmin; height: 10vmin;
+      }
+
+      .center-hub {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 8rem; height: 8rem; border-radius: 50%;
+        background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px);
+        display: flex; align-items: center; justify-content: center;
+        z-index: 10; box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-logo { width: 6rem; height: 6rem; border-radius: 50%; overflow: hidden; position: relative; }
+      .nav-logo img { width: 100%; height: 100%; object-fit: cover; transition: filter 0.4s ease; }
+
+      .close-nav-btn {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(186, 67, 255, 0.45); color: white; font-size: 2.5rem;
+        opacity: 0; transition: opacity 0.4s ease; cursor: pointer;
+        z-index: 15; border-radius: 50%;
+      }
+      .radial-menu.active .center-hub:hover .close-nav-btn { opacity: 1; }
+
+      .nav-tier {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        overflow: visible;
+      }
+      .nav-tier.active { opacity: 1; pointer-events: all; }
+
+      .nav-item {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: var(--nav-item-size); height: var(--nav-item-size);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: white; font-size: 1.5rem;
+        background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none; z-index: 5;
+      }
+
+      /* --- DYNAMIC POSITIONS (Uses CSS Variables) --- */
+      /* Right */
+      .nav-tier .nav-item:nth-child(1) { transform: translate(-50%, -50%) translate(var(--nav-radius), 0); }
+      /* Bottom */
+      .nav-tier .nav-item:nth-child(2) { transform: translate(-50%, -50%) translate(0, var(--nav-radius)); }
+      /* Left */
+      .nav-tier .nav-item:nth-child(3) { transform: translate(-50%, -50%) translate(calc(var(--nav-radius) * -1), 0); }
+      /* Top */
+      .nav-tier .nav-item:nth-child(4) { transform: translate(-50%, -50%) translate(0, calc(var(--nav-radius) * -1)); }
+
+      .nav-label {
+        position: absolute; background: rgba(10, 10, 10, 0.9);
+        padding: 0.5rem 1rem; border-radius: 1.5rem; font-size: 0.9rem;
+        white-space: nowrap; opacity: 0; transition: all 0.3s ease;
+        pointer-events: none; z-index: 20; border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      @media (hover: hover) {
+        .nav-item:hover { transform: translate(-50%, -50%) scale(1.15); background: rgba(239, 175, 255, 0.15); z-index: 15; }
+        .nav-item:hover .nav-label { opacity: 1; transform: translate(0, 0) !important; }
+      }
+
+      .nav-overlay {
+        position: fixed; inset: 0;
+        background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+        opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+        z-index: 999;
+      }
+      .nav-overlay.active { opacity: 1; pointer-events: all; }
+
+      .slideshow-button {
+        display: inline-flex; align-items: center; justify-content: center; gap: 1rem;
+        padding: 0.8rem 2rem; margin-top: 1rem; border-radius: 50px;
+        color: white; font-size: 1.1rem; font-weight: 500; text-decoration: none;
+        position: relative; overflow: hidden; z-index: 2;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: var(--glass-bg); backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .slideshow-button i { font-size: 1rem; transition: transform 0.3s ease; }
+
+      @media (hover: hover) {
+        .slideshow-button:hover { transform: translateY(-6px); background: rgba(255, 255, 255, 0.15); color: white; text-shadow: 0 0 10px var(--glow-turquoise); }
+        .slideshow-button:hover i { transform: scale(1.2); color: var(--primary-fuchsia); }
+      }
+
+      @keyframes wobble {
+        0% { transform: translate(-50%, -50%) scale(0.1) rotate(0deg); opacity: 0; }
+        25% { transform: translate(-50%, -50%) scale(1.1) rotate(5deg); opacity: 1; }
+        50% { transform: translate(-50%, -50%) scale(0.95) rotate(-3deg); }
+        75% { transform: translate(-50%, -50%) scale(1.05) rotate(2deg); }
+        100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+      }
+
+      /* Landscape & Small Screens */
+      @media (max-width: 480px) {
+        .tap-hint { font-size: 2rem; }
+        .social-icon { width: 50px; height: 50px; font-size: 1.6rem; }
+        .creative-text { font-size: clamp(2.5rem, 8vw, 4rem); }
+        .nav-item { width: 3rem; height: 3rem; font-size: 1.3rem; }
+      }
+
+      @media (orientation: landscape) and (min-width: 768px) {
+        .hero-container { flex-direction: row; justify-content: space-between; align-items: center; }
+        .logo-wrapper { margin-bottom: 0; margin-right: 5%; }
+        .creative-text { margin-bottom: 2rem; }
+      }
+    </style>
   </head>
   <body>
-    <!-- Hero Header with Tap-Hint Animation -->
     <header id="hero-header">
       <div class="hero-container">
         <div class="logo-wrapper">
@@ -38,32 +334,19 @@
         <div class="hero-content">
           <h1 class="creative-text">Freely Creative</h1>
           <div class="social-container">
-            <a
-              href="https://wa.me/27641417574"
-              aria-label="Whatsapp"
-              class="social-icon"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
-            <a
-              href="https://tiktok.com/@painted_d"
-              aria-label="TikTok"
-              class="social-icon"
-              ><i class="fab fa-tiktok"></i
-            ></a>
-            <a
-              href="https://youtube.com/@painted_d"
-              aria-label="YouTube"
-              class="social-icon"
-              ><i class="fab fa-youtube"></i
-            ></a>
-            <a
-              href="https://instagram.com/painted_d_art/"
-              aria-label="Instagram"
-              class="social-icon"
-              ><i class="fab fa-instagram"></i
-            ></a>
+            <a href="https://wa.me/27641417574" aria-label="Whatsapp" class="social-icon">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://tiktok.com/@painted_d" aria-label="TikTok" class="social-icon">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://youtube.com/@painted_d" aria-label="YouTube" class="social-icon">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://instagram.com/painted_d_art/" aria-label="Instagram" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
           </div>
-          <!-- Gallery Button -->
           <a href="/gallery" id="slideshow-trigger" class="slideshow-button">
             <i class="fa-solid fa-palette"></i>
             <span>Gallery</span>
@@ -72,47 +355,31 @@
       </div>
     </header>
 
-    <!-- Radial Navigation -->
     <nav id="radial-nav">
       <div id="radial-menu" class="radial-menu">
         <div class="center-hub">
           <div class="nav-logo">
             <img src="/pallet/img/logo-circular.png" alt="Navigation Hub" />
-            <div
-              class="close-nav-btn"
-              aria-label="Close Menu"
-              title="Close Menu"
-            >
+            <div class="close-nav-btn" aria-label="Close Menu">
               <i class="fas fa-times"></i>
             </div>
           </div>
         </div>
 
-        <!-- Single-tier Navigation -->
         <div class="nav-tier core-tier active">
-          <a
-            href="/gallery"
-            class="nav-item"
-            aria-label="Gallery"
-            title="Gallery"
-          >
+          <a href="/gallery" class="nav-item" aria-label="Gallery">
             <i class="fa-solid fa-palette"></i>
             <span class="nav-label">Gallery</span>
           </a>
-          <a href="/event" class="nav-item" aria-label="Events" title="Events">
+          <a href="/event" class="nav-item" aria-label="Events">
             <i class="fa-solid fa-calendar-days"></i>
             <span class="nav-label">Events</span>
           </a>
-          <a
-            href="/contact"
-            class="nav-item"
-            aria-label="Contact"
-            title="Contact"
-          >
+          <a href="/contact" class="nav-item" aria-label="Contact">
             <i class="fas fa-envelope"></i>
             <span class="nav-label">Contact</span>
           </a>
-          <a href="/about" class="nav-item" aria-label="About" title="About">
+          <a href="/about" class="nav-item" aria-label="About">
             <i class="fa-solid fa-person-circle-question"></i>
             <span class="nav-label">About</span>
           </a>
@@ -121,5 +388,135 @@
       <div id="nav-overlay" class="nav-overlay"></div>
     </nav>
     <main id="main-content"></main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const logoTrigger = document.querySelector(".logo-circle.tap-target");
+            const radialMenu = document.getElementById("radial-menu");
+            const navOverlay = document.getElementById("nav-overlay");
+            const closeNavBtn = document.querySelector(".close-nav-btn");
+            const tapHint = document.querySelector(".tap-hint");
+            const navItems = document.querySelectorAll(".nav-item");
+
+            let isMenuOpen = false;
+            let isFirstInteraction = true;
+            let resizeTimeout;
+
+            logoTrigger.addEventListener("click", e => {
+                e.stopPropagation();
+                if (isMenuOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+                if (isFirstInteraction) handleFirstInteraction();
+            });
+
+            navOverlay.addEventListener("click", closeMenu);
+            if (closeNavBtn) {
+                closeNavBtn.addEventListener("click", e => {
+                    e.stopPropagation();
+                    closeMenu();
+                });
+            }
+
+            // Navigation item clicks
+            navItems.forEach(item => {
+                item.addEventListener("click", e => {
+                    const href = item.getAttribute("href");
+                    if (href) {
+                        e.preventDefault();
+                        closeMenu();
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 500);
+                    }
+                });
+            });
+
+            // Handle Resize (Debounced)
+            window.addEventListener("resize", () => {
+                if (!isMenuOpen) return;
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    // Update menu position if needed
+                    const logoRect = logoTrigger.getBoundingClientRect();
+                    const logoCenterX = logoRect.left + logoRect.width / 2;
+                    const logoCenterY = logoRect.top + logoRect.height / 2;
+                    radialMenu.style.left = `${logoCenterX}px`;
+                    radialMenu.style.top = `${logoCenterY}px`;
+                }, 100);
+            });
+
+            document.addEventListener("keydown", e => {
+                if (isMenuOpen && e.key === "Escape") {
+                    closeMenu();
+                }
+            });
+
+            function openMenu() {
+                const logoRect = logoTrigger.getBoundingClientRect();
+                const logoCenterX = logoRect.left + logoRect.width / 2;
+                const logoCenterY = logoRect.top + logoRect.height / 2;
+
+                radialMenu.style.left = `${logoCenterX}px`;
+                radialMenu.style.top = `${logoCenterY}px`;
+
+                radialMenu.classList.add("active");
+                navOverlay.classList.add("active");
+                document.body.style.overflow = "hidden";
+                isMenuOpen = true;
+
+                radialMenu.style.animation = "none";
+                radialMenu.offsetHeight; // trigger reflow
+                radialMenu.style.animation = "wobble 0.7s ease";
+            }
+
+            function closeMenu() {
+                radialMenu.classList.remove("active");
+                navOverlay.classList.remove("active");
+                document.body.style.overflow = "";
+                isMenuOpen = false;
+            }
+
+            function handleFirstInteraction() {
+                if (!document.body.classList.contains("nav-used")) {
+                    document.body.classList.add("nav-used");
+                    isFirstInteraction = false;
+                    tapHint.style.opacity = "0";
+                    setTimeout(() => {
+                        tapHint.style.display = "none";
+                    }, 500);
+                }
+            }
+        });
+
+        function loadKoFiWidget() {
+            try {
+                const script = document.createElement("script");
+                script.src = "https://storage.ko-fi.com/cdn/scripts/overlay-widget.js";
+                script.async = true;
+                script.onload = () => {
+                    if (typeof kofiWidgetOverlay !== 'undefined') {
+                        kofiWidgetOverlay.draw("paintedd", {
+                            type: "floating-chat",
+                            "floating-chat.donateButton.text": "",
+                            "floating-chat.donateButton.background-color": "rgba(0, 0, 0, 0)",
+                            "floating-chat.donateButton.text-color": "#fff"
+                        });
+                    }
+                };
+                document.body.appendChild(script);
+            } catch (e) {
+                console.log("Widget blocked or failed.");
+            }
+        }
+
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            loadKoFiWidget();
+        } else {
+            document.addEventListener("DOMContentLoaded", loadKoFiWidget);
+        }
+    </script>
   </body>
 </html>
