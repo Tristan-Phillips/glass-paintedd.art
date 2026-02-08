@@ -1,1329 +1,807 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Paintedd | The Archive</title>
-
-    <meta name="theme-color" content="#0f0f12" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png" />
-
-    <script
-      src="https://kit.fontawesome.com/29c25c094f.js"
-      crossorigin="anonymous"
-    ></script>
-
+    
+    <meta name="theme-color" content="#0f0f12">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/pallet/img/logo-circular.png">
+    
+    <link rel="preload" as="image" href="/pallet/img/logo-circular.png">
+    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png">
+    
+    <script src="https://kit.fontawesome.com/29c25c094f.js" crossorigin="anonymous"></script>
+    
     <style>
-      :root {
-        --bg-deep: #0f0f12;
-        --text: #ffffff;
-
-        /* TIER COLORS */
-        --c-green: #00ff9d;
-        --c-blue: #00a8ff;
-        --c-purple: #bd00ff;
-        --c-gold: #ffd700;
-
-        --glass: rgba(255, 255, 255, 0.05);
-        --glass-border: rgba(255, 255, 255, 0.1);
-        --card-radius: 12px;
-
-        --ease-smooth: cubic-bezier(0.25, 0.8, 0.25, 1);
-      }
-
-      * {
-        box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      body {
-        background-color: var(--bg-deep);
-        background:
-          radial-gradient(
-            circle at 10% 20%,
-            rgba(217, 4, 41, 0.05) 0%,
-            transparent 40%
-          ),
-          radial-gradient(
-            circle at 90% 80%,
-            rgba(0, 217, 191, 0.05) 0%,
-            transparent 40%
-          ),
-          radial-gradient(circle at 50% 50%, #100510 0%, #020202 100%);
-        background-attachment: fixed;
-        color: var(--text);
-        font-family: "Segoe UI", Tahoma, sans-serif;
-        margin: 0;
-        min-height: 100vh;
-        overflow-x: hidden;
-        overscroll-behavior-y: none;
-      }
-
-      .noise-overlay {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 1;
-        opacity: 0.04;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      }
-
-      /* --- HEADER --- */
-      .gallery-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 50;
-        padding: 20px 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: linear-gradient(
-          to bottom,
-          rgba(15, 15, 18, 0.95) 0%,
-          rgba(15, 15, 18, 0) 100%
-        );
-        pointer-events: none;
-      }
-
-      .header-left,
-      .header-right {
-        pointer-events: auto;
-        display: flex;
-        gap: 15px;
-        align-items: center;
-      }
-
-      .nav-btn {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--glass-border);
-        backdrop-filter: blur(10px);
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition: 0.3s;
-      }
-      .nav-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: scale(1.1);
-      }
-
-      .resonance-pill {
-        background: rgba(20, 20, 20, 0.6);
-        border: 1px solid var(--glass-border);
-        backdrop-filter: blur(10px);
-        padding: 8px 16px;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        display: flex;
-        gap: 12px;
-        align-items: center;
-        pointer-events: auto;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: 0.3s;
-      }
-      .score-bump {
-        animation: flashGold 0.5s ease-out;
-        border-color: var(--c-gold);
-        color: #fff;
-      }
-      @keyframes flashGold {
-        50% {
-          box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-          transform: scale(1.05);
+        :root {
+            --bg-deep: #0f0f12;
+            --text: #ffffff;
+            
+            /* TIER COLORS */
+            --c-green: #00ff9d;
+            --c-blue: #00a8ff;
+            --c-purple: #bd00ff;
+            --c-gold: #ffd700;
+            
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-radius: 12px;
+            
+            /* PHYSICS */
+            --ease-float: cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-      }
-
-      .progress-text {
-        font-family: monospace;
-        font-size: 0.8rem;
-        color: #888;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .progress-text i {
-        font-size: 0.7rem;
-        color: #555;
-      }
-
-      /* --- STAGE --- */
-      #gallery-stage {
-        padding: 100px 20px 100px;
-        max-width: 1600px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-      }
-
-      .chunk-divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 60px 0 40px;
-        opacity: 0;
-        animation: fadeIn 1s forwards;
-      }
-      .div-line {
-        height: 1px;
-        width: 120px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          currentColor,
-          transparent
-        );
-        opacity: 0.6;
-      }
-      .div-node {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: currentColor;
-        margin: 0 20px;
-        box-shadow: 0 0 15px currentColor;
-        transform: rotate(45deg);
-      }
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
+        
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            background-color: var(--bg-deep);
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(217, 4, 41, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 217, 191, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #100510 0%, #020202 100%);
+            background-attachment: fixed;
+            color: var(--text);
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            margin: 0; min-height: 100vh; overflow-x: hidden;
+            overscroll-behavior-y: none;
         }
-      }
 
-      .masonry-row {
-        display: flex;
-        gap: 20px;
-        width: 100%;
-        align-items: flex-start;
-      }
-      .masonry-col {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        min-width: 0;
-      }
-      @media (max-width: 800px) {
-        .masonry-row {
-          gap: 10px;
+        /* TEXTURE */
+        .noise-overlay {
+            position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
-        .masonry-col {
-          gap: 10px;
+
+        /* --- HEADER --- */
+        .gallery-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+            padding: 20px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, rgba(15,15,18,0.95) 0%, rgba(15,15,18,0) 100%);
+            pointer-events: none;
         }
-      }
 
-      /* --- ARTIFACT CARD --- */
-      .art-card {
-        position: relative;
-        background: #1a1a20;
-        border-radius: var(--card-radius);
-        overflow: hidden;
-        cursor: pointer;
-        opacity: 0;
-        transform: translateY(40px);
-        transition:
-          transform 0.8s var(--ease-smooth),
-          box-shadow 0.6s ease,
-          border-color 0.6s ease;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        user-select: none;
-        display: block;
-        width: 100%;
-      }
+        .header-left, .header-right { pointer-events: auto; display: flex; gap: 15px; align-items: center; }
 
-      .art-card.visible {
-        animation: softFloat 1s var(--ease-smooth) forwards;
-      }
-      @keyframes softFloat {
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        .nav-btn {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s;
         }
-      }
+        .nav-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
 
-      .art-card:hover {
-        transform: translateY(-6px) !important;
-        z-index: 5;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        border-color: rgba(255, 255, 255, 0.2);
-      }
-
-      /* Glint */
-      .art-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -150%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          115deg,
-          transparent 40%,
-          rgba(255, 255, 255, 0.1) 50%,
-          transparent 60%
-        );
-        transform: skewX(-20deg);
-        pointer-events: none;
-        transition: 0.6s;
-        z-index: 2;
-      }
-      .art-card:hover::after {
-        left: 150%;
-        transition: 0.8s;
-      }
-
-      .art-card img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: opacity 0.8s ease;
-        opacity: 0;
-        filter: brightness(0.9);
-      }
-      .art-card:hover img {
-        filter: brightness(1);
-        transition: 0.4s;
-      }
-      .art-card img.loaded {
-        opacity: 1;
-      }
-
-      /* Rarity */
-      .art-card[data-border="green"] {
-        border-bottom: 2px solid var(--c-green);
-      }
-      .art-card[data-border="blue"] {
-        border-bottom: 2px solid var(--c-blue);
-      }
-      .art-card[data-border="purple"] {
-        border-bottom: 2px solid var(--c-purple);
-      }
-      .art-card[data-border="gold"] {
-        border: 1px solid var(--c-gold);
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
-      }
-
-      .art-card.pearl::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: 3;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 0, 128, 0.1),
-          rgba(0, 255, 255, 0.1)
-        );
-        mix-blend-mode: overlay;
-        opacity: 0.5;
-      }
-
-      /* --- THE PRISM (Gacha) --- */
-      .prism-gate {
-        width: 100%;
-        padding: 120px 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.5s;
-      }
-      .prism-gate.vanish {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .prism-orb {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 0 50px rgba(0, 217, 191, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        color: rgba(255, 255, 255, 0.4);
-        cursor: pointer;
-        transition: all 0.5s var(--ease-smooth);
-        position: relative;
-        backdrop-filter: blur(5px);
-      }
-
-      .prism-orb:hover {
-        transform: scale(1.1);
-        color: #fff;
-        border-color: #fff;
-        box-shadow:
-          0 0 80px rgba(0, 217, 191, 0.3),
-          inset 0 0 30px rgba(0, 217, 191, 0.1);
-      }
-
-      .prism-orb::before,
-      .prism-orb::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        border: 1px solid transparent;
-        pointer-events: none;
-      }
-      .prism-orb::before {
-        inset: -8px;
-        border-top-color: rgba(255, 255, 255, 0.1);
-        animation: orbit 8s linear infinite;
-      }
-      .prism-orb::after {
-        inset: -4px;
-        border-bottom-color: rgba(255, 255, 255, 0.2);
-        animation: orbitReverse 6s linear infinite;
-      }
-
-      .prism-orb.rolling {
-        animation: pulse 0.2s infinite alternate;
-      }
-      .prism-orb.rolling i {
-        animation: iconFlip 0.8s linear infinite;
-      }
-
-      .prism-orb.green {
-        box-shadow: 0 0 80px var(--c-green);
-        border-color: var(--c-green);
-        color: var(--c-green);
-      }
-      .prism-orb.blue {
-        box-shadow: 0 0 100px var(--c-blue);
-        border-color: var(--c-blue);
-        color: var(--c-blue);
-      }
-      .prism-orb.purple {
-        box-shadow: 0 0 120px var(--c-purple);
-        border-color: var(--c-purple);
-        color: var(--c-purple);
-      }
-      .prism-orb.gold {
-        box-shadow: 0 0 150px var(--c-gold);
-        border-color: var(--c-gold);
-        color: var(--c-gold);
-        animation: spinGold 2s infinite linear;
-      }
-
-      .prism-text {
-        margin-top: 30px;
-        font-family: monospace;
-        font-weight: 700;
-        letter-spacing: 3px;
-        color: rgba(255, 255, 255, 0.3);
-        font-size: 0.8rem;
-        transition: 0.3s;
-      }
-      .prism-orb:hover + .prism-text {
-        color: #fff;
-        opacity: 1;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      }
-
-      @keyframes orbit {
-        from {
-          transform: rotate(0deg);
+        .resonance-pill {
+            background: rgba(20, 20, 20, 0.6); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 30px;
+            font-size: 0.9rem; font-weight: 600; letter-spacing: 1px;
+            display: flex; gap: 12px; align-items: center; pointer-events: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
         }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes orbitReverse {
-        from {
-          transform: rotate(360deg);
-        }
-        to {
-          transform: rotate(0deg);
-        }
-      }
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        100% {
-          transform: scale(1.05);
-        }
-      }
-      @keyframes iconFlip {
-        0% {
-          opacity: 0;
-          transform: scale(0.5);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.2);
-        }
-        100% {
-          opacity: 0;
-          transform: scale(0.5);
-        }
-      }
-      @keyframes spinGold {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+        .score-bump { animation: flashGold 0.5s ease-out; border-color: var(--c-gold); color: #fff; }
+        @keyframes flashGold { 50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); transform: scale(1.05); } }
 
-      /* --- THEATER --- */
-      .theater {
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        background: rgba(0, 0, 0, 0.98);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        display: flex;
-        touch-action: none;
-      }
-      .theater.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
+        .progress-text { font-family: monospace; font-size: 0.8rem; color: #888; display: flex; align-items: center; gap: 6px; }
+        .progress-text i { font-size: 0.7rem; color: #555; }
 
-      .t-stage {
-        flex: 1;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
+        /* --- STAGE --- */
+        #gallery-stage {
+            padding: 100px 20px 100px;
+            max-width: 1600px; margin: 0 auto;
+            position: relative; z-index: 2;
+        }
 
-      .t-img {
-        max-width: 95%;
-        max-height: 95%;
-        object-fit: contain;
-        box-shadow: 0 0 100px rgba(0, 0, 0, 0.8);
-        transform-origin: center;
-        will-change: transform;
-        user-select: none;
-        -webkit-user-drag: none;
-        transition: opacity 0.2s ease;
-        opacity: 0;
-      }
-      .t-img.show {
-        opacity: 1;
-      }
+        .chunk-divider {
+            display: flex; align-items: center; justify-content: center;
+            margin: 60px 0 40px; opacity: 0; animation: fadeIn 1s forwards;
+        }
+        .div-line { height: 1px; width: 120px; background: linear-gradient(90deg, transparent, currentColor, transparent); opacity: 0.6; }
+        .div-node { width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin: 0 20px; box-shadow: 0 0 15px currentColor; transform: rotate(45deg); }
+        @keyframes fadeIn { to { opacity: 1; } }
 
-      /* FIXED: Controls are separate, not affected by innerHTML wipes */
-      .t-controls {
-        position: absolute;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 8px;
-        z-index: 20;
-        background: rgba(30, 30, 30, 0.6);
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        padding: 8px;
-        border-radius: 50px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      }
+        .masonry-row { display: flex; gap: 20px; width: 100%; align-items: flex-start; }
+        .masonry-col { flex: 1; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+        @media (max-width: 800px) { .masonry-row { gap: 10px; } .masonry-col { gap: 10px; } }
 
-      .tc-btn {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: none;
-        background: transparent;
-        color: #eee;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-      .tc-btn:hover {
-        background: rgba(255, 255, 255, 0.15);
-        color: #fff;
-        transform: translateY(-3px);
-      }
-      .tc-sep {
-        width: 1px;
-        height: 25px;
-        background: rgba(255, 255, 255, 0.1);
-        align-self: center;
-        margin: 0 5px;
-      }
+        /* --- ARTIFACT CARD --- */
+        .art-card {
+            position: relative; 
+            border-radius: var(--card-radius); overflow: hidden;
+            cursor: pointer; opacity: 0; transform: translateY(40px);
+            transition: transform 0.8s var(--ease-float), box-shadow 0.6s ease, border-color 0.6s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+            user-select: none; display: block; width: 100%;
+            
+            /* PLACEHOLDER SHIMMER (The "Busy" State) */
+            background: linear-gradient(110deg, #151515 8%, #222 18%, #151515 33%);
+            background-size: 200% 100%;
+        }
+        
+        .art-card.visible { 
+            /* Combine Entrance Float + Infinite Shimmer */
+            animation: softFloat 1s var(--ease-float) forwards, cardShimmer 1.5s linear infinite;
+        }
+        
+        @keyframes softFloat { to { opacity: 1; transform: translateY(0); } }
+        @keyframes cardShimmer { to { background-position-x: -200%; } }
 
-      .t-panel {
-        width: 400px;
-        background: rgba(20, 20, 25, 0.95);
-        border-left: 1px solid var(--glass-border);
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        overflow-y: auto;
-        z-index: 10;
-        backdrop-filter: blur(30px);
-      }
-      @media (max-width: 900px) {
+        .art-card:hover {
+            transform: translateY(-6px) !important; z-index: 5;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        /* Glint */
+        .art-card::after {
+            content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
+            background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+            transform: skewX(-20deg); pointer-events: none; transition: 0.6s; z-index: 2;
+        }
+        .art-card:hover::after { left: 150%; transition: 0.8s; }
+
+        .art-card img {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: cover;
+            transition: opacity 0.8s ease; opacity: 0; 
+            filter: brightness(0.9);
+        }
+        .art-card:hover img { filter: brightness(1); transition: 0.4s; }
+        .art-card img.loaded { opacity: 1; }
+
+        /* Rarity */
+        .art-card[data-border="green"] { border-bottom: 2px solid var(--c-green); }
+        .art-card[data-border="blue"] { border-bottom: 2px solid var(--c-blue); }
+        .art-card[data-border="purple"] { border-bottom: 2px solid var(--c-purple); }
+        .art-card[data-border="gold"] { border: 1px solid var(--c-gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); }
+
+        .art-card.pearl::before {
+            content:''; position: absolute; inset: 0; pointer-events: none; z-index: 3;
+            background: linear-gradient(135deg, rgba(255,0,128,0.1), rgba(0,255,255,0.1));
+            mix-blend-mode: overlay; opacity: 0.5;
+        }
+
+        /* --- THE PRISM (Gacha) --- */
+        .prism-gate {
+            width: 100%; padding: 120px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.5s;
+        }
+        .prism-gate.vanish { opacity: 0; pointer-events: none; }
+
+        .prism-orb {
+            width: 100px; height: 100px; border-radius: 50%;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.15);
+            /* NEON BLEED */
+            box-shadow: 0 0 50px rgba(0, 217, 191, 0.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: rgba(255,255,255,0.4);
+            cursor: pointer; transition: all 0.5s var(--ease-float);
+            position: relative; backdrop-filter: blur(5px);
+        }
+        
+        .prism-orb:hover { 
+            transform: scale(1.1); color: #fff; border-color: #fff; 
+            box-shadow: 0 0 80px rgba(0, 217, 191, 0.3), inset 0 0 30px rgba(0, 217, 191, 0.1);
+        }
+        
+        .prism-orb::before {
+            content:''; position: absolute; inset: -8px; border-radius: 50%;
+            border: 1px solid transparent; border-top-color: rgba(255,255,255,0.1);
+            animation: orbit 8s linear infinite; pointer-events: none;
+        }
+        .prism-orb::after {
+            content:''; position: absolute; inset: -4px; border-radius: 50%;
+            border: 1px solid transparent; border-bottom-color: rgba(255,255,255,0.2);
+            animation: orbitReverse 6s linear infinite; pointer-events: none;
+        }
+
+        .prism-orb.rolling { animation: pulse 0.2s infinite alternate; }
+        .prism-orb.rolling i { animation: iconFlip 0.8s linear infinite; }
+
+        .prism-orb.green { box-shadow: 0 0 80px var(--c-green); border-color: var(--c-green); color: var(--c-green); }
+        .prism-orb.blue { box-shadow: 0 0 100px var(--c-blue); border-color: var(--c-blue); color: var(--c-blue); }
+        .prism-orb.purple { box-shadow: 0 0 120px var(--c-purple); border-color: var(--c-purple); color: var(--c-purple); }
+        .prism-orb.gold { box-shadow: 0 0 150px var(--c-gold); border-color: var(--c-gold); color: var(--c-gold); animation: spinGold 2s infinite linear; }
+
+        /* Unlock Hint Glow */
+        .prism-orb.unlock-hint {
+            animation: pulseGold 1s infinite;
+            border-color: var(--c-gold);
+            color: var(--c-gold);
+        }
+
+        .prism-text {
+            margin-top: 30px; font-family: monospace; font-weight: 700; 
+            letter-spacing: 3px; color: rgba(255,255,255,0.3); font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .prism-orb:hover + .prism-text { color: #fff; opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+
+        @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes orbitReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+        @keyframes iconFlip { 0% { opacity:0; transform: scale(0.5); } 50% { opacity:1; transform: scale(1.2); } 100% { opacity:0; transform: scale(0.5); } }
+        @keyframes spinGold { to { transform: rotate(360deg); } }
+        @keyframes pulseGold { 0% { box-shadow: 0 0 20px var(--c-gold); transform: scale(1); } 50% { box-shadow: 0 0 60px var(--c-gold); transform: scale(1.1); } 100% { box-shadow: 0 0 20px var(--c-gold); transform: scale(1); } }
+
+        /* --- THEATER (Lightbox) --- */
         .theater {
-          flex-direction: column;
+            position: fixed; inset: 0; z-index: 1000;
+            background: rgba(0,0,0,0.98); 
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            display: flex; touch-action: none;
         }
-        .t-panel {
-          width: 100%;
-          height: auto;
-          min-height: 200px;
-          max-height: 40%;
-          border-left: none;
-          border-top: 1px solid var(--glass-border);
-          padding: 25px;
+        .theater.active { opacity: 1; pointer-events: auto; }
+
+        .t-stage {
+            flex: 1; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; 
         }
+
+        .t-img {
+            max-width: 95%; max-height: 95%; object-fit: contain;
+            box-shadow: 0 0 100px rgba(0,0,0,0.8);
+            transform-origin: center; will-change: transform;
+            user-select: none; -webkit-user-drag: none;
+            transition: opacity 0.2s ease;
+            opacity: 0;
+        }
+        .t-img.show { opacity: 1; }
+
         .t-controls {
-          bottom: 20px;
-          padding: 6px;
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 20;
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            padding: 8px; border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
+
         .tc-btn {
-          width: 40px;
-          height: 40px;
+            width: 45px; height: 45px; border-radius: 50%; border: none;
+            background: transparent; color: #eee;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; cursor: pointer;
+            transition: 0.2s;
         }
-      }
+        .tc-btn:hover { background: rgba(255,255,255,0.15); color: #fff; transform: translateY(-3px); }
+        .tc-sep { width: 1px; height: 25px; background: rgba(255,255,255,0.1); align-self: center; margin: 0 5px; }
 
-      .t-close {
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        z-index: 50;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: 0.3s;
-        backdrop-filter: blur(10px);
-      }
-      .t-close:hover {
-        background: #d90429;
-        transform: rotate(90deg);
-      }
-
-      .t-meta h1 {
-        margin: 0;
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #fff;
-        line-height: 1.1;
-      }
-      .t-meta p {
-        font-family: monospace;
-        color: var(--c-blue);
-        margin-top: 8px;
-        opacity: 0.7;
-        font-size: 0.85rem;
-      }
-      .t-desc {
-        color: #aaa;
-        line-height: 1.7;
-        font-size: 0.9rem;
-        font-weight: 300;
-      }
-
-      /* WHATSAPP GREEN (Restored High-Vis) */
-      .action-btn {
-        width: 100%;
-        padding: 15px;
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.4);
-        border: 1px solid #25d366;
-        color: #25d366;
-        font-weight: 700;
-        letter-spacing: 1px;
-        font-size: 0.9rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-        margin-top: auto;
-        text-shadow: none;
-      }
-      .action-btn:hover {
-        background: #25d366;
-        color: #000;
-        box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
-        transform: translateY(-2px);
-      }
-
-      .end-card {
-        width: 100%;
-        max-width: 500px;
-        margin: 100px auto;
-        padding: 60px 40px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: linear-gradient(
-          180deg,
-          rgba(20, 20, 25, 0.9),
-          rgba(5, 5, 5, 0.95)
-        );
-        border-radius: 4px;
-        text-align: center;
-        backdrop-filter: blur(20px);
-        animation: softFloat 1s ease;
-      }
-      .end-score {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: #fff;
-      }
-      .end-rank {
-        font-size: 1.2rem;
-        color: #ffd700;
-        letter-spacing: 2px;
-        margin-top: 10px;
-      }
-
-      .spinner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 30px;
-        height: 30px;
-        margin: -15px;
-        border: 3px solid rgba(255, 255, 255, 0.1);
-        border-top-color: #fff;
-        border-radius: 50%;
-        animation: spin 1s infinite linear;
-        display: none;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
+        .t-panel {
+            width: 400px; background: rgba(20, 20, 25, 0.95); 
+            border-left: 1px solid var(--glass-border);
+            padding: 40px; display: flex; flex-direction: column; gap: 20px;
+            overflow-y: auto; z-index: 10;
+            backdrop-filter: blur(30px);
         }
-      }
+        @media(max-width: 900px) { 
+            .theater { flex-direction: column; } 
+            .t-panel { width: 100%; height: auto; min-height: 200px; max-height: 40%; border-left: none; border-top: 1px solid var(--glass-border); padding: 25px; } 
+            .t-controls { bottom: 20px; padding: 6px; }
+            .tc-btn { width: 40px; height: 40px; }
+        }
+
+        .t-close {
+            position: absolute; top: 25px; right: 25px; z-index: 50;
+            width: 45px; height: 45px; border-radius: 50%;
+            background: rgba(255,255,255,0.05); color: #fff;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            transition: 0.3s; backdrop-filter: blur(10px);
+        }
+        .t-close:hover { background: #d90429; transform: rotate(90deg); }
+
+        .t-meta h1 { margin: 0; font-size: 1.8rem; font-weight: 700; color: #fff; line-height: 1.1; }
+        .t-meta p { font-family: monospace; color: var(--c-blue); margin-top: 8px; opacity: 0.7; font-size: 0.85rem; }
+        .t-desc { color: #aaa; line-height: 1.7; font-size: 0.9rem; font-weight: 300; }
+
+        .action-btn {
+            width: 100%; padding: 15px; border-radius: 12px;
+            background: rgba(0,0,0,0.4); 
+            border: 1px solid #25D366; 
+            color: #25D366; 
+            font-weight: 700; letter-spacing: 1px; font-size: 0.9rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s; margin-top: auto;
+            text-shadow: none;
+        }
+        .action-btn:hover { 
+            background: #25D366; color: #000;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+            transform: translateY(-2px); 
+        }
+
+        .end-card {
+            width: 100%; max-width: 500px; margin: 100px auto; padding: 60px 40px;
+            border: 1px solid rgba(255,255,255,0.1); 
+            background: linear-gradient(180deg, rgba(20,20,25,0.9), rgba(5,5,5,0.95));
+            border-radius: 4px; text-align: center; backdrop-filter: blur(20px);
+            animation: softFloat 1s ease;
+        }
+        .end-score { font-size: 3.5rem; font-weight: 800; color: #fff; }
+        .end-rank { font-size: 1.2rem; color: #ffd700; letter-spacing: 2px; margin-top: 10px; }
+
+        .spinner {
+            position: absolute; top: 50%; left: 50%; width: 30px; height: 30px; margin: -15px;
+            border: 3px solid rgba(255,255,255,0.1); border-top-color: #fff;
+            border-radius: 50%; animation: spin 1s infinite linear; display: none;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <div class="noise-overlay"></div>
 
     <header class="gallery-header">
-      <div class="header-left">
-        <a href="/" class="nav-btn" title="Home"><i class="fas fa-home"></i></a>
-      </div>
-      <div class="header-right">
-        <div class="resonance-pill">
-          <span class="res-val" id="score-val">0</span>
-          <span class="res-icon">🎈</span>
-          <div
-            class="progress-text"
-            style="
-              margin-left: 8px;
-              border-left: 1px solid #444;
-              padding-left: 10px;
-            "
-          >
-            <span id="unlock-count">0</span> <span style="opacity: 0.5">/</span>
-            <span id="total-count">...</span>
-            <i class="fas fa-lock" style="margin-left: 4px"></i>
-          </div>
+        <div class="header-left">
+            <a href="/" class="nav-btn" title="Home"><i class="fas fa-home"></i></a>
         </div>
-        <a href="/universe/quickview/" class="nav-btn" title="QuickView"
-          ><i class="fas fa-search"></i
-        ></a>
-      </div>
+        <div class="header-right">
+            <div class="resonance-pill">
+                <span class="res-val" id="score-val">0</span>
+                <span class="res-icon">🎈</span>
+                <div class="progress-text" style="margin-left:8px; border-left:1px solid #444; padding-left:10px;">
+                    <span id="unlock-count">0</span> <span style="opacity:0.5">/</span> <span id="total-count">...</span>
+                    <i class="fas fa-lock" style="margin-left:4px;"></i>
+                </div>
+            </div>
+            <a href="/universe/quickview/" class="nav-btn" title="QuickView"><i class="fas fa-search"></i></a>
+        </div>
     </header>
 
     <div id="gallery-stage"></div>
 
     <div class="theater" id="theater">
-      <div class="t-close" id="close-theater"><i class="fas fa-times"></i></div>
-
-      <div class="t-stage" id="t-stage">
-        <div class="spinner" id="t-spinner"></div>
-        <img src="" class="t-img" id="t-img" ondragstart="return false;" />
-
-        <div class="t-controls">
-          <button class="tc-btn" id="btn-prev" title="Previous">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="tc-btn" id="btn-next" title="Next">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <div class="tc-sep"></div>
-          <button class="tc-btn" id="btn-rotate" title="Rotate">
-            <i class="fas fa-rotate-right"></i>
-          </button>
-          <button class="tc-btn" id="btn-download" title="Download">
-            <i class="fas fa-download"></i>
-          </button>
+        <div class="t-close" id="close-theater"><i class="fas fa-times"></i></div>
+        
+        <div class="t-stage" id="t-stage">
+            <div class="spinner" id="t-spinner"></div>
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="t-img" id="t-img" ondragstart="return false;">
+            
+            <div class="t-controls">
+                <button class="tc-btn" id="btn-prev" title="Previous"><i class="fas fa-chevron-left"></i></button>
+                <button class="tc-btn" id="btn-next" title="Next"><i class="fas fa-chevron-right"></i></button>
+                <div class="tc-sep"></div>
+                <button class="tc-btn" id="btn-rotate" title="Rotate"><i class="fas fa-rotate-right"></i></button>
+                <button class="tc-btn" id="btn-download" title="Download"><i class="fas fa-download"></i></button>
+            </div>
         </div>
-      </div>
-
-      <div class="t-panel">
-        <div class="t-meta">
-          <h1 id="t-title"></h1>
-          <p id="t-id"></p>
+        
+        <div class="t-panel">
+            <div class="t-meta">
+                <h1 id="t-title"></h1>
+                <p id="t-id"></p>
+            </div>
+            <div class="t-desc" id="t-desc"></div>
+            <div id="t-status" style="margin-top:20px;"></div>
+            
+            <button class="action-btn" id="inquire-btn">
+                <i class="fab fa-whatsapp"></i> <span>INQUIRE ARTIST</span>
+            </button>
         </div>
-        <div class="t-desc" id="t-desc"></div>
-        <div id="t-status" style="margin-top: 20px"></div>
-
-        <button class="action-btn" id="inquire-btn">
-          <i class="fab fa-whatsapp"></i> <span>INQUIRE ARTIST</span>
-        </button>
-      </div>
     </div>
 
     <script>
-      const ART_URL = "/pallet/data/art.json";
-      const STORE_URL = "/pallet/data/store.json";
+        const ART_URL = '/pallet/data/art.json';
+        const STORE_URL = '/pallet/data/store.json';
 
-      const stage = document.getElementById("gallery-stage");
-      const scoreVal = document.getElementById("score-val");
-      const unlockCount = document.getElementById("unlock-count");
-      const totalCount = document.getElementById("total-count");
+        const stage = document.getElementById('gallery-stage');
+        const scoreVal = document.getElementById('score-val');
+        const unlockCount = document.getElementById('unlock-count');
+        const totalCount = document.getElementById('total-count');
+        
+        let allArtworks = [];
+        let loadedChunks = []; 
+        let storeData = {};
+        let loadedCount = 0;
+        let userScore = 0; 
+        let theaterIndex = -1;
 
-      let allArtworks = [];
-      let loadedChunks = [];
-      let storeData = {};
-      let loadedCount = 0;
-      let userScore = 0;
-      let theaterIndex = -1;
+        const TIERS = [
+            { id: 'green',  label: '8 ARTWORKS DETECTED',    color: '#00ff9d', count: 8,  weight: 50 },
+            { id: 'blue',   label: '16 ARTWORKS DETECTED',   color: '#00a8ff', count: 16, weight: 30 },
+            { id: 'purple', label: '24 ARTWORKS DETECTED',   color: '#bd00ff', count: 24, weight: 15 },
+            { id: 'gold',   label: '40 ARTWORKS DETECTED',   color: '#ffd700', count: 40, weight: 5 }
+        ];
 
-      const TIERS = [
-        {
-          id: "green",
-          label: "8 ARTWORKS DETECTED",
-          color: "#7fff00",
-          count: 8,
-          weight: 50,
-        },
-        {
-          id: "blue",
-          label: "16 ARTWORKS DETECTED",
-          color: "#00bfff",
-          count: 16,
-          weight: 30,
-        },
-        {
-          id: "purple",
-          label: "24 ARTWORKS DETECTED",
-          color: "#ff00ff",
-          count: 24,
-          weight: 15,
-        },
-        {
-          id: "gold",
-          label: "40 ARTWORKS DETECTED",
-          color: "#ffd700",
-          count: 40,
-          weight: 5,
-        },
-      ];
+        async function init() {
+            try {
+                const [artRes, storeRes] = await Promise.all([
+                    fetch(ART_URL),
+                    fetch(STORE_URL).catch(() => ({ ok: false }))
+                ]);
 
-      async function init() {
-        try {
-          const [artRes, storeRes] = await Promise.all([
-            fetch(ART_URL),
-            fetch(STORE_URL).catch(() => ({ ok: false })),
-          ]);
+                if(!artRes.ok) throw new Error("404");
+                const data = await artRes.json();
+                allArtworks = Array.isArray(data) ? data : (data.artworks || []);
+                totalCount.textContent = allArtworks.length;
+                
+                for (let i = allArtworks.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [allArtworks[i], allArtworks[j]] = [allArtworks[j], allArtworks[i]];
+                }
 
-          if (!artRes.ok) throw new Error("404");
-          const data = await artRes.json();
-          allArtworks = Array.isArray(data) ? data : data.artworks || [];
-          totalCount.textContent = allArtworks.length;
+                if(storeRes.ok) {
+                    const store = await storeRes.json();
+                    (store.inventory || []).forEach(i => storeData[i.art_id] = i);
+                }
 
-          // Shuffle
-          for (let i = allArtworks.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [allArtworks[i], allArtworks[j]] = [allArtworks[j], allArtworks[i]];
-          }
+                loadChunk(20, null); 
 
-          if (storeRes.ok) {
-            const store = await storeRes.json();
-            (store.inventory || []).forEach((i) => (storeData[i.art_id] = i));
-          }
-
-          loadChunk(20, null); // Start with 20
-        } catch (e) {
-          console.error(e);
-          stage.innerHTML = `<div style="text-align:center; color:#666; margin-top:100px;">ARCHIVE OFFLINE</div>`;
-        }
-      }
-
-      function addScore(amt) {
-        userScore += amt;
-        scoreVal.textContent = userScore;
-        const pill = document.querySelector(".resonance-pill");
-        pill.classList.remove("score-bump");
-        void pill.offsetWidth;
-        pill.classList.add("score-bump");
-      }
-
-      function createColumns() {
-        const row = document.createElement("div");
-        row.className = "masonry-row";
-        const w = window.innerWidth;
-        const cols = w > 1400 ? 4 : w > 900 ? 3 : 2;
-
-        const buckets = [];
-        for (let i = 0; i < cols; i++) {
-          const col = document.createElement("div");
-          col.className = "masonry-col";
-          row.appendChild(col);
-          buckets.push(col);
-        }
-        stage.appendChild(row);
-        return buckets;
-      }
-
-      function loadChunk(amount, tierData) {
-        if (loadedCount >= allArtworks.length) {
-          showEndCard();
-          return;
+            } catch(e) {
+                console.error(e);
+                stage.innerHTML = `<div style="text-align:center; color:#666; margin-top:100px;">ARCHIVE OFFLINE</div>`;
+            }
         }
 
-        if (tierData) {
-          const div = document.createElement("div");
-          div.className = "chunk-divider";
-          div.style.color = tierData.color;
-          div.innerHTML = `<div class="div-line"></div><div class="div-node"></div><div class="div-line"></div>`;
-          stage.appendChild(div);
+        function addScore(amt) {
+            userScore += amt;
+            scoreVal.textContent = userScore;
+            const pill = document.querySelector('.resonance-pill');
+            pill.classList.remove('score-bump');
+            void pill.offsetWidth;
+            pill.classList.add('score-bump');
         }
 
-        const buckets = createColumns();
-        const chunk = allArtworks.slice(loadedCount, loadedCount + amount);
-
-        chunk.forEach((item, i) => {
-          loadedChunks.push(item);
-          const globalIdx = loadedChunks.length - 1;
-          const src = item.images.thumbnail || item.images.medium;
-
-          let aspect = "1 / 1";
-          if (item.orientation === "portrait") aspect = "3 / 4";
-          if (item.orientation === "landscape") aspect = "4 / 3";
-
-          const rand = Math.random();
-          let border = "";
-          if (rand > 0.95) border = "gold";
-          else if (rand > 0.85) border = "purple";
-          else if (rand > 0.7) border = "blue";
-          else if (rand > 0.5) border = "green";
-
-          const isPearl = Math.random() > 0.92;
-
-          const card = document.createElement("div");
-          card.className = `art-card ${isPearl ? "pearl" : ""}`;
-          card.style.aspectRatio = aspect;
-          card.style.animationDelay = `${i * 80}ms`;
-          if (border) card.dataset.border = border;
-
-          const img = document.createElement("img");
-          img.loading = "lazy";
-          img.src = src;
-          img.onload = () => {
-            img.classList.add("loaded");
-            card.classList.add("visible");
-            addScore(10);
-          };
-
-          card.appendChild(img);
-          card.onclick = () => openTheater(globalIdx);
-          buckets[i % buckets.length].appendChild(card);
-        });
-
-        loadedCount += chunk.length;
-        unlockCount.textContent = loadedCount;
-
-        if (loadedCount < allArtworks.length) {
-          spawnPrism();
-        } else {
-          showEndCard();
+        function createColumns() {
+            const row = document.createElement('div');
+            row.className = 'masonry-row';
+            const w = window.innerWidth;
+            const cols = w > 1400 ? 4 : (w > 900 ? 3 : 2);
+            
+            const buckets = [];
+            for(let i=0; i<cols; i++) {
+                const col = document.createElement('div');
+                col.className = 'masonry-col';
+                row.appendChild(col);
+                buckets.push(col);
+            }
+            stage.appendChild(row);
+            return buckets;
         }
-      }
 
-      function spawnPrism() {
-        const gate = document.createElement("div");
-        gate.className = "prism-gate";
-        gate.id = "gacha-anchor";
-        gate.innerHTML = `
+        function loadChunk(amount, tierData) {
+            if(loadedCount >= allArtworks.length) { showEndCard(); return; }
+
+            if(tierData) {
+                const div = document.createElement('div');
+                div.className = 'chunk-divider';
+                div.style.color = tierData.color;
+                div.innerHTML = `<div class="div-line"></div><div class="div-node"></div><div class="div-line"></div>`;
+                stage.appendChild(div);
+            }
+
+            const buckets = createColumns();
+            const chunk = allArtworks.slice(loadedCount, loadedCount + amount);
+            
+            chunk.forEach((item, i) => {
+                loadedChunks.push(item);
+                const globalIdx = loadedChunks.length - 1;
+                const src = item.images.thumbnail || item.images.medium;
+                
+                let aspect = '1 / 1';
+                if(item.orientation === 'portrait') aspect = '3 / 4';
+                if(item.orientation === 'landscape') aspect = '4 / 3';
+
+                const rand = Math.random();
+                let border = '';
+                if(rand > 0.95) border = 'gold';
+                else if(rand > 0.85) border = 'purple';
+                else if(rand > 0.70) border = 'blue';
+                else if(rand > 0.50) border = 'green';
+                
+                const isPearl = Math.random() > 0.92;
+
+                const card = document.createElement('div');
+                card.className = `art-card ${isPearl ? 'pearl' : ''}`;
+                card.style.aspectRatio = aspect;
+                card.style.animationDelay = `${i * 80}ms`; 
+                if(border) card.dataset.border = border;
+                
+                const img = document.createElement('img');
+                img.loading = 'lazy';
+                img.src = src;
+                img.onload = () => {
+                    img.classList.add('loaded');
+                    card.classList.add('visible');
+                    addScore(10);
+                };
+
+                card.appendChild(img);
+                card.onclick = () => openTheater(globalIdx);
+                buckets[i % buckets.length].appendChild(card);
+            });
+
+            loadedCount += chunk.length;
+            unlockCount.textContent = loadedCount;
+
+            if(loadedCount < allArtworks.length) {
+                spawnPrism();
+            } else {
+                showEndCard();
+            }
+        }
+
+        function spawnPrism() {
+            const gate = document.createElement('div');
+            gate.className = 'prism-gate';
+            gate.id = "gacha-anchor"; 
+            gate.innerHTML = `
                 <div class="prism-orb" onclick="rollGacha(this)" id="main-orb">
                     <i class="fas fa-fingerprint"></i>
                 </div>
                 <div class="prism-text">ROLLING FOR ART...</div>
             `;
-        stage.appendChild(gate);
-      }
+            stage.appendChild(gate);
+        }
 
-      window.rollGacha = function (orb) {
-        if (orb.classList.contains("rolling")) return;
-        orb.classList.add("rolling");
+        window.rollGacha = function(orb) {
+            if(orb.classList.contains('rolling')) return;
+            orb.classList.add('rolling');
+            
+            const text = orb.nextElementSibling;
+            text.innerText = "ALIGNING LAYERS...";
+            
+            const icons = ['fa-bolt', 'fa-eye', 'fa-gem', 'fa-star', 'fa-moon', 'fa-sun'];
+            let iconIdx = 0;
+            const colors = ['#00ff9d', '#00a8ff', '#bd00ff', '#ffd700'];
+            
+            const cycle = setInterval(() => {
+                orb.innerHTML = `<i class="fas ${icons[iconIdx]}"></i>`;
+                orb.style.boxShadow = `0 0 60px ${colors[iconIdx % 4]}`;
+                iconIdx = (iconIdx + 1) % icons.length;
+            }, 400); 
 
-        const text = orb.nextElementSibling;
-        text.innerText = "ALIGNING LAYERS...";
-
-        const icons = [
-          "fa-bolt",
-          "fa-eye",
-          "fa-gem",
-          "fa-star",
-          "fa-moon",
-          "fa-sun",
-        ];
-        let iconIdx = 0;
-        const colors = ["#00ff9d", "#00a8ff", "#bd00ff", "#ffd700"];
-
-        const cycle = setInterval(() => {
-          orb.innerHTML = `<i class="fas ${icons[iconIdx]}"></i>`;
-          orb.style.boxShadow = `0 0 60px ${colors[iconIdx % 4]}`;
-          iconIdx = (iconIdx + 1) % icons.length;
-        }, 400); // SLOWED DOWN
-
-        setTimeout(() => {
-          clearInterval(cycle);
-
-          let rand = Math.floor(Math.random() * 100);
-          let result = TIERS[0];
-          let sum = 0;
-          for (let t of TIERS) {
-            sum += t.weight;
-            if (rand < sum) {
-              result = t;
-              break;
-            }
-          }
-
-          orb.classList.remove("rolling");
-          orb.className = `prism-orb ${result.id}`;
-          orb.innerHTML =
-            result.id === "gold"
-              ? '<i class="fas fa-crown"></i>'
-              : '<i class="fas fa-check"></i>';
-
-          text.innerText = `// ${result.label}`;
-          text.style.color = result.color;
-
-          addScore(500);
-
-          setTimeout(() => {
-            const gate = orb.parentElement;
-            gate.classList.add("vanish");
             setTimeout(() => {
-              gate.remove();
-              loadChunk(result.count, { color: result.color });
-            }, 500);
-          }, 1200);
-        }, 4000);
-      };
+                clearInterval(cycle);
+                
+                let rand = Math.floor(Math.random() * 100);
+                let result = TIERS[0];
+                let sum = 0;
+                for(let t of TIERS) {
+                    sum += t.weight;
+                    if(rand < sum) { result = t; break; }
+                }
 
-      function showEndCard() {
-        const card = document.createElement("div");
-        card.className = "end-card";
-        card.innerHTML = `
+                orb.classList.remove('rolling');
+                orb.className = `prism-orb ${result.id}`;
+                orb.innerHTML = result.id === 'gold' ? '<i class="fas fa-crown"></i>' : '<i class="fas fa-check"></i>';
+                
+                text.innerText = `// ${result.label}`;
+                text.style.color = result.color;
+                
+                addScore(500); 
+
+                setTimeout(() => {
+                    const gate = orb.parentElement;
+                    gate.classList.add('vanish');
+                    setTimeout(() => {
+                        gate.remove();
+                        loadChunk(result.count, { color: result.color });
+                    }, 500);
+                }, 1200);
+
+            }, 4000); 
+        };
+
+        function showEndCard() {
+            const card = document.createElement('div');
+            card.className = 'end-card';
+            card.innerHTML = `
                 <div style="font-size:3rem; color:#ffd700; margin-bottom:20px;"><i class="fas fa-crown"></i></div>
                 <div class="end-score">${userScore}</div>
                 <div style="color:#888; font-family:monospace; letter-spacing:2px;">TOTAL RESONANCE</div>
                 <div class="end-rank">ARCHIVE COMPLETE</div>
             `;
-        stage.appendChild(card);
-      }
-
-      // --- THEATER ENGINE (BUG FIXED) ---
-      const theater = document.getElementById("theater");
-      const tImg = document.getElementById("t-img");
-      const tSpinner = document.getElementById("t-spinner");
-      const tStage = document.getElementById("t-stage");
-      let state = { x: 0, y: 0, scale: 1, rotation: 0 };
-
-      function openTheater(index) {
-        if (index < 0) return;
-
-        // Auto-Unlock Trigger
-        if (index >= loadedChunks.length) {
-          closeTheater();
-          setTimeout(() => {
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            });
-            const orb = document.getElementById("main-orb");
-            if (orb) {
-              orb.classList.add("active"); // Pulse gold
-              rollGacha(orb); // AUTO TRIGGER
-            }
-          }, 300);
-          return;
+            stage.appendChild(card);
         }
 
-        theaterIndex = index;
-        const item = loadedChunks[index];
+        const theater = document.getElementById('theater');
+        const tImg = document.getElementById('t-img');
+        const tSpinner = document.getElementById('t-spinner');
+        const tStage = document.getElementById('t-stage');
+        let state = { x:0, y:0, scale:1, rotation:0 };
 
-        // 1. CLEAR BUFFER
-        tImg.src =
-          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-        tImg.classList.remove("show");
-        tSpinner.style.display = "block";
+        function openTheater(index) {
+            if(index < 0) return;
+            
+            if (index >= loadedChunks.length) {
+                closeTheater();
+                setTimeout(() => {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    const orb = document.getElementById('main-orb');
+                    if(orb) {
+                        orb.classList.add('active');
+                        orb.classList.add('unlock-hint'); // New visual cue
+                        rollGacha(orb);
+                    }
+                }, 300);
+                return;
+            }
 
-        // 2. Set Text
-        document.getElementById("t-title").textContent = item.title || item.id;
-        document.getElementById("t-id").textContent = item.id;
-        document.getElementById("t-desc").textContent = item.description || "";
+            theaterIndex = index;
+            const item = loadedChunks[index];
 
-        // 3. Load Medium
-        const medium = item.images.medium || item.images.thumbnail;
-        const original = item.images.original;
+            tImg.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+            tImg.classList.remove('show');
+            tSpinner.style.display = 'block';
 
-        const loader = new Image();
-        loader.src = medium;
-
-        loader.onload = () => {
-          if (theaterIndex === index) {
-            tImg.src = medium;
-            tImg.onload = () => {
-              tSpinner.style.display = "none";
-              tImg.classList.add("show");
-
-              if (original) {
-                const hd = new Image();
-                hd.src = original;
-                hd.onload = () => {
-                  if (tImg.src === medium) tImg.src = original;
-                };
-              }
+            document.getElementById('t-title').textContent = item.title || item.id;
+            document.getElementById('t-id').textContent = item.id;
+            document.getElementById('t-desc').textContent = item.description || "";
+            
+            const medium = item.images.medium || item.images.thumbnail;
+            const original = item.images.original;
+            
+            const loader = new Image();
+            loader.src = medium;
+            
+            loader.onload = () => {
+                if(theaterIndex === index) {
+                    tImg.src = medium;
+                    tImg.onload = () => {
+                        tSpinner.style.display = 'none';
+                        tImg.classList.add('show');
+                        
+                        if(original) {
+                            const hd = new Image();
+                            hd.src = original;
+                            hd.onload = () => { if(tImg.src === medium) tImg.src = original; };
+                        }
+                    }
+                }
             };
-          }
+
+            const store = storeData[item.id];
+            const btn = document.getElementById('inquire-btn');
+            const statusDiv = document.getElementById('t-status');
+            
+            if(store && store.status === 'available') {
+                statusDiv.innerHTML = `<span style="color:#00ff9d; font-family:monospace; letter-spacing:1px; font-size:0.8rem;">● AVAILABLE FOR PURCHASE</span>`;
+                btn.innerHTML = `<i class="fab fa-whatsapp"></i> PURCHASE REQUEST`;
+            } else if (store && store.status === 'sold') {
+                statusDiv.innerHTML = `<span style="color:#ff3333; font-family:monospace; letter-spacing:1px; font-size:0.8rem;">● SOLD OUT</span>`;
+                btn.innerHTML = `<i class="fab fa-whatsapp"></i> INQUIRE PRINT`;
+            } else {
+                statusDiv.innerHTML = '';
+                btn.innerHTML = `<i class="fab fa-whatsapp"></i> GENERAL INQUIRY`;
+            }
+
+            state = { x:0, y:0, scale:1, rotation:0 };
+            updateTransform();
+            
+            if(!theater.classList.contains('active')) {
+                theater.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeTheater() {
+            theater.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                tImg.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+                tImg.classList.remove('show');
+            }, 300);
+        }
+
+        function updateTransform() {
+            tImg.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg) scale(${state.scale})`;
+        }
+
+        let touchStartDist = 0;
+        let startScale = 1;
+        let isDrag = false;
+        let startX=0, startY=0, initX=0, initY=0;
+
+        tStage.addEventListener('touchstart', e => {
+            if(e.touches.length === 2) {
+                e.preventDefault();
+                touchStartDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                startScale = state.scale;
+            } else if(e.touches.length === 1) {
+                isDrag = true;
+                startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+                initX = state.x; initY = state.y;
+                tImg.style.transition = 'none';
+            }
+        }, {passive: false});
+
+        tStage.addEventListener('touchmove', e => {
+            e.preventDefault();
+            if(e.touches.length === 2) {
+                const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                state.scale = Math.max(0.5, Math.min(4, startScale * (dist / touchStartDist)));
+                updateTransform();
+            } else if(isDrag && e.touches.length === 1) {
+                state.x = initX + (e.touches[0].clientX - startX);
+                state.y = initY + (e.touches[0].clientY - startY);
+                updateTransform();
+            }
+        }, {passive: false});
+
+        tStage.addEventListener('touchend', e => { if(e.touches.length < 2) { isDrag = false; handleRelease(); } });
+
+        tStage.addEventListener('mousedown', e => {
+            if(e.target.closest('.tc-btn')) return;
+            isDrag = true;
+            startX = e.clientX; startY = e.clientY;
+            initX = state.x; initY = state.y;
+            tImg.style.transition = 'none';
+        });
+
+        window.addEventListener('mousemove', e => {
+            if(!isDrag) return;
+            e.preventDefault();
+            state.x = initX + (e.clientX - startX);
+            state.y = initY + (e.clientY - startY);
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => { if(isDrag) { isDrag = false; handleRelease(); } });
+
+        tStage.addEventListener('wheel', e => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            state.scale = Math.max(0.5, Math.min(4, state.scale + delta));
+            updateTransform();
+        });
+
+        function handleRelease() {
+            tImg.style.transition = 'opacity 0.2s ease, transform 0.3s cubic-bezier(0.2,1,0.3,1)';
+            if(state.scale <= 1.1) {
+                if(state.x < -80) { nextItem(); return; }
+                if(state.x > 80) { prevItem(); return; }
+                state.x = 0; state.y = 0; state.scale = 1;
+                updateTransform();
+            }
+        }
+
+        function nextItem() { openTheater(theaterIndex + 1); }
+        function prevItem() { if(theaterIndex > 0) openTheater(theaterIndex - 1); }
+
+        document.getElementById('btn-next').onclick = nextItem;
+        document.getElementById('btn-prev').onclick = prevItem;
+        document.getElementById('close-theater').onclick = closeTheater;
+        
+        document.getElementById('btn-rotate').onclick = () => {
+            state.rotation += 90; updateTransform();
         };
 
-        // Store Info
-        const store = storeData[item.id];
-        const btn = document.getElementById("inquire-btn");
-        const statusDiv = document.getElementById("t-status");
+        document.getElementById('btn-download').onclick = () => {
+            const item = loadedChunks[theaterIndex];
+            if(!item) return;
+            const a = document.createElement('a');
+            a.href = item.images.original || item.images.medium;
+            a.download = `Paintedd-${item.id}`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        };
 
-        if (store && store.status === "available") {
-          statusDiv.innerHTML = `<span style="color:#00ff9d; font-family:monospace; letter-spacing:1px; font-size:0.8rem;">● AVAILABLE FOR PURCHASE</span>`;
-          btn.innerHTML = `<i class="fab fa-whatsapp"></i> PURCHASE REQUEST`;
-        } else if (store && store.status === "sold") {
-          statusDiv.innerHTML = `<span style="color:#ff3333; font-family:monospace; letter-spacing:1px; font-size:0.8rem;">● SOLD OUT</span>`;
-          btn.innerHTML = `<i class="fab fa-whatsapp"></i> INQUIRE PRINT`;
-        } else {
-          statusDiv.innerHTML = "";
-          btn.innerHTML = `<i class="fab fa-whatsapp"></i> GENERAL INQUIRY`;
-        }
+        document.getElementById('inquire-btn').onclick = () => {
+            const item = loadedChunks[theaterIndex];
+            if(!item) return;
+            const title = item.title || item.id;
+            window.open(`https://wa.me/27641417574?text=Hi, inquiring about "${title}" (ID: ${item.id})`, '_blank');
+        };
 
-        state = { x: 0, y: 0, scale: 1, rotation: 0 };
-        updateTransform();
+        document.addEventListener('keydown', e => {
+            if(!theater.classList.contains('active')) return;
+            if(e.key === 'Escape') closeTheater();
+            if(e.key === 'ArrowRight') nextItem();
+            if(e.key === 'ArrowLeft') prevItem();
+        });
 
-        if (!theater.classList.contains("active")) {
-          theater.classList.add("active");
-          document.body.style.overflow = "hidden";
-        }
-      }
+        init();
 
-      function closeTheater() {
-        theater.classList.remove("active");
-        document.body.style.overflow = "";
-        // Only clear img state, DO NOT CLEAR HTML
-        setTimeout(() => {
-          tImg.src =
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-          tImg.classList.remove("show");
-        }, 300);
-      }
-
-      function updateTransform() {
-        tImg.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg) scale(${state.scale})`;
-      }
-
-      // --- GESTURES ---
-      let touchStartDist = 0;
-      let startScale = 1;
-      let isDrag = false;
-      let startX = 0,
-        startY = 0,
-        initX = 0,
-        initY = 0;
-
-      tStage.addEventListener(
-        "touchstart",
-        (e) => {
-          if (e.touches.length === 2) {
-            e.preventDefault();
-            touchStartDist = Math.hypot(
-              e.touches[0].clientX - e.touches[1].clientX,
-              e.touches[0].clientY - e.touches[1].clientY,
-            );
-            startScale = state.scale;
-          } else if (e.touches.length === 1) {
-            isDrag = true;
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            initX = state.x;
-            initY = state.y;
-            tImg.style.transition = "none";
-          }
-        },
-        { passive: false },
-      );
-
-      tStage.addEventListener(
-        "touchmove",
-        (e) => {
-          e.preventDefault();
-          if (e.touches.length === 2) {
-            const dist = Math.hypot(
-              e.touches[0].clientX - e.touches[1].clientX,
-              e.touches[0].clientY - e.touches[1].clientY,
-            );
-            state.scale = Math.max(
-              0.5,
-              Math.min(4, startScale * (dist / touchStartDist)),
-            );
-            updateTransform();
-          } else if (isDrag && e.touches.length === 1) {
-            state.x = initX + (e.touches[0].clientX - startX);
-            state.y = initY + (e.touches[0].clientY - startY);
-            updateTransform();
-          }
-        },
-        { passive: false },
-      );
-
-      tStage.addEventListener("touchend", (e) => {
-        if (e.touches.length < 2) {
-          isDrag = false;
-          handleRelease();
-        }
-      });
-
-      tStage.addEventListener("mousedown", (e) => {
-        if (e.target.closest(".tc-btn")) return;
-        isDrag = true;
-        startX = e.clientX;
-        startY = e.clientY;
-        initX = state.x;
-        initY = state.y;
-        tImg.style.transition = "none";
-      });
-
-      window.addEventListener("mousemove", (e) => {
-        if (!isDrag) return;
-        e.preventDefault();
-        state.x = initX + (e.clientX - startX);
-        state.y = initY + (e.clientY - startY);
-        updateTransform();
-      });
-
-      window.addEventListener("mouseup", () => {
-        if (isDrag) {
-          isDrag = false;
-          handleRelease();
-        }
-      });
-
-      tStage.addEventListener("wheel", (e) => {
-        e.preventDefault();
-        const delta = e.deltaY > 0 ? -0.1 : 0.1;
-        state.scale = Math.max(0.5, Math.min(4, state.scale + delta));
-        updateTransform();
-      });
-
-      function handleRelease() {
-        tImg.style.transition =
-          "opacity 0.2s ease, transform 0.3s cubic-bezier(0.2,1,0.3,1)";
-        if (state.scale <= 1.1) {
-          if (state.x < -80) {
-            nextItem();
-            return;
-          }
-          if (state.x > 80) {
-            prevItem();
-            return;
-          }
-          state.x = 0;
-          state.y = 0;
-          state.scale = 1;
-          updateTransform();
-        }
-      }
-
-      // --- NAV ---
-      function nextItem() {
-        openTheater(theaterIndex + 1);
-      }
-      function prevItem() {
-        if (theaterIndex > 0) openTheater(theaterIndex - 1);
-      }
-
-      document.getElementById("btn-next").onclick = nextItem;
-      document.getElementById("btn-prev").onclick = prevItem;
-      document.getElementById("close-theater").onclick = closeTheater;
-
-      document.getElementById("btn-rotate").onclick = () => {
-        state.rotation += 90;
-        updateTransform();
-      };
-
-      document.getElementById("btn-download").onclick = () => {
-        const item = loadedChunks[theaterIndex];
-        if (!item) return;
-        const a = document.createElement("a");
-        a.href = item.images.original || item.images.medium;
-        a.download = `Paintedd-${item.id}`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      };
-
-      document.getElementById("inquire-btn").onclick = () => {
-        const item = loadedChunks[theaterIndex];
-        if (!item) return;
-        const title = item.title || item.id;
-        window.open(
-          `https://wa.me/27641417574?text=Hi, inquiring about "${title}" (ID: ${item.id})`,
-          "_blank",
-        );
-      };
-
-      document.addEventListener("keydown", (e) => {
-        if (!theater.classList.contains("active")) return;
-        if (e.key === "Escape") closeTheater();
-        if (e.key === "ArrowRight") nextItem();
-        if (e.key === "ArrowLeft") prevItem();
-      });
-
-      init();
     </script>
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#0f0f12" />
-
-    <script>
-      if ("serviceWorker" in navigator) {
-        // We register the SW located at the root
-        navigator.serviceWorker
-          .register("/sw.js")
-          .then(() => console.log("Service Worker Registered"))
-          .catch((err) => console.error("SW Fail", err));
-      }
-    </script>
-  </body>
+</body>
 </html>
