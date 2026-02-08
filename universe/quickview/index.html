@@ -592,5 +592,16 @@
     init();
 
 </script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0f0f12">
+
+<script>
+    if ('serviceWorker' in navigator) {
+        // We register the SW located at the root
+        navigator.serviceWorker.register('/sw.js')
+            .then(() => console.log('Service Worker Registered'))
+            .catch(err => console.error('SW Fail', err));
+    }
+</script>
 </body>
 </html>

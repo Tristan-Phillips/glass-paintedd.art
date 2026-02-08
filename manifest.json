@@ -1,11 +1,11 @@
 {
   "name": "Paintedd Art Archive",
   "short_name": "Paintedd",
-  "start_url": "/universe/quickview/index.html",
+  "start_url": "/index.html", 
   "display": "standalone",
   "background_color": "#0f0f12",
   "theme_color": "#0f0f12",
-  "orientation": "portrait",
+  "orientation": "any",
   "icons": [
     {
       "src": "/pallet/img/logo-circular.png",
