@@ -1,544 +1,759 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Paintedd | QuickView</title>
-    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png">
-    
-    <script src="https://kit.fontawesome.com/29c25c094f.js" crossorigin="anonymous"></script>
-    
+    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png" />
+
+    <script
+      src="https://kit.fontawesome.com/29c25c094f.js"
+      crossorigin="anonymous"
+    ></script>
+
     <style>
-        :root {
-            --bg: #050505;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            
-            /* PAINTEDD PALETTE */
-            --primary-red: #d90429;
-            --primary-turquoise: #00d9bf;
-            --primary-fuchsia: #e725e7;
-            --primary-yellow: #e8cf00;
-            
-            --text: #eee;
-            --text-dim: #666;
-            --card-radius: 12px;
+      :root {
+        --bg: #050505;
+        --glass: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+
+        /* PAINTEDD PALETTE */
+        --primary-red: #d90429;
+        --primary-turquoise: #00d9bf;
+        --primary-fuchsia: #e725e7;
+        --primary-yellow: #e8cf00;
+
+        --text: #eee;
+        --text-dim: #666;
+        --card-radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-y: scroll;
+        overscroll-behavior-y: none;
+      }
+
+      /* --- HEADER ZONE --- */
+      .header-zone {
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(
+          to bottom,
+          rgba(5, 5, 5, 0.95) 0%,
+          rgba(5, 5, 5, 0) 100%
+        );
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .header-row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        max-width: 600px;
+        pointer-events: auto;
+      }
+
+      /* CUSTOM BACK BUTTON */
+      .nav-back-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(20, 20, 20, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        color: #fff;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .nav-back-btn:hover {
+        border-color: var(--primary-turquoise);
+        color: var(--primary-turquoise);
+        box-shadow: 0 0 20px rgba(0, 217, 191, 0.2);
+        transform: translateX(-3px);
+      }
+
+      /* SEARCH BAR */
+      .search-capsule {
+        flex: 1;
+        background: rgba(20, 20, 20, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        padding: 0 25px;
+        height: 50px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .search-capsule:focus-within {
+        transform: scale(1.02);
+        border-color: var(--primary-turquoise);
+        box-shadow: 0 5px 30px rgba(0, 217, 191, 0.15);
+      }
+
+      .search-capsule input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-size: 1rem;
+        flex: 1;
+        font-family: inherit;
+        height: 100%;
+      }
+      .search-capsule i {
+        color: var(--text-dim);
+        font-size: 0.9rem;
+      }
+
+      .stats-pill {
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 1px;
+      }
+
+      /* --- GRID --- */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 100px 20px 100px;
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: #111;
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 1 / 1;
+        cursor: zoom-in;
+        border: 1px solid transparent;
+        user-select: none;
+        transition:
+          transform 0.3s,
+          box-shadow 0.8s,
+          border-color 0.8s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px) scale(1.02);
+        z-index: 2;
+        transition:
+          transform 0.1s,
+          box-shadow 0.1s,
+          border-color 0.1s;
+        border-color: var(--primary-fuchsia);
+        box-shadow: 0 10px 30px rgba(231, 37, 231, 0.25);
+      }
+
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.5s;
+        opacity: 0;
+        filter: brightness(0.9);
+      }
+      .card:hover img {
+        filter: brightness(1.1);
+      }
+      .card img.loaded {
+        opacity: 1;
+      }
+
+      .card-id {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+        padding: 25px 10px 8px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.75rem;
+        text-align: center;
+        font-family: monospace;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      .card:hover .card-id {
+        color: #fff;
+        background: linear-gradient(to top, rgba(217, 4, 41, 0.8), transparent);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      .card.hidden {
+        display: none;
+      }
+
+      /* --- LIGHTBOX --- */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: rgba(0, 0, 0, 0.96);
+        backdrop-filter: blur(15px);
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      body.lb-open .header-zone {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Floating ID Pill (Top) */
+      .lb-id-capsule {
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        padding: 8px 20px;
+        border-radius: 30px;
+        color: rgba(255, 255, 255, 0.8);
+        font-family: monospace;
+        letter-spacing: 1px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 10;
+        font-size: 0.9rem;
+        pointer-events: none;
+      }
+
+      /* Glass Dock (Bottom Controls) */
+      .lb-dock {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 20;
+        background: rgba(30, 30, 30, 0.6);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        padding: 8px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .lb-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        color: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+
+      .lb-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .lb-btn.active {
+        color: var(--primary-turquoise);
+      }
+      .lb-btn.close-btn {
+        color: #ff4d4d;
+      }
+      .lb-btn.close-btn:hover {
+        background: rgba(217, 4, 41, 0.2);
+      }
+
+      .lb-separator {
+        width: 1px;
+        height: 25px;
+        background: rgba(255, 255, 255, 0.1);
+        align-self: center;
+        margin: 0 5px;
+      }
+
+      /* Stage */
+      .lb-stage {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        cursor: grab;
+      }
+      .lb-stage:active {
+        cursor: grabbing;
+      }
+
+      .lb-img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        transform-origin: center;
+        will-change: transform;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(50px);
+        background: var(--primary-turquoise);
+        color: #000;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        opacity: 0;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 100000;
+        pointer-events: none;
+        box-shadow: 0 5px 20px rgba(0, 217, 191, 0.4);
+      }
+      .toast.visible {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30px;
+        height: 30px;
+        margin: -15px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-top-color: var(--primary-fuchsia);
+        border-radius: 50%;
+        animation: spin 1s infinite linear;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
         }
-        
-        * { box-sizing: border-box; }
+      }
 
-        body {
-            background: var(--bg); color: var(--text);
-            font-family: "Segoe UI", Tahoma, sans-serif;
-            margin: 0; padding: 0;
-            overflow-y: scroll;
-            overscroll-behavior-y: none; 
-        }
-
-        /* --- HEADER ZONE --- */
-        .header-zone {
-            padding: 20px;
-            position: fixed; top: 0; left: 0; right: 0;
-            z-index: 100;
-            display: flex; justify-content: center;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0) 100%);
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .header-row {
-            display: flex; align-items: center; gap: 15px;
-            width: 100%; max-width: 600px;
-            pointer-events: auto;
-        }
-
-        /* CUSTOM BACK BUTTON */
-        .nav-back-btn {
-            width: 50px; height: 50px; border-radius: 50%;
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            color: #fff; font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-
-        .nav-back-btn:hover {
-            border-color: var(--primary-turquoise);
-            color: var(--primary-turquoise);
-            box-shadow: 0 0 20px rgba(0, 217, 191, 0.2);
-            transform: translateX(-3px);
-        }
-
-        /* SEARCH BAR */
-        .search-capsule {
-            flex: 1;
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            padding: 0 25px; height: 50px; border-radius: 50px;
-            display: flex; align-items: center; gap: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .search-capsule:focus-within {
-            transform: scale(1.02);
-            border-color: var(--primary-turquoise);
-            box-shadow: 0 5px 30px rgba(0, 217, 191, 0.15);
-        }
-
-        .search-capsule input {
-            background: transparent; border: none; outline: none;
-            color: #fff; font-size: 1rem; flex: 1;
-            font-family: inherit; height: 100%;
-        }
-        .search-capsule i { color: var(--text-dim); font-size: 0.9rem; }
-
-        .stats-pill {
-            font-size: 0.8rem; color: var(--text-dim);
-            font-variant-numeric: tabular-nums; letter-spacing: 1px;
-        }
-
-        /* --- GRID --- */
-        .grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 15px; padding: 100px 20px 100px;
-            width: 100%; max-width: 1800px; margin: 0 auto;
-        }
-
-        .card {
-            background: #111; border-radius: var(--card-radius);
-            overflow: hidden; position: relative; aspect-ratio: 1 / 1;
-            cursor: zoom-in; 
-            border: 1px solid transparent;
-            user-select: none;
-            transition: transform 0.3s, box-shadow 0.8s, border-color 0.8s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px) scale(1.02);
-            z-index: 2;
-            transition: transform 0.1s, box-shadow 0.1s, border-color 0.1s;
-            border-color: var(--primary-fuchsia);
-            box-shadow: 0 10px 30px rgba(231, 37, 231, 0.25);
-        }
-
-        .card img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: opacity 0.5s; opacity: 0;
-            filter: brightness(0.9);
-        }
-        .card:hover img { filter: brightness(1.1); }
-        .card img.loaded { opacity: 1; }
-
-        .card-id {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
-            padding: 25px 10px 8px; 
-            color: rgba(255,255,255,0.7);
-            font-size: 0.75rem; text-align: center; font-family: monospace;
-            transition: all 0.3s ease; pointer-events: none;
-        }
-
-        .card:hover .card-id { 
-            color: #fff; 
-            background: linear-gradient(to top, rgba(217, 4, 41, 0.8), transparent);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .card.hidden { display: none; }
-
-        /* --- LIGHTBOX --- */
-        .lightbox {
-            position: fixed; inset: 0; z-index: 99999;
-            background: rgba(0, 0, 0, 0.96);
-            backdrop-filter: blur(15px);
-            display: flex; flex-direction: column;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .lightbox.active { opacity: 1; pointer-events: auto; }
-
-        body.lb-open .header-zone { opacity: 0; pointer-events: none; }
-
-        /* Floating ID Pill (Top) */
-        .lb-id-capsule {
-            position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            padding: 8px 20px; border-radius: 30px;
-            color: rgba(255,255,255,0.8); font-family: monospace; letter-spacing: 1px;
-            border: 1px solid rgba(255,255,255,0.1);
-            z-index: 10; font-size: 0.9rem; pointer-events: none;
-        }
-
-        /* Glass Dock (Bottom Controls) */
+      @media (max-width: 600px) {
         .lb-dock {
-            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-            display: flex; gap: 8px; z-index: 20;
-            background: rgba(30, 30, 30, 0.6);
-            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            padding: 8px; border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+          bottom: 30px;
+          padding: 6px;
         }
-
         .lb-btn {
-            width: 45px; height: 45px; border-radius: 50%; border: none;
-            background: transparent; color: #eee;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
         }
-
-        .lb-btn:hover {
-            background: rgba(255,255,255,0.15);
-            color: #fff; transform: translateY(-2px);
-        }
-        
-        .lb-btn.active { color: var(--primary-turquoise); }
-        .lb-btn.close-btn { color: #ff4d4d; }
-        .lb-btn.close-btn:hover { background: rgba(217, 4, 41, 0.2); }
-
-        .lb-separator { width: 1px; height: 25px; background: rgba(255,255,255,0.1); align-self: center; margin: 0 5px; }
-
-        /* Stage */
-        .lb-stage {
-            flex: 1; display: flex; align-items: center; justify-content: center;
-            overflow: hidden; position: relative; cursor: grab;
-        }
-        .lb-stage:active { cursor: grabbing; }
-
-        .lb-img {
-            max-width: 100%; max-height: 100%; object-fit: contain;
-            transform-origin: center; will-change: transform;
-            user-select: none; -webkit-user-drag: none;
-        }
-
-        .toast {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(50px);
-            background: var(--primary-turquoise); color: #000; padding: 10px 25px;
-            border-radius: 30px; font-weight: 700; font-size: 0.9rem;
-            opacity: 0; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 100000; pointer-events: none;
-            box-shadow: 0 5px 20px rgba(0, 217, 191, 0.4);
-        }
-        .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-        .spinner {
-            position: absolute; top: 50%; left: 50%;
-            width: 30px; height: 30px; margin: -15px;
-            border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--primary-fuchsia);
-            border-radius: 50%; animation: spin 1s infinite linear;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        @media (max-width: 600px) {
-            .lb-dock { bottom: 30px; padding: 6px; }
-            .lb-btn { width: 40px; height: 40px; font-size: 1rem; }
-        }
-
+      }
     </style>
-</head>
-<body>
+    <meta name="theme-color" content="#0f0f12" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="manifest" href="/manifest.json" />
 
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Paintedd" />
+    <link rel="apple-touch-icon" href="/pallet/img/logo-circular.png" />
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((reg) => console.log("SW registered"))
+            .catch((err) => console.log("SW error", err));
+        });
+      }
+    </script>
+  </head>
+  <body>
     <div class="header-zone">
-        <div class="header-row">
-            <a href="/gallery/index.html" class="nav-back-btn" title="Back to Gallery">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            <div class="search-capsule">
-                <i class="fas fa-search"></i>
-                <input type="text" id="search" placeholder="Filter ID..." autocomplete="off">
-                <span class="stats-pill" id="count">...</span>
-            </div>
+      <div class="header-row">
+        <a
+          href="/gallery/index.html"
+          class="nav-back-btn"
+          title="Back to Gallery"
+        >
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="search-capsule">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="search"
+            placeholder="Filter ID..."
+            autocomplete="off"
+          />
+          <span class="stats-pill" id="count">...</span>
         </div>
+      </div>
     </div>
 
     <div class="grid" id="grid"></div>
 
     <div class="lightbox" id="lightbox">
-        
-        <div class="lb-id-capsule" id="lb-id">ID: ---</div>
+      <div class="lb-id-capsule" id="lb-id">ID: ---</div>
 
-        <div class="lb-stage" id="lb-stage">
-            <div class="spinner" id="lb-loader"></div>
-            <img src="" class="lb-img" id="lb-img" alt="Preview" ondragstart="return false;"> 
-        </div>
+      <div class="lb-stage" id="lb-stage">
+        <div class="spinner" id="lb-loader"></div>
+        <img
+          src=""
+          class="lb-img"
+          id="lb-img"
+          alt="Preview"
+          ondragstart="return false;"
+        />
+      </div>
 
-        <div class="lb-dock">
-            <button class="lb-btn" id="lb-prev" title="Previous"><i class="fas fa-chevron-left"></i></button>
-            <button class="lb-btn" id="lb-next" title="Next"><i class="fas fa-chevron-right"></i></button>
-            
-            <div class="lb-separator"></div>
-            
-            <button class="lb-btn" id="lb-rotate" title="Rotate"><i class="fas fa-rotate-right"></i></button>
-            <button class="lb-btn" id="lb-download" title="Download"><i class="fas fa-download"></i></button>
-            
-            <div class="lb-separator"></div>
-            
-            <button class="lb-btn close-btn" id="lb-close" title="Close"><i class="fas fa-times"></i></button>
-        </div>
+      <div class="lb-dock">
+        <button class="lb-btn" id="lb-prev" title="Previous">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lb-btn" id="lb-next" title="Next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="lb-separator"></div>
+
+        <button class="lb-btn" id="lb-rotate" title="Rotate">
+          <i class="fas fa-rotate-right"></i>
+        </button>
+        <button class="lb-btn" id="lb-download" title="Download">
+          <i class="fas fa-download"></i>
+        </button>
+
+        <div class="lb-separator"></div>
+
+        <button class="lb-btn close-btn" id="lb-close" title="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
     </div>
 
     <div class="toast" id="toast">COPIED</div>
 
-<script>
-    const DB_URL = '/pallet/data/art.json';
+    <script>
+      const DB_URL = "/pallet/data/art.json";
 
-    const grid = document.getElementById('grid');
-    const searchInput = document.getElementById('search');
-    const countLabel = document.getElementById('count');
-    const toast = document.getElementById('toast');
-    
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
-    const lbId = document.getElementById('lb-id');
-    const lbLoader = document.getElementById('lb-loader');
-    const lbStage = document.getElementById('lb-stage');
+      const grid = document.getElementById("grid");
+      const searchInput = document.getElementById("search");
+      const countLabel = document.getElementById("count");
+      const toast = document.getElementById("toast");
 
-    let allItems = [];     // Raw data
-    let visibleItems = []; // Currently filtered items (for nav)
-    let currentIndex = -1; // Pointer for lightbox
+      // Lightbox
+      const lightbox = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lb-img");
+      const lbId = document.getElementById("lb-id");
+      const lbLoader = document.getElementById("lb-loader");
+      const lbStage = document.getElementById("lb-stage");
 
-    // Transform State
-    let state = { x: 0, y: 0, scale: 1, rotation: 0 };
+      let allItems = []; // Raw data
+      let visibleItems = []; // Currently filtered items (for nav)
+      let currentIndex = -1; // Pointer for lightbox
 
-    // --- INIT ---
-    async function init() {
+      // Transform State
+      let state = { x: 0, y: 0, scale: 1, rotation: 0 };
+
+      // --- INIT ---
+      async function init() {
         try {
-            const res = await fetch(DB_URL);
-            if (!res.ok) throw new Error('DB Error');
-            const data = await res.json();
-            allItems = Array.isArray(data) ? data : (data.artworks || []);
-            visibleItems = [...allItems]; // Start with all visible
-            renderGrid(allItems);
+          const res = await fetch(DB_URL);
+          if (!res.ok) throw new Error("DB Error");
+          const data = await res.json();
+          allItems = Array.isArray(data) ? data : data.artworks || [];
+          visibleItems = [...allItems]; // Start with all visible
+          renderGrid(allItems);
         } catch (err) {
-            console.error(err);
-            countLabel.textContent = "ERR";
+          console.error(err);
+          countLabel.textContent = "ERR";
         }
-    }
+      }
 
-    // --- RENDER ---
-    function renderGrid(items) {
-        grid.innerHTML = '';
+      // --- RENDER ---
+      function renderGrid(items) {
+        grid.innerHTML = "";
         countLabel.textContent = items.length;
         const fragment = document.createDocumentFragment();
-        
+
         // Deduplicate
-        const unique = Array.from(new Map(items.map(item => [item.id, item])).values());
+        const unique = Array.from(
+          new Map(items.map((item) => [item.id, item])).values(),
+        );
 
         unique.forEach((item) => {
-            if(!item.id) return;
-            const imgObj = item.images || {};
-            const thumb = imgObj.thumbnail || imgObj.medium || imgObj.original;
-            if (!thumb) return;
+          if (!item.id) return;
+          const imgObj = item.images || {};
+          const thumb = imgObj.thumbnail || imgObj.medium || imgObj.original;
+          if (!thumb) return;
 
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.dataset.id = item.id.toLowerCase();
-            
-            const img = document.createElement('img');
-            img.loading = 'lazy';
-            img.src = thumb;
-            img.onload = () => img.classList.add('loaded');
-            
-            const info = document.createElement('div');
-            info.className = 'card-id';
-            info.textContent = item.id;
+          const card = document.createElement("div");
+          card.className = "card";
+          card.dataset.id = item.id.toLowerCase();
 
-            card.append(img, info);
+          const img = document.createElement("img");
+          img.loading = "lazy";
+          img.src = thumb;
+          img.onload = () => img.classList.add("loaded");
 
-            // Click -> Open Lightbox (Find index in current visible set)
-            card.addEventListener('click', () => {
-                // Re-find index in case filter changed
-                currentIndex = visibleItems.findIndex(i => i.id === item.id);
-                openLightbox(currentIndex);
-            });
+          const info = document.createElement("div");
+          info.className = "card-id";
+          info.textContent = item.id;
 
-            // DblClick -> Download
-            card.addEventListener('dblclick', (e) => {
-                e.stopPropagation();
-                downloadItem(item);
-                showToast(`Downloading...`);
-            });
+          card.append(img, info);
 
-            fragment.appendChild(card);
+          // Click -> Open Lightbox (Find index in current visible set)
+          card.addEventListener("click", () => {
+            // Re-find index in case filter changed
+            currentIndex = visibleItems.findIndex((i) => i.id === item.id);
+            openLightbox(currentIndex);
+          });
+
+          // DblClick -> Download
+          card.addEventListener("dblclick", (e) => {
+            e.stopPropagation();
+            downloadItem(item);
+            showToast(`Downloading...`);
+          });
+
+          fragment.appendChild(card);
         });
         grid.appendChild(fragment);
-    }
+      }
 
-    // --- SEARCH ---
-    searchInput.addEventListener('input', (e) => {
+      // --- SEARCH ---
+      searchInput.addEventListener("input", (e) => {
         const term = e.target.value.toLowerCase().trim();
         const cards = grid.children;
-        
+
         visibleItems = []; // Reset visible list
-        
-        Array.from(cards).forEach(card => {
-            const id = card.dataset.id;
-            const match = id.includes(term);
-            card.classList.toggle('hidden', !match);
-            
-            if(match) {
-                // Find original item data
-                const item = allItems.find(i => i.id.toLowerCase() === id);
-                if(item) visibleItems.push(item);
-            }
+
+        Array.from(cards).forEach((card) => {
+          const id = card.dataset.id;
+          const match = id.includes(term);
+          card.classList.toggle("hidden", !match);
+
+          if (match) {
+            // Find original item data
+            const item = allItems.find((i) => i.id.toLowerCase() === id);
+            if (item) visibleItems.push(item);
+          }
         });
         countLabel.textContent = visibleItems.length;
-    });
+      });
 
-    // --- LIGHTBOX ENGINE ---
-    function openLightbox(index) {
+      // --- LIGHTBOX ENGINE ---
+      function openLightbox(index) {
         if (index < 0 || index >= visibleItems.length) return;
-        
+
         currentIndex = index;
         const item = visibleItems[currentIndex];
         const imgObj = item.images || {};
         const displaySrc = imgObj.medium || imgObj.original || imgObj.thumbnail;
-        
+
         lbId.textContent = `ID: ${item.id}`;
-        
+
         // Reset State
         state = { x: 0, y: 0, scale: 1, rotation: 0 };
         updateTransform();
 
-        document.body.classList.add('lb-open');
-        lightbox.classList.add('active');
-        lbLoader.style.display = 'block';
-        
+        document.body.classList.add("lb-open");
+        lightbox.classList.add("active");
+        lbLoader.style.display = "block";
+
         // Load Image
-        lbImg.style.opacity = '0.5'; 
+        lbImg.style.opacity = "0.5";
         lbImg.src = displaySrc;
-        
+
         lbImg.onload = () => {
-            lbLoader.style.display = 'none';
-            lbImg.style.opacity = '1';
-            preloadNeighbors(index); // Responsible Preload
+          lbLoader.style.display = "none";
+          lbImg.style.opacity = "1";
+          preloadNeighbors(index); // Responsible Preload
         };
-    }
+      }
 
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.classList.remove('lb-open');
-        setTimeout(() => { lbImg.src = ''; }, 300);
-    }
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.classList.remove("lb-open");
+        setTimeout(() => {
+          lbImg.src = "";
+        }, 300);
+      }
 
-    function showNext() {
+      function showNext() {
         if (currentIndex < visibleItems.length - 1) {
-            openLightbox(currentIndex + 1);
+          openLightbox(currentIndex + 1);
         } else {
-            // Loop or Bounce effect? Let's Bounce visually
-            lbImg.style.transform = `translateX(-50px)`;
-            setTimeout(() => updateTransform(), 200);
+          // Loop or Bounce effect? Let's Bounce visually
+          lbImg.style.transform = `translateX(-50px)`;
+          setTimeout(() => updateTransform(), 200);
         }
-    }
+      }
 
-    function showPrev() {
+      function showPrev() {
         if (currentIndex > 0) {
-            openLightbox(currentIndex - 1);
+          openLightbox(currentIndex - 1);
         } else {
-            lbImg.style.transform = `translateX(50px)`;
-            setTimeout(() => updateTransform(), 200);
+          lbImg.style.transform = `translateX(50px)`;
+          setTimeout(() => updateTransform(), 200);
         }
-    }
+      }
 
-    // Responsible Preload (Only +1 and -1)
-    function preloadNeighbors(index) {
+      // Responsible Preload (Only +1 and -1)
+      function preloadNeighbors(index) {
         const next = visibleItems[index + 1];
         const prev = visibleItems[index - 1];
-        
-        if(next) {
-            const i = new Image();
-            i.src = next.images.medium || next.images.original;
-        }
-        if(prev) {
-            const i = new Image();
-            i.src = prev.images.medium || prev.images.original;
-        }
-    }
 
-    function downloadItem(item) {
+        if (next) {
+          const i = new Image();
+          i.src = next.images.medium || next.images.original;
+        }
+        if (prev) {
+          const i = new Image();
+          i.src = prev.images.medium || prev.images.original;
+        }
+      }
+
+      function downloadItem(item) {
         const imgObj = item.images || {};
         const url = imgObj.original || imgObj.medium || imgObj.thumbnail;
-        if(!url) return;
-        const a = document.createElement('a');
+        if (!url) return;
+        const a = document.createElement("a");
         a.href = url;
         a.download = `Paintedd-${item.id}`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-    }
+      }
 
-    // --- CONTROLS ---
-    document.getElementById('lb-close').addEventListener('click', closeLightbox);
-    document.getElementById('lb-next').addEventListener('click', showNext);
-    document.getElementById('lb-prev').addEventListener('click', showPrev);
-    
-    document.getElementById('lb-rotate').addEventListener('click', () => {
+      // --- CONTROLS ---
+      document
+        .getElementById("lb-close")
+        .addEventListener("click", closeLightbox);
+      document.getElementById("lb-next").addEventListener("click", showNext);
+      document.getElementById("lb-prev").addEventListener("click", showPrev);
+
+      document.getElementById("lb-rotate").addEventListener("click", () => {
         state.rotation += 90;
         updateTransform();
-    });
+      });
 
-    document.getElementById('lb-download').addEventListener('click', () => {
-        if(visibleItems[currentIndex]) downloadItem(visibleItems[currentIndex]);
-    });
+      document.getElementById("lb-download").addEventListener("click", () => {
+        if (visibleItems[currentIndex])
+          downloadItem(visibleItems[currentIndex]);
+      });
 
-    // Keyboard Nav
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'ArrowLeft') showPrev();
-    });
+      // Keyboard Nav
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("active")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowRight") showNext();
+        if (e.key === "ArrowLeft") showPrev();
+      });
 
-    // Zoom
-    lightbox.addEventListener('wheel', (e) => {
-        if(e.ctrlKey || Math.abs(e.deltaY) > 0) {
-            e.preventDefault();
-            const delta = e.deltaY > 0 ? -0.1 : 0.1;
-            state.scale = Math.max(0.5, Math.min(4, state.scale + delta));
-            updateTransform();
+      // Zoom
+      lightbox.addEventListener("wheel", (e) => {
+        if (e.ctrlKey || Math.abs(e.deltaY) > 0) {
+          e.preventDefault();
+          const delta = e.deltaY > 0 ? -0.1 : 0.1;
+          state.scale = Math.max(0.5, Math.min(4, state.scale + delta));
+          updateTransform();
         }
-    });
+      });
 
-    // --- DRAG & SWIPE LOGIC ---
-    let isDragging = false;
-    let startX = 0, startY = 0;
-    let initialX = 0, initialY = 0;
+      // --- DRAG & SWIPE LOGIC ---
+      let isDragging = false;
+      let startX = 0,
+        startY = 0;
+      let initialX = 0,
+        initialY = 0;
 
-    lbStage.addEventListener('mousedown', startDrag);
-    lbStage.addEventListener('touchstart', startDrag, {passive: false});
+      lbStage.addEventListener("mousedown", startDrag);
+      lbStage.addEventListener("touchstart", startDrag, { passive: false });
 
-    window.addEventListener('mousemove', drag);
-    window.addEventListener('touchmove', drag, {passive: false});
+      window.addEventListener("mousemove", drag);
+      window.addEventListener("touchmove", drag, { passive: false });
 
-    window.addEventListener('mouseup', endDrag);
-    window.addEventListener('touchend', endDrag);
+      window.addEventListener("mouseup", endDrag);
+      window.addEventListener("touchend", endDrag);
 
-    function startDrag(e) {
-        if (e.target.closest('.lb-btn')) return; 
+      function startDrag(e) {
+        if (e.target.closest(".lb-btn")) return;
         isDragging = true;
-        startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-        startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+        startX = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
+        startY = e.type.includes("mouse") ? e.clientY : e.touches[0].clientY;
         initialX = state.x;
         initialY = state.y;
-        lbImg.style.transition = 'none';
-    }
+        lbImg.style.transition = "none";
+      }
 
-    function drag(e) {
-        if(!isDragging) return;
+      function drag(e) {
+        if (!isDragging) return;
         e.preventDefault();
-        
-        const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-        const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
-        
+
+        const clientX = e.type.includes("mouse")
+          ? e.clientX
+          : e.touches[0].clientX;
+        const clientY = e.type.includes("mouse")
+          ? e.clientY
+          : e.touches[0].clientY;
+
         const deltaX = clientX - startX;
         const deltaY = clientY - startY;
 
@@ -546,62 +761,51 @@
         state.y = initialY + deltaY;
 
         updateTransform();
-    }
+      }
 
-    function endDrag() {
-        if(!isDragging) return;
+      function endDrag() {
+        if (!isDragging) return;
         isDragging = false;
-        
-        lbImg.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
+
+        lbImg.style.transition =
+          "transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)";
 
         // LOGIC BRANCH: Zoomed vs Not Zoomed
         if (state.scale === 1) {
-            // Swipe Down to Close
-            if (state.y > 150) {
-                closeLightbox();
-                return;
-            }
-            // Swipe Left -> Next
-            if (state.x < -100) {
-                showNext();
-                return;
-            }
-            // Swipe Right -> Prev
-            if (state.x > 100) {
-                showPrev();
-                return;
-            }
-            // Snap back to center
-            state.x = 0;
-            state.y = 0;
-            updateTransform();
-        } 
+          // Swipe Down to Close
+          if (state.y > 150) {
+            closeLightbox();
+            return;
+          }
+          // Swipe Left -> Next
+          if (state.x < -100) {
+            showNext();
+            return;
+          }
+          // Swipe Right -> Prev
+          if (state.x > 100) {
+            showPrev();
+            return;
+          }
+          // Snap back to center
+          state.x = 0;
+          state.y = 0;
+          updateTransform();
+        }
         // If Zoomed, leave it there (panned)
-    }
+      }
 
-    function updateTransform() {
+      function updateTransform() {
         lbImg.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${state.rotation}deg) scale(${state.scale})`;
-    }
+      }
 
-    function showToast(msg) {
+      function showToast(msg) {
         toast.textContent = msg;
-        toast.classList.add('visible');
-        setTimeout(() => toast.classList.remove('visible'), 2000);
-    }
+        toast.classList.add("visible");
+        setTimeout(() => toast.classList.remove("visible"), 2000);
+      }
 
-    init();
-
-</script>
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0f0f12">
-
-<script>
-    if ('serviceWorker' in navigator) {
-        // We register the SW located at the root
-        navigator.serviceWorker.register('/sw.js')
-            .then(() => console.log('Service Worker Registered'))
-            .catch(err => console.error('SW Fail', err));
-    }
-</script>
-</body>
+      init();
+    </script>
+  </body>
 </html>

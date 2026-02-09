@@ -1,158 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Paintedd | Identity</title>
-    
-    <link rel="stylesheet" href="/about/pallet/style/about.css">
-    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png">
-    <script src="https://kit.fontawesome.com/29c25c094f.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/about/pallet/style/about.css" />
+    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png" />
+    <script
+      src="https://kit.fontawesome.com/29c25c094f.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/about/pallet/script/about.js" defer></script>
-</head>
-<body>
+    <meta name="theme-color" content="#0f0f12" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Paintedd" />
+    <link rel="apple-touch-icon" href="/pallet/img/logo-circular.png" />
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((reg) => console.log("SW registered"))
+            .catch((err) => console.log("SW error", err));
+        });
+      }
+    </script>
+  </head>
+  <body>
     <div class="scene-backdrop" id="scene-backdrop"></div>
-    
+
     <div class="ambient-dust"></div>
     <div class="vignette"></div>
 
     <div class="scene-wrapper">
-        <div class="card-container" id="art-card">
-            
-            <div class="card-face front">
-                <div class="holo-foil" id="user-foil"></div>
-                <div class="texture-grain"></div>
-                
-                <div class="card-frame">
-                    <div class="card-header">
-                        <span class="rarity">LEGENDARY</span>
-                        <div class="unique-seal" id="balloon-sigil" title="Your Unique Pattern">
-                            </div>
-                    </div>
+      <div class="card-container" id="art-card">
+        <div class="card-face front">
+          <div class="holo-foil" id="user-foil"></div>
+          <div class="texture-grain"></div>
 
-                    <div class="portrait-window">
-                        <img src="https://share.trap.lol/Xh3tHCW5kswY/profileai.jpeg" 
-                             alt="Paintedd" 
-                             class="artist-img" 
-                             draggable="false">
-                        <div class="glint"></div>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="identity-lockup">
-                            <h1 class="artist-name">PAINTEDD</h1>
-                            <div class="class-badge">Freely Creative</div>
-                        </div>
-                        
-                        <div class="ability-box">
-                            <div class="ability-icon"><i class="fas fa-paint-brush"></i></div>
-                            <div class="ability-text">
-                                <strong>Multidisciplinary</strong>
-                                <p>Oil / Digital / Watercolor / More</p>
-                            </div>
-                        </div>
-
-                        <div class="stats-row">
-                            <div class="stat">
-                                <span class="label">EXP</span>
-                                <span class="value">30+ Yrs</span>
-                            </div>
-                            
-                            <div class="scanner-zone" id="sig-trigger">
-                                <div class="scan-ring">
-                                    <svg viewBox="0 0 100 100">
-                                        <circle class="ring-bg" cx="50" cy="50" r="45"></circle>
-                                        <circle class="ring-progress" cx="50" cy="50" r="45"></circle>
-                                    </svg>
-                                    <div class="scan-icon">
-                                        <i class="fas fa-fingerprint"></i>
-                                    </div>
-                                </div>
-                                <div class="scan-label">HOLD TO AUTHENTICATE</div>
-                            </div>
-
-                            <div class="stat">
-                                <span class="label">ORIGIN</span>
-                                <span class="value">ZAR</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <div class="socials">
-                            <a href="https://instagram.com/painted_d_art/" class="pip"><i class="fab fa-instagram"></i></a>
-                            <a href="https://tiktok.com/@painted_d" class="pip"><i class="fab fa-tiktok"></i></a>
-                        </div>
-                        <div class="rarity-badge">1st EDITION</div>
-                    </div>
-                </div>
+          <div class="card-frame">
+            <div class="card-header">
+              <span class="rarity">LEGENDARY</span>
+              <div
+                class="unique-seal"
+                id="balloon-sigil"
+                title="Your Unique Pattern"
+              ></div>
             </div>
 
-            <div class="card-face back">
-                <div class="card-frame dark-mode">
-                    
-                    <button class="close-card-btn" id="close-back-btn">
-                        <i class="fas fa-times"></i>
-                    </button>
-
-                    <div class="secret-state" id="state-locked">
-                        <div class="secret-header">
-                            <i class="fas fa-lock"></i>
-                            <span>ENCRYPTED ACCESS</span>
-                        </div>
-                        
-                        <div class="cipher-display">
-                            <span id="cipher-text">ENTER SEED KEY</span>
-                        </div>
-
-                        <div class="keypad-grid" id="keypad">
-                            <button class="key" data-val="1">1</button>
-                            <button class="key" data-val="2">2</button>
-                            <button class="key" data-val="3">3</button>
-                            <button class="key" data-val="4">4</button>
-                            <button class="key" data-val="5">5</button>
-                            <button class="key" data-val="6">6</button>
-                            <button class="key" data-val="7">7</button>
-                            <button class="key" data-val="8">8</button>
-                            <button class="key" data-val="9">9</button>
-                            <button class="key action-key clear" id="key-clear"><i class="fas fa-times"></i></button>
-                            <button class="key" data-val="0">0</button>
-                            <button class="key action-key enter" id="key-enter"><i class="fas fa-check"></i></button>
-                        </div>
-                        <div class="cipher-hint">Get the code at the event</div>
-                    </div>
-
-                    <div class="secret-state hidden" id="state-unlocked">
-                        <div class="secret-header success-text">
-                            <i class="fas fa-user-secret"></i>
-                            <span>IDENTITY VERIFIED</span>
-                        </div>
-
-                        <div class="secret-body">
-                            <h2 class="glitch-text">INNER CIRCLE</h2>
-                            
-                            <div class="terminal-log">
-                                <p>> WELCOME INITIATE</p>
-                                <p>> UID: <span id="uid-display" class="highlight-text">--</span></p>
-                                <p>> ACCESS: <span class="highlight-text">UNRESTRICTED</span></p>
-                            </div>
-                            
-                            <div class="big-seal-container" id="big-seal"></div>
-
-                            <div class="utility-row">
-                                <button class="toggle-btn" id="currency-toggle">
-                                    <div class="toggle-icon"><i class="fas fa-globe-africa"></i></div>
-                                    <span>GLOBAL MODE</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="portrait-window">
+              <img
+                src="https://share.trap.lol/Xh3tHCW5kswY/profileai.jpeg"
+                alt="Paintedd"
+                class="artist-img"
+                draggable="false"
+              />
+              <div class="glint"></div>
             </div>
 
+            <div class="card-body">
+              <div class="identity-lockup">
+                <h1 class="artist-name">PAINTEDD</h1>
+                <div class="class-badge">Freely Creative</div>
+              </div>
+
+              <div class="ability-box">
+                <div class="ability-icon">
+                  <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="ability-text">
+                  <strong>Multidisciplinary</strong>
+                  <p>Oil / Digital / Watercolor / More</p>
+                </div>
+              </div>
+
+              <div class="stats-row">
+                <div class="stat">
+                  <span class="label">EXP</span>
+                  <span class="value">30+ Yrs</span>
+                </div>
+
+                <div class="scanner-zone" id="sig-trigger">
+                  <div class="scan-ring">
+                    <svg viewBox="0 0 100 100">
+                      <circle class="ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle
+                        class="ring-progress"
+                        cx="50"
+                        cy="50"
+                        r="45"
+                      ></circle>
+                    </svg>
+                    <div class="scan-icon">
+                      <i class="fas fa-fingerprint"></i>
+                    </div>
+                  </div>
+                  <div class="scan-label">HOLD TO AUTHENTICATE</div>
+                </div>
+
+                <div class="stat">
+                  <span class="label">ORIGIN</span>
+                  <span class="value">ZAR</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="socials">
+                <a href="https://instagram.com/painted_d_art/" class="pip"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="https://tiktok.com/@painted_d" class="pip"
+                  ><i class="fab fa-tiktok"></i
+                ></a>
+              </div>
+              <div class="rarity-badge">1st EDITION</div>
+            </div>
+          </div>
         </div>
+
+        <div class="card-face back">
+          <div class="card-frame dark-mode">
+            <button class="close-card-btn" id="close-back-btn">
+              <i class="fas fa-times"></i>
+            </button>
+
+            <div class="secret-state" id="state-locked">
+              <div class="secret-header">
+                <i class="fas fa-lock"></i>
+                <span>ENCRYPTED ACCESS</span>
+              </div>
+
+              <div class="cipher-display">
+                <span id="cipher-text">ENTER SEED KEY</span>
+              </div>
+
+              <div class="keypad-grid" id="keypad">
+                <button class="key" data-val="1">1</button>
+                <button class="key" data-val="2">2</button>
+                <button class="key" data-val="3">3</button>
+                <button class="key" data-val="4">4</button>
+                <button class="key" data-val="5">5</button>
+                <button class="key" data-val="6">6</button>
+                <button class="key" data-val="7">7</button>
+                <button class="key" data-val="8">8</button>
+                <button class="key" data-val="9">9</button>
+                <button class="key action-key clear" id="key-clear">
+                  <i class="fas fa-times"></i>
+                </button>
+                <button class="key" data-val="0">0</button>
+                <button class="key action-key enter" id="key-enter">
+                  <i class="fas fa-check"></i>
+                </button>
+              </div>
+              <div class="cipher-hint">Get the code at the event</div>
+            </div>
+
+            <div class="secret-state hidden" id="state-unlocked">
+              <div class="secret-header success-text">
+                <i class="fas fa-user-secret"></i>
+                <span>IDENTITY VERIFIED</span>
+              </div>
+
+              <div class="secret-body">
+                <h2 class="glitch-text">INNER CIRCLE</h2>
+
+                <div class="terminal-log">
+                  <p>> WELCOME INITIATE</p>
+                  <p>
+                    > UID:
+                    <span id="uid-display" class="highlight-text">--</span>
+                  </p>
+                  <p>
+                    > ACCESS: <span class="highlight-text">UNRESTRICTED</span>
+                  </p>
+                </div>
+
+                <div class="big-seal-container" id="big-seal"></div>
+
+                <div class="utility-row">
+                  <button class="toggle-btn" id="currency-toggle">
+                    <div class="toggle-icon">
+                      <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <span>GLOBAL MODE</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="/pallet/script/return.js"></script>
-</body>
+  </body>
 </html>

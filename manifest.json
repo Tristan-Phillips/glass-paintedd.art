@@ -1,7 +1,9 @@
 {
   "name": "Paintedd Art Archive",
   "short_name": "Paintedd",
-  "start_url": "/index.html", 
+  "description": "A curated archive of digital Art.",
+  "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0f0f12",
   "theme_color": "#0f0f12",
@@ -10,12 +12,20 @@
     {
       "src": "/pallet/img/logo-circular.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/pallet/img/logo-circular.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pallet/img/logo-circular.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
