@@ -1,4 +1,4 @@
-const CACHE_NAME = 'paintedd-core-v4';
+const CACHE_NAME = 'paintedd-core-v5';
 const OFFLINE_PAGE = '/404.html';
 
 const STATIC_ASSETS = [
