@@ -1,24 +1,27 @@
-const CACHE_NAME = 'paintedd-core-v3';
+const CACHE_NAME = 'paintedd-core-v4';
+const OFFLINE_PAGE = '/404.html';
+
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/gallery/index.html',
     '/universe/quickview/index.html',
     '/pallet/img/logo-circular.png',
-    '/manifest.json'
+    '/manifest.json',
+    OFFLINE_PAGE // Pre-cache the error page
 ];
 
-// 1. INSTALL: Cache the "App Shell" immediately
+// 1. INSTALL: Cache App Shell + Offline Page
 self.addEventListener('install', (e) => {
     e.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll(STATIC_ASSETS);
         })
     );
-    self.skipWaiting(); // Take over immediately
+    self.skipWaiting();
 });
 
-// 2. ACTIVATE: Clean up old versions
+// 2. ACTIVATE: Cleanup old versions
 self.addEventListener('activate', (e) => {
     e.waitUntil(
         caches.keys().then((keys) => {
@@ -30,12 +33,12 @@ self.addEventListener('activate', (e) => {
     return self.clients.claim();
 });
 
-// 3. FETCH: The Hybrid Strategy
+// 3. FETCH: The Strategy
 self.addEventListener('fetch', (e) => {
     const url = new URL(e.request.url);
+    const isNavigation = e.request.mode === 'navigate';
 
     // STRATEGY A: Data (art.json) -> Network First, Fallback to Cache
-    // We always want the latest art list. If offline, show the last known list.
     if (url.pathname.includes('art.json')) {
         e.respondWith(
             fetch(e.request)
@@ -49,8 +52,23 @@ self.addEventListener('fetch', (e) => {
         return;
     }
 
-    // STRATEGY B: External Assets (FontAwesome/Images) -> Stale-While-Revalidate
-    // Serve fast from cache, update in background.
+    // STRATEGY B: Navigation (HTML) -> Network First, Fallback to 404
+    // This ensures if they are offline, they get the custom 404 page
+    if (isNavigation) {
+        e.respondWith(
+            fetch(e.request)
+                .catch(() => {
+                    return caches.match(e.request)
+                        .then((cached) => {
+                            // If page is cached, return it. If not, return 404 page.
+                            return cached || caches.match(OFFLINE_PAGE);
+                        });
+                })
+        );
+        return;
+    }
+
+    // STRATEGY C: Images/Fonts -> Stale-While-Revalidate
     if (e.request.destination === 'image' || e.request.destination === 'script' || url.hostname.includes('fontawesome')) {
         e.respondWith(
             caches.match(e.request).then((cached) => {
@@ -64,8 +82,7 @@ self.addEventListener('fetch', (e) => {
         return;
     }
 
-    // STRATEGY C: Core App Shell -> Cache First
-    // The HTML/CSS structure rarely changes, serve it instantly.
+    // STRATEGY D: Everything else (CSS/JS Shell) -> Cache First
     e.respondWith(
         caches.match(e.request).then((cached) => {
             return cached || fetch(e.request);
