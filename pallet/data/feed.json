@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "title": "Paintedd Studio Journal",
+    "description": "Art Studio Feed.",
+    "updated": "2026-02-09"
+  },
+  "posts": [
+    {
+      "id": "2024-02-06",
+      "type": "video",
+      "source": "tiktok",
+      "date": "FEB 06 // 2024",
+      "content": {
+        "caption": "The haunted house",
+        "thumbnail": "/pallet/img/tiktokpp.png",
+        "embed_id": "7332615756686888198"
+      }
+    },
+    {
+      "id": "2025-01-31",
+      "type": "video",
+      "source": "youtube",
+      "date": "JAN 31 // 2025",
+      "content": {
+        "title": "The Gardener of Blades and Blooms",
+        "thumbnail": "https://img.youtube.com/vi/b_MxTXOOnUE/maxresdefault.jpg",
+        "embed_id": "b_MxTXOOnUE"
+      }
+    },
+    {
+      "id": "2024-01-31",
+      "type": "video",
+      "source": "youtube",
+      "date": "JAN 31 // 2024",
+      "content": {
+        "title": "Ireland 2023",
+        "thumbnail": "https://img.youtube.com/vi/XFkcmGzgCL8/maxresdefault.jpg",
+        "embed_id": "XFkcmGzgCL8"
+      }
+    },
+    {
+      "id": "2023-09-05",
+      "type": "video",
+      "source": "youtube",
+      "date": "SEPT 05 // 2023",
+      "content": {
+        "title": "Witchy time",
+        "thumbnail": "https://img.youtube.com/vi/g7w52WWbwm4/maxresdefault.jpg",
+        "embed_id": "g7w52WWbwm4"
+      }
+    },
+    {
+      "id": "2023-04-05",
+      "type": "video",
+      "source": "youtube",
+      "date": "APR 05 // 2023",
+      "content": {
+        "title": "Evil hairdresser",
+        "thumbnail": "https://img.youtube.com/vi/oyCf00nqeNE/maxresdefault.jpg",
+        "embed_id": "oyCf00nqeNE"
+      }
+    },
+    {
+      "id": "2023-03-14",
+      "type": "video",
+      "source": "youtube",
+      "date": "MAR 15 // 2023",
+      "content": {
+        "title": "Tokyo Girl",
+        "thumbnail": "https://img.youtube.com/vi/_M9f18uze4k/maxresdefault.jpg",
+        "embed_id": "_M9f18uze4k"
+      }
+    },
+    {
+      "id": "2023-04-25",
+      "type": "video",
+      "source": "youtube",
+      "date": "APR 25 // 2023",
+      "content": {
+        "title": "Red belly woodpecker",
+        "thumbnail": "https://img.youtube.com/vi/P2X9upmoOfA/maxresdefault.jpg",
+        "embed_id": "P2X9upmoOfA"
+      }
+    },
+    {
+      "id": "2023-08-01",
+      "type": "video",
+      "source": "youtube",
+      "date": "AUG 01 // 2023",
+      "content": {
+        "title": "Inside Out Girl",
+        "thumbnail": "https://img.youtube.com/vi/JB-H6xHWGd8/maxresdefault.jpg",
+        "embed_id": "JB-H6xHWGd8"
+      }
+    },
+    {
+      "id": "2023-08-22",
+      "type": "video",
+      "source": "youtube",
+      "date": "AUG 11 // 2023",
+      "content": {
+        "title": "Sweetbriar Cottage",
+        "thumbnail": "https://img.youtube.com/vi/gpaNPSUWi8g/maxresdefault.jpg",
+        "embed_id": "gpaNPSUWi8g"
+      }
+    },
+    {
+      "id": "2026-02-10-01",
+      "type": "log",
+      "source": "blog",
+      "date": "FEB 10 // 2026",
+      "content": {
+        "text": "Paintedd.art is ready to evolve"
+      }
+    },
+    {
+      "id": "2026-02-10-02",
+      "type": "image",
+      "source": "trap",
+      "date": "FEB 11 // 2026",
+      "content": {
+        "title": "Paintedd Mark",
+        "caption": "Latest render for the new logo.",
+        "url": "https://share.trap.lol/get/ayK9ivfEeoyQ/watermark.webp" 
+      }
+    }
+  ]
+}

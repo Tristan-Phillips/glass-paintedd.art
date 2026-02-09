@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Paintedd | CHAOS FEED</title>
+    
+    <meta name="theme-color" content="#050505">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/pallet/img/logo-circular.png">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="/pallet/img/logo-circular.png" type="image/png">
+    
+    <script src="https://kit.fontawesome.com/29c25c094f.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rajdhani:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg: #050505;
+            --neon-pink: #ff0055;
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --neon-green: #00ff9d; /* Image/Art Color */
+            --neon-yellow: #ffee00; /* Log/Scribble Color */
+            
+            --glass-bg: rgba(20, 20, 20, 0.75);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+            --glass-shine: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background-color: var(--bg);
+            /* Toxic Atmosphere */
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 85, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.08) 0%, transparent 40%),
+                #050505;
+            background-attachment: fixed;
+            color: #fff;
+            font-family: "Rajdhani", sans-serif;
+            margin: 0; min-height: 100vh; overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* TEXTURE */
+        .scribble-noise {
+            position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* HEADER */
+        .journal-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+            padding: 20px 25px; display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(180deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0) 100%);
+            pointer-events: none;
+        }
+        
+        .header-title { 
+            font-family: "Permanent Marker", cursive; 
+            font-size: 1.5rem; color: var(--neon-pink);
+            text-shadow: 2px 2px 0px var(--neon-blue);
+            transform: rotate(-2deg); pointer-events: auto;
+        }
+
+        .nav-btn {
+            width: 45px; height: 45px; pointer-events: auto;
+            background: rgba(0,0,0,0.5); border: 2px solid var(--neon-blue);
+            color: var(--neon-blue); display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.2s;
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+        }
+        .nav-btn:hover { 
+            background: var(--neon-blue); color: #000; 
+            box-shadow: 0 0 15px var(--neon-blue); transform: scale(1.1) rotate(5deg);
+        }
+
+        /* FEED LAYOUT */
+        .feed-container {
+            max-width: 650px; margin: 100px auto 100px;
+            padding: 0 20px; position: relative; z-index: 2;
+        }
+
+        /* FILTERS */
+        .filter-bar {
+            display: flex; gap: 12px; margin-bottom: 50px; overflow-x: auto; 
+            padding: 10px 5px; scrollbar-width: none;
+        }
+        .filter-bar::-webkit-scrollbar { display: none; }
+        
+        .filter-btn {
+            padding: 8px 18px; 
+            background: transparent; border: 1px solid #333;
+            color: #666; font-family: "Rajdhani", sans-serif; font-weight: 700; font-size: 0.9rem;
+            cursor: pointer; transition: 0.2s; text-transform: uppercase;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            border-color: var(--neon-pink); color: #fff;
+            text-shadow: 0 0 8px var(--neon-pink);
+            box-shadow: inset 0 0 15px rgba(255, 0, 85, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* --- CARD BASE --- */
+        .post-card {
+            background: var(--glass-bg);
+            border: var(--glass-border);
+            border-left: 3px solid var(--neon-purple); /* Default Accent */
+            margin-bottom: 60px; position: relative;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            opacity: 0; transform: translateX(-30px);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 0 12px 12px 0;
+            scroll-margin-top: 120px; /* For Anchor Links */
+        }
+        .post-card::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            box-shadow: var(--glass-shine); border-radius: 0 12px 12px 0;
+        }
+        .post-card.visible { opacity: 1; transform: translateX(0); }
+
+        .post-card:hover {
+            transform: scale(1.02) !important;
+            border-left-width: 6px;
+            box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* HEADER */
+        .post-header {
+            padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
+        }
+        .post-source { 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px; 
+            display: flex; gap: 8px; align-items: center; color: #fff;
+        }
+        .post-actions { display: flex; gap: 15px; align-items: center; }
+        
+        .share-btn {
+            background: none; border: none; color: #666; cursor: pointer;
+            font-size: 1.1rem; transition: 0.2s;
+        }
+        .share-btn:hover { color: #fff; text-shadow: 0 0 10px #fff; transform: scale(1.2) rotate(10deg); }
+
+        /* MEDIA */
+        .post-media {
+            width: 100%; position: relative; background: #000; cursor: pointer;
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+        .post-media.video { aspect-ratio: 16 / 9; }
+        .post-media.vertical { aspect-ratio: 9 / 16; max-height: 550px; }
+        .post-media.image { min-height: 300px; max-height: 600px; } /* Auto height for images */
+
+        .post-media img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: 0.3s; filter: grayscale(30%) contrast(110%);
+        }
+        .post-card:hover .post-media img { 
+            filter: grayscale(0%) contrast(100%); transform: scale(1.03); 
+        }
+
+        .play-icon {
+            position: absolute; width: 70px; height: 70px;
+            border: 2px solid #fff; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: #fff; transition: 0.2s; pointer-events: none;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(5px);
+        }
+        .post-media:hover .play-icon { 
+            background: var(--neon-pink); border-color: var(--neon-pink);
+            box-shadow: 0 0 20px var(--neon-pink); transform: scale(1.1) rotate(10deg);
+        }
+
+        /* TEXT SECTION */
+        .post-body { padding: 25px; position: relative; }
+        .post-title { 
+            font-family: "Rajdhani", sans-serif; font-size: 1.4rem; font-weight: 700; 
+            margin: 0 0 10px 0; color: #fff; text-transform: uppercase;
+        }
+        .post-text { font-size: 1rem; color: #ccc; line-height: 1.5; margin: 0; font-weight: 500; }
+
+        /* --- SCRIBBLES (LOGS) --- */
+        .post-card.log {
+            background: rgba(255, 238, 0, 0.05);
+            border-left-color: var(--neon-yellow) !important;
+        }
+        .post-card.log .post-source { color: var(--neon-yellow) !important; }
+        .post-card.log .post-title { font-family: "Permanent Marker", cursive; color: var(--neon-yellow); letter-spacing: 1px; }
+        .post-card.log .post-text { font-family: "Permanent Marker", cursive; color: rgba(255,255,255,0.9); font-size: 1.1rem; }
+        
+        /* --- IMAGE/SCHEMATIC --- */
+        .post-card.image {
+             border-left-color: var(--neon-green) !important;
+        }
+
+        /* TOAST NOTIFICATION */
+        #toast {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: var(--neon-blue); color: #000; padding: 12px 30px;
+            font-family: "Permanent Marker"; font-size: 1.2rem;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            box-shadow: 0 0 20px var(--neon-blue);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; z-index: 100;
+        }
+        #toast.active { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        .embed-frame { width: 100%; height: 100%; border: none; }
+        
+        @keyframes glitchEntry { 
+            0% { opacity: 0; transform: translateX(-50px) skewX(20deg); } 
+            60% { opacity: 1; transform: translateX(10px) skewX(-10deg); } 
+            80% { transform: translateX(-5px); } 
+            100% { transform: translateX(0); } 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="scribble-noise"></div>
+
+    <header class="journal-header">
+        <a href="/" class="nav-btn" title="Back"><i class="fas fa-arrow-left"></i></a>
+        <div class="header-title">PAINTEDD</div>
+        <div style="width:40px"></div>
+    </header>
+
+    <div class="feed-container">
+        
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterPosts('all')">ALL</button>
+            <button class="filter-btn" onclick="filterPosts('log')">SCRIBBLES</button>
+            <button class="filter-btn" onclick="filterPosts('video')">CLIPS</button>
+            <button class="filter-btn" onclick="filterPosts('image')">IMG</button>
+        </div>
+
+        <div id="journal-stream"></div>
+        
+        <div style="text-align:center; margin-top:80px; padding-bottom:40px; color:#333; font-family:'Permanent Marker';">
+            NO MORE SIGNAL
+        </div>
+    </div>
+
+    <div id="toast">LINK SNATCHED!</div>
+
+    <script>
+        const FEED_URL = '/pallet/data/feed.json';
+        const stream = document.getElementById('journal-stream');
+        let allPosts = [];
+
+        async function init() {
+            try {
+                const res = await fetch(FEED_URL);
+                if (!res.ok) throw new Error("Feed Offline");
+                const data = await res.json();
+                
+                // 1. FILTER: Strict ban on Spotify/Music
+                let cleanPosts = data.posts.filter(p => p.source !== 'spotify' && p.type !== 'music');
+
+                // 2. SORT: Newest First (Descending Date/ID)
+                allPosts = cleanPosts.sort((a, b) => b.id.localeCompare(a.id));
+
+                render(allPosts);
+            } catch(e) { console.error(e); }
+        }
+
+        function render(posts) {
+            stream.innerHTML = '';
+            
+            posts.forEach((post, i) => {
+                const card = document.createElement('div');
+                card.id = post.id; // Allow anchor linking
+                
+                let accentColor = '#fff';
+                let sourceIcon = 'fa-bolt';
+                let cardTypeClass = '';
+                
+                // Determine Colors & Icons
+                if (post.source === 'youtube') { accentColor = 'var(--neon-pink)'; sourceIcon = 'fa-youtube'; }
+                if (post.source === 'tiktok') { accentColor = 'var(--neon-blue)'; sourceIcon = 'fa-tiktok'; }
+                
+                // --- 1. SCRIBBLE (LOG) ---
+                if (post.type === 'log') {
+                    accentColor = 'var(--neon-yellow)'; 
+                    sourceIcon = 'fa-pen';
+                    card.className = 'post-card log';
+                    
+                    // Logic to share Anchor Link
+                    const shareUrl = `${window.location.origin}${window.location.pathname}#${post.id}`;
+
+                    card.innerHTML = `
+                        <div class="post-header">
+                            <div class="post-source"><i class="fas ${sourceIcon}"></i> NOTE</div>
+                            <div class="post-actions">
+                                <span style="font-family:monospace; color:#555; font-size:0.8rem;">${post.date}</span>
+                                <button class="share-btn" onclick="snatchLink('${shareUrl}', 'note')"><i class="fas fa-share-nodes"></i></button>
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            <p class="post-text">${post.content.text}</p>
+                        </div>
+                    `;
+                } 
+                // --- 2. IMAGE (STATIC ART) ---
+                else if (post.type === 'image') {
+                    accentColor = 'var(--neon-green)';
+                    sourceIcon = 'fa-image';
+                    card.className = 'post-card image';
+                    
+                    const imgUrl = post.content.url; // Direct Trap.lol link
+
+                    card.innerHTML = `
+                        <div class="post-header">
+                            <div class="post-source" style="color:${accentColor}"><i class="fas ${sourceIcon}"></i> IMG</div>
+                            <div class="post-actions">
+                                <span style="font-family:monospace; color:#555; font-size:0.8rem;">${post.date}</span>
+                                <button class="share-btn" onclick="snatchLink('${imgUrl}', 'image')"><i class="fas fa-share-nodes"></i></button>
+                            </div>
+                        </div>
+                        <div class="post-media image">
+                            <a href="${imgUrl}" target="_blank"><img src="${imgUrl}" alt="art"></a>
+                        </div>
+                        <div class="post-body">
+                            ${post.content.title ? `<h3 class="post-title">${post.content.title}</h3>` : ''}
+                            ${post.content.caption ? `<p class="post-text">${post.content.caption}</p>` : ''}
+                        </div>
+                    `;
+                }
+                // --- 3. VIDEO (MEDIA) ---
+                else {
+                    card.className = 'post-card';
+                    card.style.borderLeftColor = accentColor;
+                    
+                    let aspect = post.source === 'tiktok' ? 'vertical' : 'video';
+                    const thumb = post.content.thumbnail || post.content.cover || '/pallet/img/placeholder.jpg';
+                    const vidUrl = getSourceUrl(post.source, post.content.embed_id);
+
+                    card.innerHTML = `
+                        <div class="post-header">
+                            <div class="post-source" style="color:${accentColor}">
+                                <i class="fab ${sourceIcon}"></i> ${post.source}
+                            </div>
+                            <div class="post-actions">
+                                <span style="font-family:monospace; color:#555; font-size:0.8rem;">${post.date}</span>
+                                <button class="share-btn" onclick="snatchLink('${vidUrl}', 'video')"><i class="fas fa-share-nodes"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="post-media ${aspect}" onclick="loadEmbed(this, '${post.source}', '${post.content.embed_id}')">
+                            <img src="${thumb}" alt="media">
+                            <div class="play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+
+                        <div class="post-body">
+                            ${post.content.title ? `<h3 class="post-title">${post.content.title}</h3>` : ''}
+                            ${post.content.caption ? `<p class="post-text">${post.content.caption}</p>` : ''}
+                        </div>
+                    `;
+                }
+                
+                // Animation settings
+                card.style.transitionDelay = `${i * 80}ms`;
+                card.style.animation = 'glitchEntry 0.4s ease forwards';
+                stream.appendChild(card);
+                setTimeout(() => card.classList.add('visible'), 50);
+            });
+        }
+
+        // Helper: Construct real URLs for sharing
+        function getSourceUrl(source, id) {
+            if (source === 'youtube') return `https://youtu.be/${id}`;
+            if (source === 'tiktok') return `https://www.tiktok.com/video/${id}`;
+            return window.location.href;
+        }
+
+        window.loadEmbed = function(el, source, id) {
+            let html = '';
+            el.style.animation = 'glitchEntry 0.2s';
+            setTimeout(() => {
+                if(source === 'youtube') html = `<iframe class="embed-frame" src="https://www.youtube.com/embed/${id}?autoplay=1" allowfullscreen></iframe>`;
+                else if(source === 'tiktok') html = `<iframe class="embed-frame" src="https://www.tiktok.com/embed/v2/${id}" allowfullscreen></iframe>`;
+                el.innerHTML = html;
+                el.onclick = null;
+                el.style.cursor = 'default';
+            }, 100);
+        };
+
+        window.filterPosts = function(type) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if(type === 'all') render(allPosts);
+            else if(type === 'video') render(allPosts.filter(p => p.type !== 'log' && p.type !== 'image'));
+            else render(allPosts.filter(p => p.type === type));
+        };
+
+        window.snatchLink = function(url, type) {
+            navigator.clipboard.writeText(url).then(() => {
+                const toast = document.getElementById('toast');
+                
+                // Customize Toast Message
+                let msg = "LINK SNATCHED!";
+                if(type === 'video') msg = "SOURCE SECURED!";
+                if(type === 'image') msg = "ARTWORK GRABBED!";
+                
+                toast.innerText = msg;
+                toast.classList.add('active');
+                setTimeout(() => toast.classList.remove('active'), 2000);
+            });
+        };
+
+        init();
+    </script>
+</body>
+</html>
